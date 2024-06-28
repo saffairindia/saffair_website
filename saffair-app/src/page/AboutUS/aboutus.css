@@ -1,0 +1,255 @@
+/* General Styles */
+
+.about-us-container {
+  border-radius: 20px;
+  font-family: sans-serif;
+  color: black;
+  margin: 80px auto;
+  max-width: 75%;
+}
+
+.about-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2196BA;
+  text-align: center;
+}
+
+.about-content {
+  font-size: 1rem;
+  margin-top: 20px;
+  width: 95%;
+  text-align: justify;
+}
+
+.about-description {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.thanks-message {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.great-day-message {
+  color: #2196ba;
+  font-weight: bold;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.separator {
+  border-bottom: solid 2px black;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.vnms {
+  display: flex;
+  width: 95%;
+  justify-content: space-around;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.visions,
+.missions {
+  width: 450px;
+  border: 2px solid;
+  border-radius: 15px;
+  padding: 5px;
+  margin: 10px;
+}
+
+.hh1s {
+  color: #2196ba;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+@keyframes pulse {
+  0% {
+      opacity: 1;
+      transform: scale(1);
+  }
+  50% {
+      opacity: 0.7;
+      transform: scale(1.05);
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+.vgoals,
+.mgoals {
+  font-size: 20px;
+  font-family: sans-serif;
+  text-align: center;
+  padding-bottom: 10px;
+  text-align: justify;
+}
+
+.team-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.team-section h3 {
+  font-size: 2rem;
+  color: black; /* Set font color to transparent */
+  margin-bottom: 20px;
+}
+
+.team-members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.team-member {
+  width: 30%;
+  text-align: center;
+  margin-bottom: 20px;
+  border: 1px solid #2196BA;
+  border-radius: 10px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  overflow: hidden; /* Added */
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.team-member .profile-pic {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 50%; /* Changed */
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.team-member:hover .profile-pic {
+  transform: scale(1.1);
+}
+
+.team-member h4 {
+  font-size: 1.5rem;
+  color: #2196BA;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.team-member:hover h4 {
+  color: #17669e;
+}
+
+.team-member .social-icons {
+  margin-top: 10px;
+}
+
+.team-member .social-icons a {
+  color: #2196BA;
+  text-decoration: none;
+  margin: 0 5px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.team-member .social-icons a:hover {
+  color: #17669e;
+}
+
+/* Media Queries */
+
+@media (max-width: 1300px) {
+  .visions,
+  .missions {
+      width: 360px;
+  }
+
+  .about-us-container {
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  .about-description {
+      margin-left: 0;
+  }
+
+  .about-content {
+      width: 100%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .visions,
+  .missions {
+      width: 350px;
+  }
+}
+
+@media (max-width: 800px) {
+  .vnms {
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      border: none;
+  }
+
+  .mgoals,
+  .vgoals {
+      text-align: center;
+  }
+
+  .visions,
+  .missions {
+      width: 90%;
+      margin-bottom: 15px;
+  }
+
+  .team-member {
+      width: 45%;
+  }
+}
+
+@media (max-width: 400px) {
+  .about-description {
+      font-size: 1rem;
+  }
+
+  .about-title {
+      font-size: 1.2rem;
+  }
+
+  .thanks-message {
+      font-size: 1.2rem;
+  }
+
+  .great-day-message {
+      font-size: 1.2rem;
+  }
+
+  .team-member {
+      width: 100%;
+  }
+}

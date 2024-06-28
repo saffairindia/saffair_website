@@ -1,0 +1,8 @@
+/* .privacypolicydata p {
+  font-size: 21px;
+} */
+@media (max-width:460px){
+  .patch{
+    background-color: red;
+  }
+}

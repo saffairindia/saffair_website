@@ -1,0 +1,108 @@
+.weather-Container {
+  width: 100%;
+}
+
+.weather-img {
+  width: 100%;
+  height: 700px;
+  /* object-fit: cover;
+    z-index: -99999;
+    position: absolute;
+     */
+}
+
+.searchBtn {
+  height: 40px;
+  width: 60px;
+}
+
+.homeReadings {
+  display: flex;
+  margin: auto;
+  /* width: 1225px; */
+}
+
+.cards-wrapper {
+  grid-column: center-start / -1;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  overflow: auto;
+  padding-bottom: 1rem;
+  padding-right: var(--page-margin);
+}
+
+#style-5::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+
+#style-5::-webkit-scrollbar {
+  width: 10px;
+  height: 7px;
+  background-color: #f5f5f5;
+}
+
+#style-5::-webkit-scrollbar-thumb {
+  background-color: #76cfe7;
+
+  background-image: -webkit-gradient(
+    linear,
+    0 0,
+    0 100%,
+    color-stop(0.5, rgba(255, 255, 255, 0.2)),
+    color-stop(0.5, transparent),
+    to(transparent)
+  );
+}
+
+/* Add this CSS to your homepage.css file or any appropriate stylesheet */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar thumb on hover */
+}
+
+.HA1 {
+  /* display: none; */
+  width: 100%;
+  margin-top: 20px;
+  /* height: 890px; */
+}
+
+.HA2 {
+  /* display: none; */
+  width: 100%;
+}
+
+@media (min-width: 900px) and (max-width: 2000px) {
+  .HA2 {
+    width: 100%;
+  }
+
+  .HA1 {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .HA2 {
+    display: none;
+  }
+
+  .HA1 {
+    width: 100%;
+    margin-top: 20px;
+    /* height: 890px; */
+  }
+}

@@ -1,0 +1,31 @@
+.showninfo{
+    font-size: 16px;
+}
+.thehead{
+    font-size: 18px;
+}
+.p_info{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+.details_box{
+    z-index: 9999;
+}
+@media(max-width:791px)
+{
+    .p_info{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+    
+}
+@media(max-width:495px)
+{
+    .p_info{
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 10px;
+    }
+}
