@@ -4,7 +4,6 @@ import "./App.css";
 import Home from "./page/Home";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
-import { Flowbite } from "flowbite-react";
 // import ThemeProvider from "./component/themprovider/ThemeProvider";
 function App() {
   return (

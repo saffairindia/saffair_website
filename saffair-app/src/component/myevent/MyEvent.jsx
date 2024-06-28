@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function MyEvent() {
-  const { currentUser } = useSelector((state) => state.user);
   return (
     <div className=" w-full flex justify-center items-start  ">
       <div className=" rounded-lg sm:p-3  w-3/4 h-3/4 p-1 ">

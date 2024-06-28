@@ -18,6 +18,10 @@ import axios from "axios";
 import { Button, Spinner } from "flowbite-react";
 import { WeatherImageContext } from "../../../page/Home";
 import { TextInput } from "flowbite-react";
+import coicon from './co.png'
+import so2icon from './so2.png'
+import pm2icon from './pm 2.5.png'
+import pm10icon from './pm 10.png'
 
 export default function WeatherUpdate() {
   const [errormessage, setErormessage] = useState(false);
@@ -418,13 +422,14 @@ export default function WeatherUpdate() {
                         </div> */}
                         <div className="grido sgrid">
                           <div className="n4 sgrp">
-                            <FontAwesomeIcon icon={faAtom}
-                              className="text-2xl lg" />
+                          <img src={pm2icon} alt="co"
+                              className="h-5 w-5 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-8 lg:w-8 object-contain text-2xl lg " />
+
 
                             <div className="n1data txt">
 
                               <p className="n1name">
-                                PM
+                                PM 2.5
                               </p>
                               <p className="n3value ">
                                 {pm2_5} <span id="units">ug/m³</span>
@@ -432,23 +437,24 @@ export default function WeatherUpdate() {
                             </div>
                           </div>
                           <div className="n4 sgrp">
-                            <FontAwesomeIcon icon={faAtom}
-                              className="text-2xl lg" />
+                          <img src={pm10icon} alt="co"
+                              className="h-5 w-5 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-8 lg:w-8 object-contain text-2xl lg " />
+
 
                             <div className="n1data txt">
 
                               <p className="n1name">
-                                PM
+                                PM 10
                               </p>
                               <p className="n3value ">
                                 {pm10} <span id="units">ug/m³</span>
                               </p>
                             </div>
                           </div>
-                          
+
                           <div className="n4 sgrp">
-                            <FontAwesomeIcon icon={faRadiation}
-                              className="text-2xl lg" />
+                            <img src={coicon} alt="co"
+                              className="h-5 w-5 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-8 lg:w-8 object-contain text-2xl lg " />
 
                             <div className="n1data txt">
 
@@ -462,8 +468,8 @@ export default function WeatherUpdate() {
                           </div>
 
                           <div className="n4 sgrp">
-                            <FontAwesomeIcon icon={faRadiationAlt}
-                              className="text-2xl lg" />
+                          <img src={so2icon} alt="co"
+                              className="h-5 w-5 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-8 lg:w-8 object-contain text-2xl lg " />
 
                             <div className="n1data txt">
 

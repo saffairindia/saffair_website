@@ -220,12 +220,12 @@ export default function Home() {
                 </a>
               </div>
               <div className="playstore">
-                <a class="btn btn-google" href="/#" title="Google Play">
+                <a class="btn btn-google" rel="noreferrer noopener" href="/#" title="Google Play">
                   Google Play
                 </a>
               </div>
               <div className="appstore">
-                <a class="btn btn-apple" href="/#" title="App Store">
+                <a class="btn btn-apple"  rel="noreferrer noopener" href="/#" title="App Store">
                   App Store
                 </a>
               </div>
@@ -235,9 +235,9 @@ export default function Home() {
       </div>
       <div className="foot-panel4">
         <div className="pages">
-          <a href="">Conditions of Use</a>
-          <a href="">Privacy Notice</a>
-          <a href="">Your Ads Privacy Choices</a>
+          <a href="/#">Conditions of Use</a>
+          <a href="/#">Privacy Notice</a>
+          <a href="/#">Your Ads Privacy Choices</a>
         </div>
         <div className="copyright">
           <Link to="https://agevole.in/" target="_blank">  ©2024 Saffair All rights reserved | Design and Developed by Agevole Innovation </Link>

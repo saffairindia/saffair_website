@@ -6,13 +6,10 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import {
   Avatar,
-  Dropdown,
-  TextInput,
   Navbar as Nb,
 } from 'flowbite-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'; // Import the link icon
-import icn from "./pen-to-square-solid.svg"
 
 export default function PostRequest() {
   const { currentUser } = useSelector((state) => state.user);

@@ -63,22 +63,22 @@ const AdminInfo = ({ userId }) => {
         <p className="text-white text-sm md:text-base mt-2">{postAdmin.bio}</p>
         <div className="icon mt-2">
           {postAdmin && postAdmin.facebook && (
-            <a href={postAdmin.facebook} target="_blank">
+            <a href={postAdmin.facebook} target="_blank"  rel="noreferrer noopener">
               <FontAwesomeIcon className="icons mr-3" icon={faSquareFacebook} />
             </a>
           )}
           {postAdmin && postAdmin.twitter && (
-            <a href={postAdmin.twitter} target="_blank">
+            <a href={postAdmin.twitter} target="_blank " rel="noreferrer noopener">
               <FontAwesomeIcon className="icons mr-3" icon={faSquareXTwitter} />
             </a>
           )}
           {postAdmin && postAdmin.linkedin && (
-            <a href={postAdmin.linkedin} target="_blank">
+            <a href={postAdmin.linkedin} target="_blank" rel="noreferrer noopener">
               <FontAwesomeIcon className="icons mr-3" icon={faLinkedin} />
             </a>
           )}
           {postAdmin && postAdmin.instagram && (
-            <a href={postAdmin.instagram} target="_blank">
+            <a href={postAdmin.instagram} target="_blank" rel="noreferrer noopener">
               <FontAwesomeIcon className="icons" icon={faSquareInstagram} />
             </a>
           )}
