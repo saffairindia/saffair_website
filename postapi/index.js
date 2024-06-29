@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -31,11 +32,12 @@ async function connectDB() {
 }
 
 connectDB();
-
+// Serve static files from the 'dist' directory
+app.use(express.static(path.join(__dirname, 'saffair-app/dist')));
 // all the middlewarss
 
 app.use(morgan("common"));
-app.use(helmet());
+app.use(helmet());  
 
 //userlogin , register and admin
 
