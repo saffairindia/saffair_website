@@ -1,12 +1,8 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: saffair CI
 
 on:
   push:
     branches: [main]
-
 
 jobs:
   build:
@@ -17,20 +13,20 @@ jobs:
         node-version: [18.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Create backend env file
         run: |
           touch .env
           echo PORT=8080 >> .env  
           echo MONGO_ATLAS_URL='${{ secrets.MONGO_ATLAS_URL }}' >> .env
-  
           cat .env
 
       - name: Create client env file
@@ -38,10 +34,16 @@ jobs:
           cd client 
           touch .env
           echo BASE_URL='https://dev.peersuma.studio/api/' >> .env
-
           cat .env
 
-      - run: yarn install
-      - run: cd client && yarn install && yarn build
-     
-      - run: pm2 reload all
+      - name: Install backend dependencies
+        run: npm install
+
+      - name: Install and build client
+        run: |
+          cd client
+          npm install
+          npm run build
+
+      - name: Reload PM2
+        run: pm2 reload all
