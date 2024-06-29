@@ -5,27 +5,43 @@ name: saffair CI
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [main]
+
 
 jobs:
   build:
-
     runs-on: self-hosted
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [18.x]
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: Create backend env file
+        run: |
+          touch .env
+          echo PORT=8080 >> .env  
+          echo MONGO_ATLAS_URL='${{ secrets.MONGO_ATLAS_URL }}' >> .env
+  
+          cat .env
+
+      - name: Create client env file
+        run: |
+          cd client 
+          touch .env
+          echo BASE_URL='https://dev.peersuma.studio/api/' >> .env
+
+          cat .env
+
+      - run: yarn install
+      - run: cd client && yarn install && yarn build
+     
+      - run: pm2 reload all
