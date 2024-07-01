@@ -73,7 +73,7 @@ export default function EditContributorPost() {
     try {
       const fetchPost = async () => {
         const res = await fetch(
-          `${process.env.REACT_APP_BACKEND_API}/getposts?postId=${postId}`
+          `${process.env.REACT_APP_BACKEND_API}/api/getposts?postId=${postId}`
         );
         const data = await res.json();
         if (!res.ok) {
@@ -99,7 +99,7 @@ export default function EditContributorPost() {
     try {
       const updatedFormData = { ...formData, publish: true, isReviewed: true };
       const updatePostRes = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}/updatecontributorpost/${postId}`,
+        `${process.env.REACT_APP_BACKEND_API}/api/updatecontributorpost/${postId}`,
         {
           method: "PUT",
           credentials: "include",

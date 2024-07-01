@@ -50,7 +50,6 @@ export default function Contributors() {
   const [showEducationWork, setShowEducationWork] = useState(false);
   const [updateUserSuccess, setUpdateUserSuccess] = useState(null);
   const [updateUserError, setUpdateUserError] = useState(null);
-  const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
     education: [],
     workExperience: [],

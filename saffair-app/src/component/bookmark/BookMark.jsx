@@ -33,7 +33,7 @@ const BookMark = ({ post }) => {
         return;
       }
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}/bookmark/${post._id}`,
+        `${process.env.REACT_APP_BACKEND_API}/api/bookmark/${post._id}`,
         {
           method: "POST",
           headers: {
@@ -57,7 +57,7 @@ const BookMark = ({ post }) => {
   const handleUnbookmark = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}/unbookmark/${post._id}`,
+        `${process.env.REACT_APP_BACKEND_API}/api/unbookmark/${post._id}`,
         {
           method: "POST",
           headers: {

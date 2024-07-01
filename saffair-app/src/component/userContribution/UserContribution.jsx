@@ -99,7 +99,7 @@ export default function UserContribution() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/post`, {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/api/post`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

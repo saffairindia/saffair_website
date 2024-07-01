@@ -22,7 +22,7 @@ export default function PostRequest() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/getposts`);
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/api/getposts`);
         const data = await res.json();
         if (res.ok) {
           // setUserPosts(data.posts);
@@ -44,7 +44,7 @@ export default function PostRequest() {
     const startIndex = userPosts.length;
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}/getposts?userId=${currentUser._id}&startIndex=${startIndex}`
+        `${process.env.REACT_APP_BACKEND_API}/api/getposts?userId=${currentUser._id}&startIndex=${startIndex}`
       );
       const data = await res.json();
       if (res.ok) {
@@ -62,7 +62,7 @@ export default function PostRequest() {
     setShowModal(false);
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}/deletepost/${postIdToDelete}/${currentUser._id}`,
+        `${process.env.REACT_APP_BACKEND_API}/api/deletepost/${postIdToDelete}/${currentUser._id}`,
         {
           method: "DELETE",
           credentials: "include",

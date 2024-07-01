@@ -18,7 +18,7 @@ export default function Updates() {
   useEffect(() => {
     // Fetch posts from the server
     setLoading(true);
-    fetch(`${process.env.REACT_APP_BACKEND_API}/post`)
+    fetch(`${process.env.REACT_APP_BACKEND_API}/api/post`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch posts");

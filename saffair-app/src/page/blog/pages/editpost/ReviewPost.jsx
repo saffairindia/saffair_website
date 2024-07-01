@@ -25,7 +25,7 @@ export default function ReviewPost() {
     try {
       const fetchPost = async () => {
         const res = await fetch(
-          `${process.env.REACT_APP_BACKEND_API}/getposts?postId=${postId}`
+          `${process.env.REACT_APP_BACKEND_API}/api/getposts?postId=${postId}`
         );
         const data = await res.json();
         if (!res.ok) {
@@ -51,7 +51,7 @@ export default function ReviewPost() {
     try {
       const updatedFormData = { ...formData, isReviewed: true };
       const updatePostRes = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}/reviewcontributorpost/${postId}`,
+        `${process.env.REACT_APP_BACKEND_API}/api/reviewcontributorpost/${postId}`,
         {
           method: "PUT",
           credentials: "include",

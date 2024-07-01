@@ -48,7 +48,7 @@ app.use("/api/vouchers", voucher);
 // app.use("/api/news", news);
 
 //API FOR CREATING POST
-app.post("/post", verifyToken, async (req, res, next) => {
+app.post("/api/post", verifyToken, async (req, res, next) => {
   // if (!req.user.isAdmin && !req.user.isContributor) {
   //   return next(errorHandler(403, "You are not allowed to create a post"));
   // }
@@ -79,7 +79,7 @@ app.post("/post", verifyToken, async (req, res, next) => {
 
 //api for getting the post
 
-app.get("/getposts", async (req, res, next) => {
+app.get("/api/getposts", async (req, res, next) => {
   try {
     const startIndex = parseInt(req.query.startIndex) || 0;
     const limit = parseInt(req.query.limit) || 9;
@@ -126,13 +126,13 @@ app.get("/getposts", async (req, res, next) => {
 });
 
 //API FOR LISTING POST
-app.get("/post", async (req, res) => {
+app.get("/api/post", async (req, res) => {
   res.json(await Post.find().sort({ createdAt: -1 }).limit(20));
 });
 
 //API FOR SHOW THE POST
 
-app.get("/post/:id", async (req, res) => {
+app.get("/api/post/:id", async (req, res) => {
   const { id } = req.params;
   const postDoc = await Post.findById(id);
   res.json(postDoc);
@@ -141,7 +141,7 @@ app.get("/post/:id", async (req, res) => {
 //API FOR DELETING POST
 
 app.delete(
-  "/deletepost/:postId/:userId",
+  "/api/deletepost/:postId/:userId",
   verifyToken,
   async (req, res, next) => {
     if (
@@ -162,7 +162,7 @@ app.delete(
 
 // API FOR update THE POST
 
-app.put("/updatepost/:postId/:userId", verifyToken, async (req, res, next) => {
+app.put("/api/updatepost/:postId/:userId", verifyToken, async (req, res, next) => {
   if (
     !req.user.isAdmin &&
     req.user.id !== req.params.userId &&
@@ -193,7 +193,7 @@ app.put("/updatepost/:postId/:userId", verifyToken, async (req, res, next) => {
 //api for contributor blog edit and post
 
 app.put(
-  "/reviewcontributorpost/:postId",
+  "/api/reviewcontributorpost/:postId",
   verifyToken,
   async (req, res, next) => {
     // if (!req.user.isAdmin) {
@@ -219,7 +219,7 @@ app.put(
 );
 
 app.put(
-  "/updatecontributorpost/:postId",
+  "/api/updatecontributorpost/:postId",
   verifyToken,
   async (req, res, next) => {
     // if (!req.user.isAdmin) {
@@ -256,7 +256,7 @@ app.put(
   }
 );
 //fecthig events title
-app.get("/eventtitle", async (req, res) => {
+app.get("/api/eventtitle", async (req, res) => {
   try {
     // Assuming mongoose is already connected
 
@@ -277,7 +277,7 @@ app.get("/eventtitle", async (req, res) => {
   }
 });
 // Route to fetch all bookmarks of a user
-app.get("/bookmarks/:userId", async (req, res) => {
+app.get("/api/bookmarks/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
 
@@ -291,7 +291,7 @@ app.get("/bookmarks/:userId", async (req, res) => {
   }
 });
 
-app.post("/bookmark/:postId", async (req, res) => {
+app.post("/api/bookmark/:postId", async (req, res) => {
  
   try {
     const { postId } = req.params;
@@ -321,7 +321,7 @@ app.post("/bookmark/:postId", async (req, res) => {
 });
 
 // Route to unbookmark a post
-app.post("/unbookmark/:postId", async (req, res) => {
+app.post("/api/unbookmark/:postId", async (req, res) => {
   try {
     const { postId } = req.params;
     const { userId } = req.body;

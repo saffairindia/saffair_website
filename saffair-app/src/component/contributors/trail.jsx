@@ -29,7 +29,7 @@ export default function SignIn() {
     }
     try {
       dispatch(signInStart());
-      const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/api/auth/login", {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -53,9 +53,9 @@ export default function SignIn() {
     <div className="min-h-screen mt-10 w-4/5">
       <div className="flex p-2 max-w-8xl mx-auto flex-col md:flex-row md:items-center gap-5">
         <div className="flex-1">
-            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             <div className="pdetails">
-            <p p className="pdetailstag mb-4">Personal details</p>
+              <p className="pdetailstag mb-4">Personal details</p>
               <div className="thenames grid grid-cols-4">
                 <div>
                   <Label value="First Name" />
@@ -176,17 +176,17 @@ export default function SignIn() {
                   />
                 </div>
               </div>
-              
-            </form>
-            {errorMessage && (
-              <Alert className="mt-5" color="failure">
-                {errorMessage}
-              </Alert>
-            )}
-          </div>
-         
+            </div>
+          </form>
+          {errorMessage && (
+            <Alert className="mt-5" color="failure">
+              {errorMessage}
+            </Alert>
+          )}
         </div>
+
       </div>
-    
+    </div>
+
   );
 }

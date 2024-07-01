@@ -16,7 +16,7 @@ export default function DashBookMark() {
     const fetchBookmarks = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_BACKEND_API}/bookmarks/${currentUser._id}`
+          `${process.env.REACT_APP_BACKEND_API}/api/bookmarks/${currentUser._id}`
         );
         setBookmarks(response.data);
       } catch (error) {

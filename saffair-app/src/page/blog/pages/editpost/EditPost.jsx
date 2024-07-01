@@ -36,7 +36,7 @@ export default function EditPost() {
     try {
       const fetchPost = async () => {
         const res = await fetch(
-          `${process.env.REACT_APP_BACKEND_API}/getposts?postId=${postId}`
+          `${process.env.REACT_APP_BACKEND_API}/api/getposts?postId=${postId}`
         );
         const data = await res.json();
         if (!res.ok) {

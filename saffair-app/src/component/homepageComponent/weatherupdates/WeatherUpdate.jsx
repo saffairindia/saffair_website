@@ -4,9 +4,6 @@ import {
   faDroplet,
   faLocationDot,
   faSun,
-  faRadiationAlt,
-  faAtom,
-  faRadiation,
   faTemperatureHigh,
   faWind,
 } from "@fortawesome/free-solid-svg-icons";

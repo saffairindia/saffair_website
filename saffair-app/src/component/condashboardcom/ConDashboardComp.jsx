@@ -38,7 +38,7 @@ export default function ConDashboardComp() {
     };
     const fetchPosts = async () => {
       try {
-        const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/getposts?limit=5`);
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/api/getposts?limit=5`);
         const data = await res.json();
         if (res.ok) {
           setPosts(data.posts);

@@ -21,7 +21,7 @@ export default function PostPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACKEND_API}/post`)
+    fetch(`${process.env.REACT_APP_BACKEND_API}/api/post`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch posts");
@@ -37,7 +37,7 @@ export default function PostPage() {
   }, []);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACKEND_API}/post/${id}`)
+    fetch(`${process.env.REACT_APP_BACKEND_API}/api/post/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch post");

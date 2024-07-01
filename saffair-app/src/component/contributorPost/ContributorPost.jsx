@@ -18,7 +18,7 @@ export default function ContributorPost() {
     const fetchPosts = async () => {
       try {
         const res = await fetch(
-          `${process.env.REACT_APP_BACKEND_API}/getposts?userId=${userId}`
+          `${process.env.REACT_APP_BACKEND_API}/api/getposts?userId=${userId}`
         );
         const data = await res.json();
         if (res.ok) {
@@ -39,7 +39,7 @@ export default function ContributorPost() {
     const startIndex = userPosts.length;
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}/getposts?userId=${userId}&startIndex=${startIndex}`
+        `${process.env.REACT_APP_BACKEND_API}/api/getposts?userId=${userId}&startIndex=${startIndex}`
       );
       const data = await res.json();
       if (res.ok) {
@@ -57,7 +57,7 @@ export default function ContributorPost() {
     setShowModal(false);
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}/deletepost/${postIdToDelete}/${userId}`,
+        `${process.env.REACT_APP_BACKEND_API}/api/deletepost/${postIdToDelete}/${userId}`,
         {
           method: "DELETE",
           credentials: "include",
