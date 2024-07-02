@@ -55,7 +55,7 @@ const AboutUsPage = () => {
 
       </section> */}
 
-      <div>
+      
         <div class="responsive-container-block bigContainer">
           <div class="responsive-container-block Container gap-6">
             <div class="imgContainer">
@@ -96,8 +96,7 @@ const AboutUsPage = () => {
                       fundamental right for all.          </p>
                   </div>
                 </div>
-              </div>
-
+              
 
 
             </div>

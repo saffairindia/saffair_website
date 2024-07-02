@@ -249,9 +249,9 @@ body {
 
 .responsive-container-block.bigContainer {
   padding-top: 0px;
-  padding-right: 50px;
+  padding-right: 25px;
   padding-bottom: 0px;
-  padding-left: 50px;
+  padding-left: 25px;
   margin-top: 50px;
   margin-right: 0px;
   margin-bottom: 50px;
@@ -698,7 +698,7 @@ body {
   font-family: sans-serif;
   color: black;
   margin: 80px auto;
-  max-width: 75%;
+  max-width: 85%;
 }
 
 .about-title {
