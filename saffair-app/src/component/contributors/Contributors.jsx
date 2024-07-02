@@ -183,9 +183,10 @@ export default function Contributors() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const sendOTP = async () => {
+    var ph = phone.substring(2)
     setFormData({
       ...formData,
-      number: phone,
+      number: ph,
     });
     console.log(phone)
     if (phone == "") {
@@ -333,10 +334,7 @@ export default function Contributors() {
                           value={phone}
                           onChange={(e) => {
                             setPhone(e);
-                            setFormData(prevState => ({
-                              ...prevState,
-                              number: e
-                            }));
+                            
                           }}
 
                           placeholder="+91 xxxxx-xxxxx"

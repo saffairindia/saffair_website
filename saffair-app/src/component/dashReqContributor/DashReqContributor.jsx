@@ -88,9 +88,7 @@ export default function DashReqContributor() {
         // Update the user list with updated isAdmin status
         setUsers((prevUsers) =>
           prevUsers.map((user) =>
-            user._id === userId
-              ? { ...user, isContributor: !user.isContributor }
-              : user
+            user._id === userId ? { ...user, isContributor: !user.isContributor }: user
           )
         );
       } else {
