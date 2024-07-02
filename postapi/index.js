@@ -19,7 +19,13 @@ dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+const corsOption = {
+  origin: '*',
+  credentials: true,
+  exposedHeaders: ['authorization'],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+};
+app.use(cors(corsOption));
 
 //DB CONNECTION
 async function connectDB() {
@@ -33,7 +39,7 @@ async function connectDB() {
 
 connectDB();
 // Serve static files from the 'dist' directory
-app.use(express.static(path.join(__dirname, 'saffair-app/dist')));
+app.use(express.static(path.join(__dirname, '../saffair-app/build')));
 // all the middlewarss
 
 app.use(morgan("common"));
