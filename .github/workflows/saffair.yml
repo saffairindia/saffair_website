@@ -50,6 +50,7 @@ jobs:
       - name: Install and build client
         working-directory: saffair-app
         run: |
+          npm ci
           npm run build
 
       - name: Print directory structure for debugging
