@@ -22,20 +22,31 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
+      - name: Verify package-lock.json exists in backend
+        working-directory: postapi
+        run: |
+          if [ ! -f package-lock.json ]; then
+            echo "package-lock.json not found in postapi"
+            exit 1
+          fi
+
+      - name: Verify package-lock.json exists in frontend
+        working-directory: saffair-app
+        run: |
+          if [ ! -f package-lock.json ]; then
+            echo "package-lock.json not found in saffair-app"
+            exit 1
+          fi
+
       - name: Install backend dependencies
         working-directory: postapi
-        run: npm install
-        env:
-          PORT: 8080
-          MONGO_ATLAS_URL: ${{ secrets.MONGO_ATLAS_URL }}
+        run: npm ci
 
       - name: Install and build client
         working-directory: saffair-app
         run: |
-          npm install
+          npm ci
           npm run build
-        env:
-          BASE_URL: 'https://dev.peersuma.studio/api/'
 
       - name: Print directory structure for debugging
         run: |
