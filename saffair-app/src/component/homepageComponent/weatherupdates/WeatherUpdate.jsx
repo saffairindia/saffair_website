@@ -137,7 +137,7 @@ export default function WeatherUpdate() {
         const { coord } = data; // Destructure coord from data object
         const apiKey = "5162096789da4a96c75f4792c5e4628e";
         const aqiRes = await fetch(
-          `http://api.openweathermap.org/data/2.5/air_pollution?lat=${coord.lat}&lon=${coord.lon}&appid=${process.env.REACT_APP_WEATHER_KEY}`
+          `https://api.openweathermap.org/data/2.5/air_pollution?lat=${coord.lat}&lon=${coord.lon}&appid=${process.env.REACT_APP_WEATHER_KEY}`
         );
         const aqidata = await aqiRes.json();
         console.log(aqidata);
@@ -190,7 +190,7 @@ export default function WeatherUpdate() {
         // Destructure coord from data object
         const apiKey = "5162096789da4a96c75f4792c5e4628e";
         const aqiRes = await fetch(
-          `http://api.openweathermap.org/data/2.5/air_pollution?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}`
+          `https://api.openweathermap.org/data/2.5/air_pollution?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}`
         );
         const aqidata = await aqiRes.json();
         const aqi = aqidata.list[0].main.aqi;
