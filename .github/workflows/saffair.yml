@@ -12,6 +12,10 @@ jobs:
       matrix:
         node-version: [18.x]
 
+    defaults:
+      run:
+        working-directory: ./
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -21,19 +25,20 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+          cache-dependency-path: |
+            postapi/package-lock.json
+            saffair-app/package-lock.json
 
       - name: Verify package-lock.json exists in backend
-        working-directory: postapi
         run: |
-          if [ ! -f package-lock.json ]; then
+          if [ ! -f postapi/package-lock.json ]; then
             echo "package-lock.json not found in postapi"
             exit 1
           fi
 
       - name: Verify package-lock.json exists in frontend
-        working-directory: saffair-app
         run: |
-          if [ ! -f package-lock.json ]; then
+          if [ ! -f saffair-app/package-lock.json ]; then
             echo "package-lock.json not found in saffair-app"
             exit 1
           fi
