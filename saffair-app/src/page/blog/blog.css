@@ -1,9 +1,9 @@
 .blog-container {
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   /* background: #f8e8e8; */
   margin: auto;
-  overflow: hidden;
+ 
   margin-top: 75px;
 }
 .headtag:hover {

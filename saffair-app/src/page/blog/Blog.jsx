@@ -99,13 +99,14 @@ export default function Blog() {
               <hr />
             </div>
 
-            <div className="grid">
+            <div className="flex flex-wrap ">
               <>
                 {posts.map((post) => (
                   <Post key={post._id} {...post} color="black" />
                 ))}
               </>
             </div>
+
           </>
         )}
       </div>

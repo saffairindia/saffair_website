@@ -42,10 +42,10 @@ const previewContent = truncateContent(content, 25);
   return (
     <>
 
-      <div className="postContainer flex flex-col justify-evenly" onClick={scrollToTop}>
-        <div className="card">
+      <div className=" p-2 m-2 w-auto flex flex-col justify-evenly" onClick={scrollToTop}>
+        <div className="card  ">
           <Link to={`/post/${_id}`}>
-            <div className="card__header">
+            <div className="card__header ">
               <img
                 src={image1}
                 alt="card__image"
@@ -55,14 +55,14 @@ const previewContent = truncateContent(content, 25);
               />
             </div>
           </Link>
-          <div className="card__body flex flex-col justify-evenly">
+          <div className="card__body flex flex-col justify-evenly self-start">
             <span className="tag text-blue-900 text-[14px]">{readingType}</span>
             <Link to={`/post/${_id}`} className="link">
-              <div className="postTitle">
-                <h5 className="text-[20px]">{title}</h5>
+              <div className="px-[4px] w-full flex flex-row justify-start">
+                <h5 className="text-[20px] font-bold">{title}</h5>
               </div>
               <div>
-              <p className="mb-1">{previewContent}</p>
+              <p className="mb-1 px-[4px]">{previewContent}</p>
 
               </div>
             </Link>

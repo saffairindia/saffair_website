@@ -31,7 +31,7 @@ export default function Navbar({ _id }) {
     setActiveLink(link);
     scrollToTop();
   };
- 
+
 
   const id = currentUser ? currentUser._id : null
   useEffect(() => {
@@ -172,7 +172,7 @@ export default function Navbar({ _id }) {
           <div className="read relative ">
             <Link
               to="/news"
-              className={`centerItem ${activeLink === 'news'  ? 'active' : ''} relative  cursor-pointer`}
+              className={`centerItem ${activeLink === 'news' ? 'active' : ''} relative  cursor-pointer`}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               onClick={() => handleClick('news')}
@@ -357,7 +357,7 @@ export default function Navbar({ _id }) {
           </div>
         )}
 
-        
+
         <div className="menu ">
           <a href="/#" id="dropdownLink" onClick={toggleDropdown}>
             <FontAwesomeIcon icon={faBars} />
@@ -386,9 +386,16 @@ export default function Navbar({ _id }) {
                 Home
               </a>
             </Link>
-            <a className="dropdown-item" href="/#" onClick={toggleDropdown}>
-              Calculator
-            </a>
+            <Link to="/calculator">
+              <a className="dropdown-item" href="/#" onClick={toggleDropdown}>
+                Calculator
+              </a>
+            </Link>
+            <Link to="/blog">
+              <a className="dropdown-item" href="/#" onClick={toggleDropdown}>
+                Blogs
+              </a>
+            </Link>
             <Link to="/news">
               <a className="dropdown-item" href="/#" onClick={toggleDropdown}>
                 Readings

@@ -197,7 +197,7 @@ export default function EventPage() {
                 </>
               ) : (
                 <>
-                  <h5>your response {ans} recorded.</h5>
+                  <h5 className="flex gap">your response <p className="text-red-700 mx-2">{ans} </p>recorded.</h5>
                 </>
               )}
             </div>

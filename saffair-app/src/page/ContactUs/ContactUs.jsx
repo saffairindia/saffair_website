@@ -55,15 +55,18 @@ const ContactUs = () => {
             <p className="contact-text">
               We are here to help you, whatever kind of help you need
             </p>
-            <p className="contact-email">admin@saffair.in</p>
+            <p className="contact-email">breath@saffair.in</p>
           </div>
           <div className="contact-info-item">
             <div className="horizontal-line"></div>
             <p className="contact-label">ADDRESS</p>
             <p className="contact-text">
-              We are here to help you, whatever kind of help you need
+            204, Loha Bhavan, Opp. Old High-court, Income Tax, Ahmedabad-380014   <br />   8am - 8pm      </p>
+            <p className="contact-email">
+            <a href="tel:+919328696119">
+                +91-9328696119
+              </a>
             </p>
-            <p className="contact-email">inquiry@saffair.in</p>
           </div>
         </div>
         <div className="contact-form">

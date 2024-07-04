@@ -64,7 +64,7 @@ export default function Home() {
               </li>
               <li className="ml-4">
                 <Link to="/news">
-                  <a  href="/#" className="centerItem1 flex items-center" onClick={scrollToTop}>
+                  <a href="/#" className="centerItem1 flex items-center" onClick={scrollToTop}>
                     <svg className="w-1 h-1 mr-1" fill="currentColor" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="4" cy="4" r="4" />
                     </svg>
@@ -98,7 +98,7 @@ export default function Home() {
               </li>
               <li>
                 <Link to="/aboutus">
-                  <a  href="/#" className="centerItem1" onClick={scrollToTop}>
+                  <a href="/#" className="centerItem1" onClick={scrollToTop}>
                     About Us
                   </a>
                 </Link>
@@ -107,7 +107,7 @@ export default function Home() {
 
             <ul className="foot2">
               <Link to="/dashboard?tab=profile">
-                <a  href="/#" className="centerItem1" onClick={scrollToTop}>
+                <a href="/#" className="centerItem1" onClick={scrollToTop}>
                   My Profile
                 </a>
               </Link>
@@ -119,51 +119,51 @@ export default function Home() {
               </Link>
               <br />
               <Link to="/dashboard?tab=dashbookmark">
-                <a  href="/#" className="centerItem1" onClick={scrollToTop}>
+                <a href="/#" className="centerItem1" onClick={scrollToTop}>
                   My Bookmarks
                 </a>
               </Link>
               <br />
               <Link to="/dashboard?tab=profile">
-                <a href="/#"  className="centerItem1" onClick={scrollToTop}>
+                <a href="/#" className="centerItem1" onClick={scrollToTop}>
                   Job profile
                 </a>
               </Link>
               <br />
               <Link to="">
-                <a  href="/#" className="centerItem1" onClick={scrollToTop}>
+                <a href="/#" className="centerItem1" onClick={scrollToTop}>
                   My Order
                 </a>
               </Link>
 
               <br />
-              <a  href="/#" className="centerItem1" onClick={handleClick}>
+              <a href="/#" className="centerItem1" onClick={handleClick}>
                 refer a friend
               </a>
 
-            
+
             </ul>
             <ul className="foot2">
               <Link to="/product">
-                <a  href="/#" className="centerItem1" onClick={scrollToTop}>
+                <a href="/#" className="centerItem1" onClick={scrollToTop}>
                   Product
                 </a>
               </Link>
-              <br/>
+              <br />
               <Link to="/product">
-                <a  href="/#" className="centerItem1" onClick={scrollToTop}>
+                <a href="/#" className="centerItem1" onClick={scrollToTop}>
                   Buy Saffair Aero 200                  </a>
               </Link>
               <br />
               <Link to="/product">
-                <a  href="/#" className="centerItem1" onClick={scrollToTop}>
+                <a href="/#" className="centerItem1" onClick={scrollToTop}>
                   ⁠Buy Saffair Aero 450
                 </a>
               </Link>
               <br />
               <Link to="/product">
                 <a href="/#" className="centerItem1" onClick={scrollToTop}>
-                   ⁠Buy Attachments
+                  ⁠Buy Attachments
                 </a>
               </Link>
               <br />
@@ -191,8 +191,8 @@ export default function Home() {
           <div className="f3">
             <ul className="foot3">
               <p>Contact us</p>
-              <a href="tel:+91989889889">
-                <li>+91 989889889</li>
+              <a href="tel:+919328696119">
+                <li>+91-9328696119</li>
               </a>
               <a href="mailto:support@saffair.in">
                 <li>support@saffair.in</li>
@@ -225,7 +225,7 @@ export default function Home() {
                 </a>
               </div>
               <div className="appstore">
-                <a class="btn btn-apple"  rel="noreferrer noopener" href="/#" title="App Store">
+                <a class="btn btn-apple" rel="noreferrer noopener" href="/#" title="App Store">
                   App Store
                 </a>
               </div>
