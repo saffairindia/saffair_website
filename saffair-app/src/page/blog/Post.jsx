@@ -38,11 +38,12 @@ const truncateContent = (content, length) => {
 };
 
 const previewContent = truncateContent(content, 25);
+const prevtitle = truncateContent(title, 45);
 
   return (
     <>
 
-      <div className=" p-2 m-2 w-auto flex flex-col justify-evenly" onClick={scrollToTop}>
+      <div className="  p-2 m-2  flex flex-col justify-evenly" onClick={scrollToTop}>
         <div className="card  ">
           <Link to={`/post/${_id}`}>
             <div className="card__header ">
@@ -59,10 +60,10 @@ const previewContent = truncateContent(content, 25);
             <span className="tag text-blue-900 text-[14px]">{readingType}</span>
             <Link to={`/post/${_id}`} className="link">
               <div className="px-[4px] w-full flex flex-row justify-start">
-                <h5 className="text-[20px] font-bold">{title}</h5>
+                <h5 className="text-[20px]  font-extrabold">{prevtitle}</h5>
               </div>
               <div>
-              <p className="mb-1 px-[4px]">{previewContent}</p>
+              <p className="mb-1 text-[16px] font-light  mt-1 px-[4px]">{previewContent}</p>
 
               </div>
             </Link>

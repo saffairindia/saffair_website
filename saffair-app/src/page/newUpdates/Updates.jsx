@@ -94,7 +94,7 @@ export default function Updates() {
               <hr />
             </div>
 
-            <div className="grid">
+            <div className="flex flex-wrap  justify-evenly w-full">
               <>
                 {posts.map((post) => (
                   <Post key={post._id} {...post} color="black" />

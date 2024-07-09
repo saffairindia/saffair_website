@@ -36,7 +36,7 @@ export default function DashPosts() {
     const startIndex = userPosts.length;
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}/apigetposts?userId=${currentUser._id}&startIndex=${startIndex}`
+        `${process.env.REACT_APP_BACKEND_API}/api/getposts?userId=${currentUser._id}&startIndex=${startIndex}`
       );
       const data = await res.json();
       if (res.ok) {
@@ -54,7 +54,7 @@ export default function DashPosts() {
     setShowModal(false);
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}/deletepost/${postIdToDelete}/${currentUser._id}`,
+        `${process.env.REACT_APP_BACKEND_API}/api/deletepost/${postIdToDelete}/${currentUser._id}`,
         {
           method: "DELETE",
           credentials: "include",

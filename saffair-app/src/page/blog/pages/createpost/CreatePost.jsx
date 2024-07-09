@@ -44,7 +44,19 @@ export default function CreatePost() {
       correctAnswerIndex: index,
     });
   };
+  const [isQuizSaved, setIsQuizSaved] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const handleAddQuiz = () => {
+    if (
+      !quizData.question ||
+      quizData.options.some(option => option.trim() === '') ||
+      quizData.correctAnswerIndex === null
+    ) {
+      setErrorMessage('Please fill out all fields and select the correct answer.');
+      return;
+    }
+    setErrorMessage('');
+    setIsQuizSaved(true);
     const updatedFormData = {
       ...formData,
       quiz: [
@@ -361,7 +373,10 @@ export default function CreatePost() {
             </Select>
           </>
         )}
-        <label htmlFor="Select Contribution type" className="block text-sm font-medium text-gray-700">
+        {
+          (currentUser.isAdmin) ?(<></>) :(
+            <>
+            <label htmlFor="Select Contribution type" className="block text-sm font-medium text-gray-700">
           Select Contribution type
         </label>
         <Select
@@ -370,7 +385,6 @@ export default function CreatePost() {
 
           required
         >
-          <option value="">select</option>
           <option value="News / Update">News / Update</option>
           <option value="Legal Updates">Legal Updates</option>
           <option value="innovation">innovation</option>
@@ -381,6 +395,9 @@ export default function CreatePost() {
           <option value="Get outdoor Air Analyzer">Get outdoor Air Analyzer</option>
           <option value="Need Community Support / Suggestions / Survey<">Need Community Support / Suggestions / Survey</option>
         </Select>
+            </>
+          )
+        }
         <div className="mb-4">
           <label htmlFor="category" className="block text-sm font-medium text-gray-700">
             {formData.otherCategory ? formData.otherCategory : "Category"}
@@ -823,37 +840,54 @@ export default function CreatePost() {
             </Button>
 
             {quizVisible && (
-              <div>
-                <label htmlFor="Qna" className="block text-sm font-medium text-gray-700">
-                  QNA (select the right answer below the option)
-                </label>
-                <TextInput
-                  type="text"
-                  placeholder="Quiz heading"
-                  value={quizData.question}
-                  onChange={(e) => setQuizData({ ...quizData, question: e.target.value })}
-                  className="mb-4 mt-2"
-                />
-                {quizData.options.map((option, index) => (
-                  <div key={index} className="gap-5">
-                    <TextInput
-                      type="text"
-                      placeholder={`Option ${index + 1}`}
-                      value={option}
-                      onChange={(e) => handleOptionChange(index, e.target.value)}
-                      className="m-3"
-                    />
-                    <input
-                      type="radio"
-                      name="correctAnswer"
-                      checked={quizData.correctAnswerIndex === index}
-                      onChange={() => handleCorrectAnswerChange(index)}
-                    />
-                    <label className="m-3">Correct Answer</label>
-                  </div>
-                ))}
-                <Button onClick={handleAddQuiz} className="my-4">Save Quiz</Button>
-              </div>
+               <div>
+               <Button onClick={() => setQuizVisible(!quizVisible)}>
+                 Toggle Quiz
+               </Button>
+               {quizVisible && (
+                 <div>
+                   <label htmlFor="Qna" className="block text-sm font-medium text-gray-700">
+                     QNA (select the right answer below the option)
+                   </label>
+                   <TextInput
+                     required
+                     type="text"
+                     placeholder="Quiz heading"
+                     value={quizData.question}
+                     onChange={(e) => setQuizData({ ...quizData, question: e.target.value })}
+                     className="mb-4 mt-2"
+                   />
+                   {quizData.options.map((option, index) => (
+                     <div key={index} className="gap-5">
+                       <TextInput
+                         required
+                         type="text"
+                         placeholder={`Option ${index + 1}`}
+                         value={option}
+                         onChange={(e) => handleOptionChange(index, e.target.value)}
+                         className="m-3"
+                       />
+                       <input
+                         type="radio"
+                         name="correctAnswer"
+                         checked={quizData.correctAnswerIndex === index}
+                         onChange={() => handleCorrectAnswerChange(index)}
+                       />
+                       <label className="m-3">Correct Answer</label>
+                     </div>
+                   ))}
+                   {errorMessage && (
+                     <div className="text-red-500 mt-2">{errorMessage}</div>
+                   )}
+                   <Button onClick={handleAddQuiz} className="my-4">
+                     Save Quiz
+                   </Button>
+                   {isQuizSaved && (
+                     <p>Quiz saved</p>
+                   )}
+                 </div>
+               )}
+             </div>
             )}
           </div>
         ) : (

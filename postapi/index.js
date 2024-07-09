@@ -178,61 +178,44 @@ app.put("/api/updatepost/:postId/:userId", verifyToken, async (req, res, next) =
   ) {
     return next(errorHandler(403, "You are not allowed to update this post"));
   }
+  
+ 
   try {
+    // Construct the $set object dynamically from req.body
+    const fieldsToUpdate = {};
+    for (let key in req.body) {
+      if (req.body.hasOwnProperty(key)) {
+        fieldsToUpdate[key] = req.body[key];
+      }
+    }
+
+    // Update the post
     const updatedPost = await Post.findByIdAndUpdate(
       req.params.postId,
-      {
-        $set: {
-          title: req.body.title,
-          content: req.body.content,
-          category: req.body.category,
-          image: req.body.image,
-          publish: req.body.publish,
-        },
-      },
-      { new: true }
+      { $set: fieldsToUpdate },
+      { new: true } // Return the updated document
     );
+
+    if (!updatedPost) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
     res.status(200).json(updatedPost);
   } catch (error) {
     next(error);
   }
 });
 
-//api for contributor blog edit and post
-
-app.put(
-  "/api/reviewcontributorpost/:postId",
-  verifyToken,
-  async (req, res, next) => {
-    // if (!req.user.isAdmin) {
-    //   return next(errorHandler(403, "You are not allowed to update this post"));
-    // }
-    try {
-      const updatedPost = await Post.findByIdAndUpdate(
-        req.params.postId,
-        {
-          $set: {
-          
-            coinalloted: req.body.coinalloted,
-            isReviewed: req.body.isReviewed,
-          },
-        },
-        { new: true }
-      );
-      res.status(200).json(updatedPost);
-    } catch (error) {
-      next(error);
-    }
-  }
-);
-
 app.put(
   "/api/updatecontributorpost/:postId",
   verifyToken,
   async (req, res, next) => {
-    // if (!req.user.isAdmin) {
-    //   return next(errorHandler(403, "You are not allowed to update this post"));
-    // }
+    if (!req.user.isAdmin &&
+      req.user.id !== req.params.userId && 
+      req.user.id !== req.params.postId
+    ) {
+      return next(errorHandler(403, "You are not allowed to update this post"));
+    }
     try {
       const updatedPost = await Post.findByIdAndUpdate(
      
@@ -263,6 +246,35 @@ app.put(
     }
   }
 );
+
+//api for contributor blog edit and post
+
+app.put(
+  "/api/reviewcontributorpost/:postId",
+  verifyToken,
+  async (req, res, next) => {
+    // if (!req.user.isAdmin) {
+    //   return next(errorHandler(403, "You are not allowed to update this post"));
+    // }
+    try {
+      const updatedPost = await Post.findByIdAndUpdate(
+        req.params.postId,
+        {
+          $set: {
+            coinalloted: req.body.coinalloted,
+            isReviewed: req.body.isReviewed,
+          },
+        },
+        { new: true }
+      );
+      res.status(200).json(updatedPost);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+
 //fecthig events title
 app.get("/api/eventtitle", async (req, res) => {
   try {

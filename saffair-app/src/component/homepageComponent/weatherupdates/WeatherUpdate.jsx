@@ -114,8 +114,8 @@ export default function WeatherUpdate() {
     axios
       .get(url, {
         params: {
-          q: location,
-          units: "metric",
+          q: location || "Ahmedabad",
+                    units: "metric",
           appid: process.env.REACT_APP_WEATHER_KEY,
         },
       })
@@ -319,11 +319,11 @@ export default function WeatherUpdate() {
 
   return (
     <div className="weather-Container">
-      <div className="i-container">
+      <div className="i-container h-[750px] ">
         <img
           src={getBackgroundImage()}
           alt="cloudy"
-          className="background-image"
+          className="background-image "
           style={{ filter: "blur(2px)" }} // Apply blur effect here
 
         />
@@ -420,13 +420,13 @@ export default function WeatherUpdate() {
                         <div className="grido sgrid">
                           <div className="n4 sgrp">
                           <img src={pm2icon} alt="co"
-                              className="h-5 w-5 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-8 lg:w-8 object-contain text-2xl lg " />
+                              className="h-5 w-5 sm:h-8 sm:w-8 md:h-10 md:w-10object-contain text-2xl lg " />
 
 
                             <div className="n1data txt">
 
                               <p className="n1name">
-                                PM 2.5
+                                PM_2.5
                               </p>
                               <p className="n3value ">
                                 {pm2_5} <span id="units">ug/m³</span>
@@ -441,7 +441,7 @@ export default function WeatherUpdate() {
                             <div className="n1data txt">
 
                               <p className="n1name">
-                                PM 10
+                                PM_10
                               </p>
                               <p className="n3value ">
                                 {pm10} <span id="units">ug/m³</span>
@@ -451,7 +451,7 @@ export default function WeatherUpdate() {
 
                           <div className="n4 sgrp">
                             <img src={coicon} alt="co"
-                              className="h-5 w-5 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-8 lg:w-8 object-contain text-2xl lg " />
+                              className="h-5 w-5 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain text-2xl lg " />
 
                             <div className="n1data txt">
 

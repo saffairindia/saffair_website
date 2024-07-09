@@ -103,7 +103,7 @@ export default function EditPost() {
     e.preventDefault();
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_API}/updatepost/${postId}/${currentUser._id}`,
+        `${process.env.REACT_APP_BACKEND_API}/api/updatepost/${postId}/${currentUser._id}`,
         {
           method: "PUT",
           credentials: "include",
