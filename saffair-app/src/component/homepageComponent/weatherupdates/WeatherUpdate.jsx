@@ -225,7 +225,7 @@ export default function WeatherUpdate() {
   const getBackgroundImage = () => {
     const imageMap = {
       1: "./assets/aqiImg/good.jpg",
-      2: "./assets/aqiImg/Moderate.jpg",
+      2: "./assets/aqiImg/Moderate.png",
       3: "./assets/aqiImg/Very unhealthy.jpg",
       4: "./assets/aqiImg/Unhealthy.jpg",
       5: "./assets/aqiImg/hazardous.png",
