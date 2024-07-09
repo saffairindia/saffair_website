@@ -242,7 +242,19 @@ routes.get("/getusers", verifyToken, async (req, res, next) => {
     next(error);
   }
 });
+routes.delete('/delete/:id', async (req, res,next) => {
+  const { id } = req.params;
 
+  try {
+    const user = await Users.findByIdAndDelete(id);
+    if (user) {
+      res.status(200).json({ message: 'User deleted successfully' });
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    next(error);  }
+});
 routes.get("/:userId", async (req, res, next) => {
   try {
     const user = await Users.findById(req.params.userId);
