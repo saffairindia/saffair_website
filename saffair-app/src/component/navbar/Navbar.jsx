@@ -359,9 +359,9 @@ export default function Navbar({ _id }) {
 
 
         <div className="menu ">
-          <a href="/#" id="dropdownLink" onClick={toggleDropdown}>
+          <div  id="dropdownLink" onClick={toggleDropdown}>
             <FontAwesomeIcon icon={faBars} />
-          </a>
+          </div>
           <div
             className="dropbox"
             id="dropdownMenu"

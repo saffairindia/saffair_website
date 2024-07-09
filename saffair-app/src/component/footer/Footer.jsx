@@ -5,7 +5,8 @@ import {
   faSquareInstagram,
   faSquareXTwitter,
   faLinkedin,
-  faSquareYoutube
+  faSquareYoutube,
+  faSquareWhatsapp
 } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
 const img = "./assets/logofooter.png";
@@ -200,7 +201,7 @@ export default function Home() {
             </ul>
             <ul className="social">
               <p className="text-align">Socials</p>
-              <div className="socialapp">
+              <div className="socialapp gap-2">
                 <a href="https://www.facebook.com/share/sYCKRUGcdDQR8exy/?mibextid=LQQJ4d" target="blank" className="icon1">
                   <FontAwesomeIcon icon={faSquareFacebook} />
                 </a>
@@ -218,8 +219,14 @@ export default function Home() {
                 <a href="https://www.youtube.com/@Saffair-india" target="blank" className="icon1">
                   <FontAwesomeIcon icon={faSquareYoutube} />
                 </a>
+                <a href="https://api.whatsapp.com/send/?phone=919328696119&&text=Hi&type=phone_number&app_absent=0" target="blank" className="icon1">
+                  <FontAwesomeIcon icon={faSquareWhatsapp} />
+                </a>
               </div>
-              <div className="playstore">
+              <div className="flex flex-col sm:flex-row">
+
+              </div>
+              <div className="playstore ">
                 <a class="btn btn-google" rel="noreferrer noopener" href="/#" title="Google Play">
                   Google Play
                 </a>

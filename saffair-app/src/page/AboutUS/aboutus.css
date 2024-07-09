@@ -1,5 +1,381 @@
 /* General Styles */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&amp;display=swap');
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+  background: linear-gradient(135deg, #f4f4f4 25%, #e0e0e0 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+main {
+  padding: 2em;
+  width: 100%;
+}
+
+/* Section Intro */
+.section-intro {
+  margin-bottom: 2em;
+  padding: 2em;
+  background: linear-gradient(145deg, #fff, #f4f4f4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, opacity 0.3s;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.section-intro h1 {
+  margin-bottom: 0.5em;
+  font-size: 3em;
+  font-weight: bold;
+  color: #2196BA;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in;
+}
+
+.section-intro-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  animation: slideUp 1s ease-in-out forwards;
+}
+
+.section-intro-image {
+  flex: 1;
+  text-align: center;
+}
+
+.section-intro-image img {
+  margin-top: 20px;
+  max-width: 100%;
+  height: 80%;
+  border-radius: 35px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-intro-text {
+  flex: 1;
+  margin: 1em 0;
+  font-size: 1.2em;
+  animation: fadeIn 1s ease-in 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.section-intro-text p {
+  font-size: 1.3em;
+  margin-bottom: 1em;
+  padding-right: 2em;
+  color: #555;
+}
+
+.section-intro-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 1em;
+}
+
+.intro-join-button,
+.intro-donate-button {
+  background-color: #2196BA;
+  color: white;
+  border: 1px solid #2196BA;
+  padding: 0.7em 2.5em;
+  font-size: 1.2em;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.intro-join-button:hover,
+.intro-donate-button:hover {
+  background-color: white;
+  color: #2196BA;
+}
+
+.section-intro-query h1 {
+  font-size: 2em;
+  margin: 1em 0;
+  color: #2196BA;
+}
+
+.section-intro-query {
+  padding-left: 50px;
+  padding-bottom: 100px;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background-color: #2196BA;
+  margin: 20px 0;
+}
+
+/* Sections */
+.section-about,
+.section-third {
+  margin-bottom: 2em;
+  padding: 2em;
+  background: linear-gradient(145deg, #fff, #f4f4f4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, opacity 0.3s;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.section-about h1,
+.section-third h1 {
+  font-size: 2.5em;
+  margin-bottom: 1em;
+  color: #2196BA;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.section-about-content,
+.section-third-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  animation: slideUp 1s ease-in-out forwards;
+}
+
+.section-about-image,
+.section-third-image {
+  flex: 1;
+  text-align: center;
+}
+
+.section-about-image img,
+.section-third-image img {
+  max-width: 100%;
+  height: 80%;
+  border-radius: 35px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-about-text,
+.section-third-text {
+  flex: 1;
+  margin: 1em 0;
+  font-size: 1.2em;
+  animation: fadeIn 1s ease-in 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.section-about-text {
+ padding-left: 5em;
+}
+
+.section-about-text p,
+.section-third-text p {
+  font-size: 1.3em;
+  margin-bottom: 1em;
+  color: #555;
+  padding-right: 2em;
+}
+
+/* Footer and Team Section */
+.section-team {
+  text-align: center;
+  padding: 2em;
+  background: linear-gradient(145deg, #fff, #f4f4f4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.section-team h2 {
+  font-size: 2.5em;
+  margin-bottom: 1em;
+  color: #2196BA;
+}
+
+.team-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  animation: slideUp 1s ease-in-out forwards;
+}
+
+.team-member {
+  text-align: center;
+  padding: 1em;
+  flex: 1;
+  margin: 1em;
+  border: 1px solid #2196BA;
+}
+
+.team-member img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 50%;
+  border-bottom: 10px solid #2196BA;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.team-member h3 {
+  font-size: 1.8em;
+  margin: 0.5em 0;
+  color: #333;
+}
+
+.team-member p {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 0.5em;
+}
+
+.team-member a {
+  color: #2196BA;
+  font-size: 1.5em;
+  margin: 0 0.5em;
+  transition: color 0.3s;
+}
+
+.team-member a:hover {
+  color: #555;
+}
+
+footer {
+  text-align: center;
+  padding: 1em;
+  /* background-color: #333; */
+  color: white;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+
+footer p {
+  font-size: 1.2em;
+  margin: 0.5em 0;
+  color: #2196BA;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  background-color: #2196BA;
+  color: white;
+  border: none;
+  padding: 1em;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.scroll-to-top:hover {
+  background-color: #176D8A;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark Mode */
+.dark-mode body {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-mode .section-intro,
+.dark-mode .section-about,
+.dark-mode .section-third,
+.dark-mode .section-team {
+  background: linear-gradient(145deg, #1e1e1e, #121212);
+  color: #e0e0e0;
+}
+
+.dark-mode .section-intro h1,
+.dark-mode .section-about h1,
+.dark-mode .section-third h1,
+.dark-mode .section-team h2 {
+  color: #BB86FC;
+}
+
+.dark-mode .intro-join-button,
+.dark-mode .intro-donate-button {
+  background-color: #BB86FC;
+  color: #121212;
+  border: 1px solid #BB86FC;
+}
+
+.dark-mode .intro-join-button:hover,
+.dark-mode .intro-donate-button:hover {
+  background-color: #121212;
+  color: #BB86FC;
+}
+
+.dark-mode .team-member a {
+  color: #BB86FC;
+}
+
+.dark-mode footer {
+  background-color: #121212;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .section-intro-content,
+  .section-about-content,
+  .section-third-content {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .section-intro-image img,
+  .section-about-image img,
+  .section-third-image img {
+      max-height: 200px;
+  }
+
+  .section-intro-text,
+  .section-about-text,
+  .section-third-text {
+      text-align: center;
+      padding: 0 1em;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
 
 *,
 *:before,
@@ -811,6 +1187,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2196ba;
 }
 
 .team-member {
