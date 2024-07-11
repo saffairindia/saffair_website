@@ -9,7 +9,7 @@ import {
   faSquareWhatsapp
 } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
-const img = "./assets/logofooter.png";
+import img from "../footer/footerlogo.png"
 
 export default function Home() {
   const scrollToTop = () => {
@@ -43,7 +43,7 @@ export default function Home() {
     <footer className="footMain">
       <div className="foot-panel2">
         <div className="logo-foot">
-          <img className="imgfooter" src={img} />
+          <img className="imgfooter h-28 w-28 " src={img} />
         </div>
         <div className="f1">
           <div className="f2">
@@ -106,7 +106,7 @@ export default function Home() {
               </li>
             </ul>
 
-            <ul className="foot2">
+            <ul className="foot2 ">
               <Link to="/dashboard?tab=profile">
                 <a href="/#" className="centerItem1" onClick={scrollToTop}>
                   My Profile
@@ -193,7 +193,7 @@ export default function Home() {
             <ul className="foot3">
               <p>Contact us</p>
               <a href="tel:+919328696119">
-                <li>+91-9328696119</li>
+                <li>+91 93286 96119</li>
               </a>
               <a href="mailto:support@saffair.in">
                 <li>support@saffair.in</li>

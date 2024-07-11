@@ -32,9 +32,6 @@
   width: 100%;
 }
 
-.active {
-  @apply bg-[#1ec2f4] text-white;
-}
 
 .active::after {
   width: 100%;

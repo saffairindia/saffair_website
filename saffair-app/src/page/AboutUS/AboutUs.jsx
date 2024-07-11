@@ -66,7 +66,6 @@ const AboutUsPage = () => {
             <h3 className="mt-4 text-xl font-bold">Akshat Shah</h3>
             <p className="text-gray-600">Founder & CEO</p>
             <div className="flex justify-center mt-4 space-x-4">
-              <i class="fa fa-linkedin" aria-hidden="true"></i>
               <a href="https://www.linkedin.com/in/akshat-shah-541812b0?" className="text-xl text-custom-blue">
                 <FontAwesomeIcon icon={faLinkedinIn} aria-hidden="true" />
               </a>

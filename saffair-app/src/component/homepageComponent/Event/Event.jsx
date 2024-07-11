@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./event.css";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Event = () => {
+  const navigate = useNavigate();
+  // Access history object from React Router
   const [event, setEvent] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { currentUser } = useSelector((state) => state.user)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +34,18 @@ const Event = () => {
     return () => clearInterval(interval);
   }, [event]);
 
+  const handleLinkClick = (event) => {
+    try{
+      if (!currentUser) {
+        event.preventDefault(); // Prevent default link behavior (navigation)
+        // Redirect to login page using history.push('/login')
+        navigate('/login'); // Navigates to the /about route
+      }
+    }catch(error){
+      console.error(error);
+    }
+  };
+
   const goToPreviousImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex - 1 + event.length) % event.length);
   };
@@ -40,14 +55,14 @@ const Event = () => {
   };
 
   return (
-    <div className="event-slider">
+    <>
       {event.map((val, index) => (
-        <div key={val._id} className={`event-slide ${index === currentImageIndex ? "" : "hidden"}`}>
-          <div className="event-image-container">
-            <Link to={`/events/${val._id}`} className="event-link">
+        <div key={val._id} className={`main ${index === currentImageIndex ? "" : "hidden"}`}>
+          <div className="mt-20 mx-0 w-screen items-center">
+            <Link to={`/events/${val._id}`} className="link" onClick={handleLinkClick}>
               <img
                 src={val.eventImage}
-                className="event-image"
+                className="eveimg w-full h-auto"
                 alt="event"
               />
             </Link>
@@ -61,7 +76,7 @@ const Event = () => {
           </div>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 
