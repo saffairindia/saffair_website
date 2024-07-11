@@ -144,7 +144,7 @@ export default function Home() {
 
 
             </ul>
-            <ul className="foot2">
+            {/* <ul className="foot2">
               <Link to="/product">
                 <a href="/#" className="centerItem1" onClick={scrollToTop}>
                   Product
@@ -187,7 +187,7 @@ export default function Home() {
 
 
 
-            </ul>
+            </ul> */}
           </div>
           <div className="f3">
             <ul className="foot3">
