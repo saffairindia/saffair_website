@@ -40,14 +40,14 @@ const Event = () => {
   };
 
   return (
-    <>
+    <div className="event-slider">
       {event.map((val, index) => (
-        <div key={val._id} className={`main ${index === currentImageIndex ? "" : "hidden"}`}>
-          <div className="mt-20 mx-0 w-screen items-center">
-            <Link to={`/events/${val._id}`} className="link">
+        <div key={val._id} className={`event-slide ${index === currentImageIndex ? "" : "hidden"}`}>
+          <div className="event-image-container">
+            <Link to={`/events/${val._id}`} className="event-link">
               <img
                 src={val.eventImage}
-                className="eveimg w-full auto-height"
+                className="event-image"
                 alt="event"
               />
             </Link>
@@ -61,7 +61,7 @@ const Event = () => {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

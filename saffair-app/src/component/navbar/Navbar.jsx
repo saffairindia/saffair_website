@@ -165,7 +165,7 @@ export default function Navbar({ _id }) {
               onClick={() => handleClick('calculator')}
               href="/#"
             >
-              calculator
+              Calculator
             </a>
           </Link>
 
