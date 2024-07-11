@@ -29,13 +29,13 @@ export default function EditContributorPost() {
   const { currentUser } = useSelector((state) => state.user);
   ////////Quiz functions
   const [quizVisible, setQuizVisible] = useState(false);
-
+  const [coinsvisible, setCoinsVisible] = useState("");
   const [quizData, setQuizData] = useState({
     question: "",
     options: ["", "", "", ""],
     correctAnswerIndex: null,
   });
-
+  
 
   const handleOptionChange = (index, value) => {
     const updatedOptions = [...quizData.options];
@@ -68,7 +68,9 @@ export default function EditContributorPost() {
     console.log(updatedFormData);
   };
 
-
+  const coincheck = () => {
+    
+  }
   useEffect(() => {
     try {
       const fetchPost = async () => {
@@ -84,6 +86,7 @@ export default function EditContributorPost() {
         if (res.ok) {
           setPublishError(null);
           setFormData(data.posts[0]);
+          setCoinsVisible(data.posts[0].coinalloted);
         }
       };
 
@@ -691,7 +694,7 @@ export default function EditContributorPost() {
           <></>
         )}
 
-        {!formData.coinalloted && <TextInput
+        {!coinsvisible && <TextInput
           type="number"
           max={100}
           placeholder="Give Coins"

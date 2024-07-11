@@ -43,14 +43,14 @@ const prevtitle = truncateContent(title, 45);
   return (
     <>
 
-      <div className="  p-2 m-2  flex flex-col justify-evenly" onClick={scrollToTop}>
-        <div className="card  ">
+      <div className=" postContainer w-[90%] sm:w-[350px] p-2 m-2 flex flex-col justify-evenly " onClick={scrollToTop}>
+        <div className="card ">
           <Link to={`/post/${_id}`}>
-            <div className="card__header ">
+            <div className="card__header  w-full flex flex-row justify-center">
               <img
                 src={image1}
                 alt="card__image"
-                className="card__image"
+                className="card__image self-center"
                 width="600"
                 style={{ objectFit: 'cover' }}
               />

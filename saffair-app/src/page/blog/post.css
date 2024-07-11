@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 .postContainer {
-  width: auto;
-  height: 362px;
+  
+  height: 400px;
   background-color: #ffff;
   margin: 5px;
 }
@@ -16,7 +16,7 @@
 }
 
 .card__header {
-  width: 100%;
+  width: 90%;
   height: 180px;
   border-radius: 10%;
   padding: 8px 8px 0 8px;
@@ -44,8 +44,8 @@
 }
 
 .card__image {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 95%;
   object-fit: cover;
   border-radius: 5%;
 }

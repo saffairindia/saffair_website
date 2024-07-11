@@ -35,7 +35,7 @@ export default function Homepage() {
           
           <Vision />
         </div>
-        <div className="">
+        <div className="mx-0">
           <Event />
         </div>
         <div>

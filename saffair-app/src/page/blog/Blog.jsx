@@ -99,7 +99,7 @@ export default function Blog() {
               <hr />
             </div>
 
-            <div className="flex flex-wrap  justify-evenly w-full">
+            <div className="flex flex-wrap justify-evenly w-full ">
               <>
                 {posts.map((post) => (
                   <Post key={post._id} {...post} color="black" />

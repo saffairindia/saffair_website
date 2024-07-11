@@ -10,9 +10,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-      customBlue: '#2196ba',
-    },},
+        "custom-blue": "#2196BA",
+      },
+      boxShadow: {
+        custom: "0 4px 8px rgba(0, 0, 0, 0.1)",
+      },
+      borderWidth: {
+        10: "10px",
+      },
+    },
   },
   plugins: [require("flowbite/plugin")],
-  
 };

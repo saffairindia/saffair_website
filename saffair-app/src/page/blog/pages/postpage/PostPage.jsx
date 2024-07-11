@@ -145,7 +145,7 @@ export default function PostPage() {
                       dangerouslySetInnerHTML={{ __html: postInfo.content }}
                     />
                   </div>
-                  {postInfo.image2 && (
+                  {/* {postInfo.image2 && (
                     
                       <a href={postInfo.image2} target="_blank" rel="noopener noreferrer" className="w-full md:w-1/2 h-72">
                         <img
@@ -155,7 +155,7 @@ export default function PostPage() {
                           className="w-full h-72 object-cover rounded-lg shadow-md transition-transform transform hover:scale-105"
                         />
                       </a>
-                    )}
+                    )} */}
                   <div className="flex flex-warp mb-4 gap-4 items-start">
                     {postInfo.link1 && (
                       <a target="_blank" rel="noopener noreferrer" href={postInfo.link1} className="bg-blue-100 text-white font-bold py-2 px-4 rounded-full w-[100px] max-w-xs flex flex-row justify-center">

@@ -36,10 +36,13 @@ import Calculator from "./calculator/Calculator";
 // import { Discuss } from "react-loader-spinner";
 
 export const WeatherImageContext = createContext();
+
 export const SearchpostContext = createContext();
 export const SearchContext = createContext();
 export const cityContext = createContext();
 export const aqiDataContext = createContext();
+
+
 
 export default function Home() {
   const [newCity, setNewCity] = useState("surat");
@@ -50,6 +53,7 @@ export default function Home() {
     imageUrl: "",
     aqiValue: "",
     airQuality: "",
+    city: ""
   });
 
   return (
