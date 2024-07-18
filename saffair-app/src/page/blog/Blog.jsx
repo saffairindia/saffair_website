@@ -87,11 +87,7 @@ export default function Blog() {
               </Link>
               <p className="text-gray-500">&gt;</p>
               <Link to={"/readings"} className="link">
-<<<<<<< HEAD
-                <Breadcrumb.Item className="p-2">Readings</Breadcrumb.Item>
-=======
                 <Breadcrumb.Item className="p-2">Knowledge Centre</Breadcrumb.Item>
->>>>>>> master
               </Link>
               <p className="text-gray-500">&gt;</p>
               <Link to={"/blog"} className="link">

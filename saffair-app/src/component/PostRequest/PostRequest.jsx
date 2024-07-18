@@ -3,11 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
-<<<<<<< HEAD
-import { FaCheck, FaTimes } from "react-icons/fa";
-=======
 import { FaMinus,FaCheck, FaTimes } from "react-icons/fa";
->>>>>>> master
 import {
   Avatar,
   Navbar as Nb,
@@ -181,34 +177,16 @@ export default function PostRequest() {
                     )}
                   </Table.Cell>
                   <Table.Cell className="text-center align-middle">
-<<<<<<< HEAD
-                    {post.publish ? (
-                      < div className="flex gap-2 flex-row">
-                        <FaCheck className="text-green-500" />
-
-                      </div>
-                    ) : (
-                      < div className="flex flex-row gap-2" >
-                        <FaTimes className="text-red-500" />
-                        <Link
-                          className="text-teal-500 hover:underline"
-                          to={`/editContributor/${post._id}`}
-                        >
-                          <FontAwesomeIcon icon={faPenToSquare} />
-                          </Link>
-                      </div>
-                    )}
-=======
-                  {post.contributionType === 'join our campaigns' ? (
+                    {post.contributionType === 'join our campaigns' ? (
                       <div className="flex flex-row gap-2">
-                        
+
                         <FaMinus className="text-gray-500" />
                       </div>
                     ) : (
                       post.publish ? (
                         < div className="flex gap-2 flex-row">
                           <FaCheck className="text-green-500" />
-  
+
                         </div>
                       ) : (
                         < div className="flex flex-row gap-2" >
@@ -218,12 +196,11 @@ export default function PostRequest() {
                             to={`/editContributor/${post._id}`}
                           >
                             <FontAwesomeIcon icon={faPenToSquare} />
-                            </Link>
+                          </Link>
                         </div>
                       )
                     )}
-                   
->>>>>>> master
+
                   </Table.Cell>
                   <Table.Cell className="text-center align-middle">
                     <span

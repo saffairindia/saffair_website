@@ -153,11 +153,7 @@
 .leftNevbar {
   display: flex;
   align-items: center;
-<<<<<<< HEAD
-  width: 900px;
-=======
   width: 1000px;
->>>>>>> master
   display: flex;
   /* background-color: red; */
   /* align-content: center; */

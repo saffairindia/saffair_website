@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
 import img from "../footer/footerlogo.png"
+import whatsappLogo from "../footer/whats.png"
 
 export default function Home() {
   const scrollToTop = () => {
@@ -222,9 +223,7 @@ export default function Home() {
                 <a href="https://www.youtube.com/@Saffair-india" target="blank" className="icon1">
                   <FontAwesomeIcon icon={faSquareYoutube} />
                 </a>
-                <a href="https://api.whatsapp.com/send/?phone=919328696119&&text=Hi&type=phone_number&app_absent=0" target="blank" className="icon1">
-                  <FontAwesomeIcon icon={faSquareWhatsapp} />
-                </a>
+              
               </div>
               <div className="flex flex-col sm:flex-row">
 
@@ -254,6 +253,26 @@ export default function Home() {
         <div className="copyright">
           <Link to="https://agevole.in/" target="_blank">  ©2024 Saffair All rights reserved | Design and Developed by Agevole Innovation </Link>
         </div>
+      </div>
+      <div className="fixed bottom-10 right-10 z-50">
+        <a
+          href="https://api.whatsapp.com/send/?phone=919328696119&text=Hi"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative"
+        // onMouseEnter={handleMouseEnter}
+        // onMouseLeave={handleMouseLeave}
+        >
+          <img
+            className="w-16 h-16 rounded-full shadow-lg cursor-pointer hover:shadow-xl transition duration-300 transform hover:scale-110"
+            src={whatsappLogo}
+            alt="WhatsApp"
+          />
+
+          <div className="absolute top-0 left-[-50px] bg-gray-800 text-white py-1 px-2 rounded-lg opacity-0 hover:opacity-100 transition duration-100">
+            Share
+          </div>
+        </a>
       </div>
     </footer>
   );
