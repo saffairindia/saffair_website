@@ -177,11 +177,7 @@ export default function Navbar({ _id }) {
               onMouseLeave={handleMouseLeave}
               onClick={() => handleClick('news')}
             >
-<<<<<<< HEAD
-              Readings
-=======
               Konwledge Centre
->>>>>>> master
             </Link>
             {/* Conditional rendering based on screen size */}
             <div
@@ -402,11 +398,7 @@ export default function Navbar({ _id }) {
             </Link>
             <Link to="/news">
               <a className="dropdown-item" href="/#" onClick={toggleDropdown}>
-<<<<<<< HEAD
-                Readings
-=======
                 Knowledge Centre
->>>>>>> master
               </a>
             </Link>
             <Link to="/events">

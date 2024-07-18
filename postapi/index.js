@@ -20,11 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const corsOption = {
-<<<<<<< HEAD
   origin: '*',
-=======
-  origin: 'http://localhost:3000',
->>>>>>> master
   credentials: true,
   exposedHeaders: ['authorization'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',

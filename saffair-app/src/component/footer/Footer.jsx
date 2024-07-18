@@ -40,12 +40,6 @@ export default function Home() {
     share();
   };
   return (
-<<<<<<< HEAD
-    <footer className="footMain">
-      <div className="foot-panel2">
-        <div className="logo-foot">
-          <img className="imgfooter h-28 w-28 " src={img} />
-=======
     <footer className="footMain ">
       <div className="foot-panel2">
         <div className="logo-foot">
@@ -53,7 +47,6 @@ export default function Home() {
           <img className="imgfooter h-28 w-28 " src={img} />
 
           </a>
->>>>>>> master
         </div>
         <div className="f1">
           <div className="f2">
@@ -149,11 +142,7 @@ export default function Home() {
 
               <br />
               <a href="/#" className="centerItem1" onClick={handleClick}>
-<<<<<<< HEAD
-                refer a friend
-=======
                 Refer a friend
->>>>>>> master
               </a>
 
 
@@ -239,16 +228,10 @@ export default function Home() {
               </div>
               <div className="flex flex-col sm:flex-row">
 
-<<<<<<< HEAD
-              </div>
-              <div className="playstore ">
-                <a class="btn btn-google" rel="noreferrer noopener" href="/#" title="Google Play">
-=======
               </div >
               <div className="flex mt-2 flex-col md:flex-row justify-center  items-center gap-4 align-middle">
               <div className="playstore ">
                 <a class="btn btn-google " rel="noreferrer noopener" href="/#" title="Google Play">
->>>>>>> master
                   Google Play
                 </a>
               </div>
@@ -257,10 +240,7 @@ export default function Home() {
                   App Store
                 </a>
               </div>
-<<<<<<< HEAD
-=======
               </div>
->>>>>>> master
             </ul>
           </div>
         </div>

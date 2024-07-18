@@ -35,11 +35,7 @@ export default function Homepage() {
           
           <Vision />
         </div>
-<<<<<<< HEAD
-        <div className="mx-0">
-=======
         <div className=" overflow-hidden">
->>>>>>> master
           <Event />
         </div>
         <div>

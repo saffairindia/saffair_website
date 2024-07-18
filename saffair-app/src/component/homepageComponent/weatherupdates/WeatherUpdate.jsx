@@ -78,35 +78,6 @@ export default function WeatherUpdate() {
   const [co, setCo] = useState("20");
   const [so2, setSo2] = useState("20");
   const toDateFunction = () => {
-<<<<<<< HEAD
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    const WeekDays = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    const currentDate = new Date();
-    const date = `${WeekDays[currentDate.getDay()]} ${currentDate.getDate()} ${months[currentDate.getMonth()]
-      }`;
-    return date;
-=======
     const currentDate = new Date();
     const months = [
       "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
@@ -133,7 +104,6 @@ export default function WeatherUpdate() {
 
     return date // Outputs the formatted date and time
 
->>>>>>> master
   };
 
   useEffect(() => {
@@ -144,11 +114,7 @@ export default function WeatherUpdate() {
       .get(url, {
         params: {
           q: location || "Ahmedabad",
-<<<<<<< HEAD
-                    units: "metric",
-=======
           units: "metric",
->>>>>>> master
           appid: process.env.REACT_APP_WEATHER_KEY,
         },
       })
@@ -452,22 +418,14 @@ export default function WeatherUpdate() {
                         </div> */}
                         <div className="grido sgrid">
                           <div className="n4 sgrp">
-<<<<<<< HEAD
-                          <img src={pm2icon} alt="co"
-=======
                             <img src={pm2icon} alt="co"
->>>>>>> master
                               className="h-5 w-5 sm:h-8 sm:w-8 md:h-10 md:w-10object-contain text-2xl lg " />
 
 
                             <div className="n1data txt">
 
                               <p className="n1name">
-<<<<<<< HEAD
-                                PM_2.5
-=======
                                 PM 2.5
->>>>>>> master
                               </p>
                               <p className="n3value ">
                                 {pm2_5} <span id="units">ug/m³</span>
@@ -475,22 +433,14 @@ export default function WeatherUpdate() {
                             </div>
                           </div>
                           <div className="n4 sgrp">
-<<<<<<< HEAD
-                          <img src={pm10icon} alt="co"
-=======
                             <img src={pm10icon} alt="co"
->>>>>>> master
                               className="h-5 w-5 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-8 lg:w-8 object-contain text-2xl lg " />
 
 
                             <div className="n1data txt">
 
                               <p className="n1name">
-<<<<<<< HEAD
-                                PM_10
-=======
                                 PM 10
->>>>>>> master
                               </p>
                               <p className="n3value ">
                                 {pm10} <span id="units">ug/m³</span>
@@ -514,11 +464,7 @@ export default function WeatherUpdate() {
                           </div>
 
                           <div className="n4 sgrp">
-<<<<<<< HEAD
-                          <img src={so2icon} alt="co"
-=======
                             <img src={so2icon} alt="co"
->>>>>>> master
                               className="h-5 w-5 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-8 lg:w-8 object-contain text-2xl lg " />
 
                             <div className="n1data txt">

@@ -38,11 +38,7 @@ const AboutUsPage = () => {
         <section className="section-about flex flex-col md:flex-row items-center bg-white p-6">
           <div className="section-about-text md:w-3/4 md:pr-6 mt-6 md:mt-0 text-center md:text-left">
             <h1 className="text-4xl font-bold text-[#2196BA]">Vision</h1>
-<<<<<<< HEAD
-            <p className="mt-4 text-xl">At Saffair, we envision a world where sustainability transcends buzzwords and becomes an integral part of everyday life. By fostering collaboration and embracing innovative designs, we strive to create an environment where clean air is a universal reality. Our goal is to ensure that everyone, today and for generations to come, can breathe freely and thrive in a healthier, greener world. Together, we are shaping a future where sustainable living is not just an ideal but a tangible, achievable way of life.
-=======
             <p className="mt-4 text-xl">We envision to create Sustainable Ecosystem where clean air is a basic right, driven by community cooperation and innovative solutions.
->>>>>>> master
             </p>
           </div>
           <div className="section-about-image md:w-1/4">
@@ -56,11 +52,7 @@ const AboutUsPage = () => {
           </div>
           <div className="section-third-text md:w-3/4 md:pl-6 mt-6 md:mt-0 text-center md:text-left">
             <h1 className="text-4xl font-bold text-[#2196BA]">Mission</h1>
-<<<<<<< HEAD
-            <p className="mt-4 text-xl">Our mission at Saffair is to make clean air accessible to all, transcending social and economic barriers. We are dedicated to more than just air purification; we aim to empower communities, build trust, and advocate for clean air as a fundamental right. By championing this cause, we ensure that every individual has the opportunity to live in a healthy environment. Through education, technology, and community engagement, we are committed to fostering a world where clean air is not a privilege, but a guaranteed right for everyone.
-=======
             <p className="mt-4 text-xl">At Saffair, we ensure everyone can breathe clean air by uniting technology with community efforts, making it accessible and reliable.
->>>>>>> master
             </p>
           </div>
         </section>
