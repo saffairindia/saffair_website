@@ -1,0 +1,76 @@
+.reward-container {
+    margin: 80px auto;
+    max-width: 75%;
+  }
+  
+  .title {
+    width: 50%;
+    font-size: 24px; /* Adjusted for better visibility */
+    margin-bottom: 20px; /* Add some margin below the title */
+  }
+  
+  .reward-cards {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+    gap: 40px; /* Add gap between cards */
+  }
+  
+  .reward-card {
+    border: 2px solid #2196ba; /* Add border around each card */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    padding: 20px; /* Add padding inside each card */
+    flex: 1 1 calc(33.333% - 40px); /* Adjust width and spacing */
+    max-width: calc(33.333% - 40px); /* Ensure max width */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
+  
+  .reward-card img {
+    width: 100%; /* Ensure the image fits the card width */
+    height: auto; /* Maintain image aspect ratio */
+    border-radius: 10px; /* Match border radius of the card */
+  }
+  
+  .reward-card h2 {
+    color: #2196ba; /* Set color for card title */
+    margin: 10px 0; /* Add some margin around the title */
+  }
+  
+  .reward-card p {
+    color: #333; /* Set color for card content */
+    margin: 5px 0; /* Add some margin around the paragraphs */
+  }
+  
+  .redeem-button {
+    background-color: #2196ba; /* Button color */
+    color: #fff; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Button padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 10px; /* Add margin above the button */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
+  
+  .redeem-button:hover {
+    background-color: #1e87a8; /* Darker shade on hover */
+  }
+  
+  @media (max-width: 930px) {
+    .reward-container {
+      margin: 80px auto;
+      max-width: 85%;
+    }
+  
+    .reward-card {
+      flex: 1 1 calc(50% - 40px); /* Adjust width for smaller screens */
+      max-width: calc(50% - 40px); /* Ensure max width */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .reward-card {
+      flex: 1 1 100%; /* Adjust width for smallest screens */
+      max-width: 100%; /* Ensure max width */
+    }
+  }
+  

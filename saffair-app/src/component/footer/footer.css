@@ -1,0 +1,299 @@
+footer {
+  width: 100%;
+  bottom: 1;
+  left: 0;
+  position: absolute;
+}
+
+.imgfooter {
+  margin-left: -20px;
+  margin-top: 5px;
+  height: 170px;
+  width: 220px;
+}
+
+.foot-panel2 {
+  background-color: #2196ba;
+  color: white;
+  height: 200px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.f1 {
+  display: flex;
+  margin-bottom: 5px;
+  gap: 0px;
+  width: 70%;
+}
+
+.f2 {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 30px;
+}
+.f3 {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 30px;
+}
+
+.footMain ul {
+  margin-top: 20px;
+}
+
+.pages ul a {
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  color: #dddddd;
+}
+
+.foot-panel4 {
+  background-color: #2196ba;
+  border-top: 1px solid wheat;
+  color: white;
+  height: 60px;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.pages {
+  padding-top: 15px;
+}
+
+.footerimg {
+  width: 235px;
+  height: 110px;
+  object-fit: cover;
+}
+
+.socialapp {
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: black; */
+}
+
+.icon1 {
+  font-size: 1.7em;
+}
+
+@media (max-width: 900px) {
+  .foot-panel2 {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+  }
+  .f1 {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    height: auto;
+    justify-content: space-evenly;
+    text-align: center;
+  }
+  .f2 {
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    text-align: left;
+  }
+  .f3 {
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .social {
+    margin-left: 10px;
+    width: 176px;
+  }
+}
+
+@media (max-width: 500px) {
+  .f1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .f2 {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .f3 {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 5px;
+    margin-left: -8px;
+  }
+
+  .social {
+    align-items: center;
+    width: 160px;
+  }
+
+  .socialapp {
+    width: 160px;
+  }
+}
+@font-face {
+  font-family: "fontfutura";
+  src: url("https://fonts.googleapis.com/css?family=Open+Sans") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.btn-google:focus {
+  color: #fff;
+  background-color: #555;
+  border-color: #000;
+}
+.btn-google:active,
+.btn-google:hover {
+  color: #ab3131;
+  background-color: #63d3f5;
+  border-color: #000000;
+}
+.btn-google:before {
+  content: "";
+  background-image: url(https://4.bp.blogspot.com/-52U3eP2JDM4/WSkIT1vbUxI/AAAAAAAArQA/iF1BeARv2To-2FGQU7V6UbNPivuv_lccACLcB/s30/nexus2cee_ic_launcher_play_store_new-1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  margin-top: -15px;
+}
+.btn-google:after {
+  content: "Download on the";
+  position: absolute;
+  top: 5px;
+  left: 44px;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* apple */
+
+a.btn-apple {
+  color: #000000;
+  font-size: 15px;
+  margin-top: 2px;
+  /* margin-left: -10px; */
+}
+.btn {
+  padding-left: 10px;
+  padding: 1px 16px;
+  margin-top: 5px;
+  line-height: 1.3333333;
+  border-radius: 5px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn:active:focus,
+.btn:focus {
+  outline: 0;
+}
+.btn:focus,
+.btn:hover {
+  color: #333;
+  text-decoration: none;
+  outline: 0;
+}
+.btn:active {
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.btn-apple:focus {
+  color: #000000;
+  background-color: #555;
+  border-color: #000;
+}
+.btn-apple:active,
+.btn-apple:hover {
+  color: #000000;
+  background-color: #63d3f5;
+  border-color: #000;
+}
+.btn-google {
+  color: #ffffff;
+  background-color: #000000;
+  border-color: #000;
+  padding: 18px 10px 5px 40px;
+  position: relative;
+  font-family: fontfutura;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.btn-apple:before {
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  margin-top: -17px;
+}
+
+.btn-apple:after {
+  content: "Download on the";
+  position: absolute;
+  top: 5px;
+  left: 43px;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.btn-apple {
+  /* color: #5f3333;   */
+  
+  background-image: url(../../../public/assets/apple.png);
+  background-size: 29px;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+  background-position-x: 7px;
+  background-position-y: 6px;
+  border-color: #000;
+  padding: 18px 23px 5px 44px;
+  position: relative;
+  font-family: fontfutura;
+  font-weight: bold;
+}

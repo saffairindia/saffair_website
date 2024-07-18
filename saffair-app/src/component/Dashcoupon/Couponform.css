@@ -1,0 +1,38 @@
+  #CouponName
+  {
+    border: 1px solid #2196BA;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 300px;
+    position:relative;
+    align-items: center;
+    margin-left: 20%;
+    
+  }
+
+  #CouponDescription
+  {
+    border: 1px solid #2196BA;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 300px;
+    position:relative;
+    align-items: center;
+    margin-left: 20%;
+
+  }
+
+  #CouponAmount
+  {
+    border:1px solid #2196BA;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 200px;
+    position: relative;
+    margin-left: 20%;
+  }
+
+  #w-full{
+    width: 200px;
+    margin-left: 20%;
+  }

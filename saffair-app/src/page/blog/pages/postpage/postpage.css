@@ -1,0 +1,613 @@
+/* main container */
+.feedback {
+  --normal: #eceaf3;
+  --normal-shadow: #d9d8e3;
+  --normal-mouth: #9795a4;
+  --normal-eye: #595861;
+  --active: #f8da69;
+  --active-shadow: #f4b555;
+  --active-mouth: #f05136;
+  --active-eye: #313036;
+  --active-tear: #76b5e7;
+  --active-shadow-angry: #e94f1d;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  
+  li {
+    position: relative;
+    border-radius: 50%;
+    background: var(--sb, var(--normal));
+    box-shadow: inset 3px -3px 4px var(--sh, var(--normal-shadow));
+    transition: background 0.4s, box-shadow 0.4s, transform 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+    div {
+      width: 40px;
+      height: 40px;
+      position: relative;
+      transform: perspective(240px) translateZ(4px);
+      svg,
+      &:before,
+      &:after {
+        display: block;
+        position: absolute;
+        left: var(--l, 9px);
+        top: var(--t, 13px);
+        width: var(--w, 8px);
+        height: var(--h, 2px);
+        transform: rotate(var(--r, 0deg)) scale(var(--sc, 1)) translateZ(0);
+      }
+      svg {
+        fill: none;
+        stroke: var(--s);
+        stroke-width: 2px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: stroke 0.4s;
+        &.eye {
+          --s: var(--e, var(--normal-eye));
+          --t: 17px;
+          --w: 7px;
+          --h: 4px;
+          &.right {
+            --l: 23px;
+          }
+        }
+        &.mouth {
+          --s: var(--m, var(--normal-mouth));
+          --l: 11px;
+          --t: 23px;
+          --w: 18px;
+          --h: 7px;
+        }
+      }
+      &:before,
+      &:after {
+        content: "";
+        z-index: var(--zi, 1);
+        border-radius: var(--br, 1px);
+        background: var(--b, var(--e, var(--normal-eye)));
+        transition: background 0.4s;
+      }
+    }
+    &.angry {
+      --step-1-rx: -24deg;
+      --step-1-ry: 20deg;
+      --step-2-rx: -24deg;
+      --step-2-ry: -20deg;
+      div {
+        &:before {
+          --r: 20deg;
+        }
+        &:after {
+          --l: 23px;
+          --r: -20deg;
+        }
+        svg {
+          &.eye {
+            stroke-dasharray: 4.55;
+            stroke-dashoffset: 8.15;
+          }
+        }
+      }
+      &.active {
+        animation: angry 1s linear;
+        div {
+          &:before {
+            --middle-y: -2px;
+            --middle-r: 22deg;
+            animation: toggle 0.8s linear forwards;
+          }
+          &:after {
+            --middle-y: 1px;
+            --middle-r: -18deg;
+            animation: toggle 0.8s linear forwards;
+          }
+        }
+      }
+    }
+    &.sad {
+      --step-1-rx: 20deg;
+      --step-1-ry: -12deg;
+      --step-2-rx: -18deg;
+      --step-2-ry: 14deg;
+      div {
+        &:before,
+        &:after {
+          --b: var(--active-tear);
+          --sc: 0;
+          --w: 5px;
+          --h: 5px;
+          --t: 15px;
+          --br: 50%;
+        }
+        &:after {
+          --l: 25px;
+        }
+        svg {
+          &.eye {
+            --t: 16px;
+          }
+          &.mouth {
+            --t: 24px;
+            stroke-dasharray: 9.5;
+            stroke-dashoffset: 33.25;
+          }
+        }
+      }
+      &.active {
+        div {
+          &:before,
+          &:after {
+            animation: tear 0.6s linear forwards;
+          }
+        }
+      }
+    }
+    &.ok {
+      --step-1-rx: 4deg;
+      --step-1-ry: -22deg;
+      --step-1-rz: 6deg;
+      --step-2-rx: 4deg;
+      --step-2-ry: 22deg;
+      --step-2-rz: -6deg;
+      div {
+        &:before {
+          --l: 12px;
+          --t: 17px;
+          --h: 4px;
+          --w: 4px;
+          --br: 50%;
+          box-shadow: 12px 0 0 var(--e, var(--normal-eye));
+        }
+        &:after {
+          --l: 13px;
+          --t: 26px;
+          --w: 14px;
+          --h: 2px;
+          --br: 1px;
+          --b: var(--m, var(--normal-mouth));
+        }
+      }
+      &.active {
+        div {
+          &:before {
+            --middle-s-y: 0.35;
+            animation: toggle 0.2s linear forwards;
+          }
+          &:after {
+            --middle-s-x: 0.5;
+            animation: toggle 0.7s linear forwards;
+          }
+        }
+      }
+    }
+    &.good {
+      --step-1-rx: -14deg;
+      --step-1-rz: 10deg;
+      --step-2-rx: 10deg;
+      --step-2-rz: -8deg;
+      div {
+        &:before {
+          --b: var(--m, var(--normal-mouth));
+          --w: 5px;
+          --h: 5px;
+          --br: 50%;
+          --t: 22px;
+          --zi: 0;
+          opacity: 0.5;
+          box-shadow: 16px 0 0 var(--b);
+          filter: blur(2px);
+        }
+        &:after {
+          --sc: 0;
+        }
+        svg {
+          &.eye {
+            --t: 15px;
+            --sc: -1;
+            stroke-dasharray: 4.55;
+            stroke-dashoffset: 8.15;
+          }
+          &.mouth {
+            --t: 22px;
+            --sc: -1;
+            stroke-dasharray: 13.3;
+            stroke-dashoffset: 23.75;
+          }
+        }
+      }
+      &.active {
+        div {
+          svg {
+            &.mouth {
+              --middle-y: 1px;
+              --middle-s: -1;
+              animation: toggle 0.8s linear forwards;
+            }
+          }
+        }
+      }
+    }
+    &.happy {
+      div {
+        --step-1-rx: 18deg;
+        --step-1-ry: 24deg;
+        --step-2-rx: 18deg;
+        --step-2-ry: -24deg;
+        &:before {
+          --sc: 0;
+        }
+        &:after {
+          --b: var(--m, var(--normal-mouth));
+          --l: 11px;
+          --t: 23px;
+          --w: 18px;
+          --h: 8px;
+          --br: 0 0 8px 8px;
+        }
+        svg {
+          &.eye {
+            --t: 14px;
+            --sc: -1;
+          }
+        }
+      }
+      &.active {
+        div {
+          &:after {
+            --middle-s-x: 0.95;
+            --middle-s-y: 0.75;
+            animation: toggle 0.8s linear forwards;
+          }
+        }
+      }
+    }
+    &:not(.active) {
+      cursor: pointer;
+      &:active {
+        transform: scale(0.925);
+      }
+    }
+    &.active {
+      --sb: var(--active);
+      --sh: var(--active-shadow);
+      --m: var(--active-mouth);
+      --e: var(--active-eye);
+      div {
+        animation: shake 0.8s linear forwards;
+      }
+    }
+  }
+}
+
+@keyframes shake {
+  30% {
+    transform: perspective(240px) rotateX(var(--step-1-rx, 0deg))
+      rotateY(var(--step-1-ry, 0deg)) rotateZ(var(--step-1-rz, 0deg))
+      translateZ(10px);
+  }
+  60% {
+    transform: perspective(240px) rotateX(var(--step-2-rx, 0deg))
+      rotateY(var(--step-2-ry, 0deg)) rotateZ(var(--step-2-rz, 0deg))
+      translateZ(10px);
+  }
+  100% {
+    transform: perspective(240px) translateZ(4px);
+  }
+}
+
+@keyframes tear {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px) scale(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(12px) scale(0.6, 1.2) translateZ(0);
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(24px) translateX(4px) rotateZ(-30deg) scale(0.7, 1.1)
+      translateZ(0);
+  }
+}
+
+@keyframes toggle {
+  50% {
+    transform: translateY(var(--middle-y, 0))
+      scale(
+        var(--middle-s-x, var(--middle-s, 1)),
+        var(--middle-s-y, var(--middle-s, 1))
+      )
+      rotate(var(--middle-r, 0deg));
+  }
+}
+
+@keyframes angry {
+  40% {
+    background: var(--active);
+  }
+  45% {
+    box-shadow: inset 3px -3px 4px var(--active-shadow),
+      inset 0 8px 10px var(--active-shadow-angry);
+  }
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  .dribbble {
+    position: fixed;
+    display: block;
+    right: 20px;
+    bottom: 20px;
+    img {
+      display: block;
+      height: 28px;
+    }
+  }
+  .twitter {
+    position: fixed;
+    display: block;
+    right: 64px;
+    bottom: 14px;
+    svg {
+      width: 32px;
+      height: 32px;
+      fill: #1da1f2;
+    }
+  }
+}
+/* .blogContainer {
+  width: 60%;
+} */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+
+.postMainPage {
+  width: 90%;
+  /* margin-top: 200px; */
+  height: 80%;
+  margin: auto;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 70px;
+}
+
+.postMainPageWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+}
+
+.postMainTopPage {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  justify-content: center;
+  gap: 10px;
+  /* margin-left: 20px; */
+}
+
+/* post container */
+
+.blogContainer {
+  margin-top: 10px;
+  /* margin-left: 10px; */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 66%;
+  overflow: hidden;
+}
+
+@media (max-width: 940px) {
+  .rightSide {
+    display: none;
+  }
+  .blogContainer{
+    width: 90%;
+  }
+}
+
+.coverCon {
+  position: relative; /* Add relative positioning */
+  max-width: 100%;
+  height: 440px;
+  border-radius: 10px;
+  /* object-fit: fill; */
+  overflow: hidden; /* Ensure overflow is hidden */
+  margin-top: 5px;
+}
+
+.postImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blurTitle {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* height: 140px; */
+  padding-bottom: 0%;
+}
+
+.tagline {
+  background-color: #f1ecff;
+  color: #6c40ff;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 0 2px;
+  margin: 5px;
+  margin-left: 15px;
+
+  /* width: 30px; */
+}
+
+.tagline p {
+  padding: 5px;
+}
+
+.posttitle {
+  color: white;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin: 0px;
+  margin-left: 15px;
+  overflow: hidden;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.tagsection {
+  /* background-color: #5f3838; */
+  margin-bottom: 0;
+  position: relative;
+  bottom: 10px;
+  margin-top: 7px;
+}
+
+.glass {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.duration {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  margin: 5px;
+  margin-left: 15px;
+}
+
+.postDataCon {
+  margin-top: 10px;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.edit-row {
+  background-color: #0a0909;
+  color: #f8e8e8;
+  width: 100px;
+  height: 20px;
+  text-align: center;
+  margin-top: 20px;
+  margin: auto;
+}
+
+.edit-btn {
+  text-decoration: none;
+  color: aliceblue;
+  text-align: center;
+}
+
+.post-content p {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: black;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: justify;
+  /* font-family: myFont; */
+  font-family: "Raleway", sans-serif;
+  /* font-weight: 100; */
+}
+
+.post-content h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-family: "Raleway", sans-serif;
+}
+
+/* share container */
+.rightSide {
+  /* background: #6C40FF; */
+  width: 31%;
+}
+
+.share1 {
+  margin-top: 5px;
+}
+
+.bottomPost {
+  /* margin-left: 145px; */
+  width: 100%;
+  /* margin: auto; */
+  /* background-color: #ed9999; */
+}
+
+.tocCon {
+  margin-top: 10px;
+  font-family: "Raleway", sans-serif;
+}
+.authInfo {
+  width: 100%;
+  margin: auto;
+}
+@media screen and (max-width: 920px) {
+  .postMainPage {
+    margin-top: 50px;
+    top: 10px;
+  }
+  .authInfo {
+    width: 100%;
+    margin: auto;
+  }
+}
+.post-content h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.post-content h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 24px;
+  font-weight: bold;
+}
+.post-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 18px;
+  font-weight: bold;
+}
+.post-content h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 16px;
+  font-weight: bold;
+}
+.post-content h5 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 14px;
+  font-weight: bold;
+}
+.post-content h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 12px;
+  font-weight: bold;
+}

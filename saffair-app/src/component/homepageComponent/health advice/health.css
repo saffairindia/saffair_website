@@ -1,0 +1,155 @@
+.healthadvice {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* height: auto; */
+  /* background-color: rgb(255, 146, 146); */
+  /* display: flex; */
+  align-content: center;
+  /* justify-content: center; */
+  /* position: relative; */
+  /* overflow: hidden; */
+  margin-top: 10px;
+  border-top: 1px solid black;
+  border-bottom: 1.5px solid black;
+}
+
+.advicetitle {
+  color: #2196ba;
+  width: 200px;
+  margin: auto;
+  font-size: 30px;
+  font-family: sans-serif;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.advicepics {
+  width: 95%;
+  /* height: 137px;  */
+  /* background-color: rgb(99, 48, 48); */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  padding-bottom: 69px;
+}
+.iii {
+  display: flex;
+  justify-content: space-between;
+  width: 45%;
+}
+.mmm {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.img1,
+.img2,
+.img3,
+.img4 {
+  padding-top: 50px;
+}
+
+.last {
+  width: 100%;
+  height: 83px;
+  margin: auto;
+}
+
+.lastline {
+  height: 83px;
+  width: 100%;
+  background-color: #008000;
+  /* position: bottom; */
+}
+.lastlinecontent {
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+  text-align: center;
+  /* text-align: justify; */
+  padding-top: 13px;
+}
+
+@media (max-width: 720px) {
+  .advicepics {
+    /* height: auto; */
+    flex-direction: column;
+    padding-bottom: 50px;
+  }
+  .img1,
+  .img2,
+  .img3,
+  .img4 {
+    padding-top: 15px;
+  }
+  .joinletter {
+    padding: 0px;
+  }
+  .lastlinecontent {
+    font-size: 15px;
+    padding-top: 18px;
+  }
+  .letterdesign {
+    margin-left: 20px;
+  }
+  div .footerdiv {
+    width: 95vw;
+    margin: 0px;
+    margin-top: 10px;
+    margin-left: 9px;
+    /* margin-bottom: 100px; */
+  }
+
+  .iii {
+    flex-direction: column;
+    height: auto;
+  }
+  .mmm {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 720px) {
+  div .footerdiv {
+    width: 95vw;
+    margin: 0px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+  .advicepics {
+    height: auto;
+    flex-direction: column;
+    padding-bottom: 50px;
+  }
+  .iii {
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+  }
+  .mmm {
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+    /* margin-left: -50px; */
+  }
+}
+
+@media (max-width: 426px) {
+  .iii,
+  .mmm {
+    width: 100%;
+    align-items: center;
+  }
+  .img2 {
+    width: 150px;
+  }
+  .img1 {
+    width: 140px;
+  }
+  .lastlinecontent {
+    padding-top: 18px;
+  }
+}

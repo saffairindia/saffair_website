@@ -1,0 +1,706 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+.tab:hover {
+  border: 0px;
+}
+.i-container {
+  /* background-image: url("../../../../public/assets/weatherImg/haze.png"); */
+
+  background-position: center;
+  background-repeat: no-repeat;
+
+  width: 100%;
+  height: 800px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.not {
+  color: red;
+  width: 355px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  border-radius: 7px;
+  background-color: rgba(255, 0, 0, 0.2);
+  padding-left: 10px;
+}
+.spinnerr {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.background-image {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  height: 100%;
+  /* opacity: 1; */
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.lg {
+  padding-top: 5px;
+  color: white;
+}
+
+.fhalf {
+  /* background-color: aqua; */
+  margin-top: 400px;
+  /* height: 600px; */
+  width: 100%;
+  display: flex;
+  /* justify-content: end; */
+  /* flex-direction: column; */
+}
+
+.shalf {
+  /* background-color: red; */
+  height: 100%;
+  width: 75%;
+  /* border: 10px solid  gray; */
+}
+
+.whole {
+  display: flex;
+  /* margin-top: 20px; */
+}
+
+.thetag {
+  margin-bottom: -29px;
+}
+
+.wea {
+  /* background-color: yellow; */
+  /* margin-top: 30px; */
+  height: 40%;
+  width: 100%;
+}
+
+.theaqi {
+  /* background-color: black; */
+  margin-top: 4px;
+  height: 70%;
+  width: 100%;
+}
+
+.twoparts {
+  /* border: 2px solid  gray; */
+  height: 90%;
+  /* background-color: red; */
+  width: 100%;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.scontainer {
+  /* background-color: brown; */
+  height: 7%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 100px;
+}
+
+.wthr {
+  margin-top: 20px;
+}
+
+.headtext {
+  display: inline;
+  font-weight: 500;
+  font-size: 90px;
+  font-family: "Raleway";
+  margin: auto;
+  color: white;
+  text-shadow: 0 1px 0 #ccc, 0 6px 1px rgba(0, 0, 0, 0.1),
+    0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3),
+    0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+
+  height: 120px;
+  width: 350px;
+  text-align: left;
+}
+.thevery {
+  margin-left: 6px;
+  margin-bottom: -20px;
+  color: white;
+  text-shadow: 0 1px 0 #ccc, 0 6px 1px rgba(0, 0, 0, 0.1),
+    0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3),
+    0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+}
+
+.theaqi p,
+.charttag,
+.wthr p,
+.thetag {
+  color: white;
+  text-shadow: 0 1px 0 #ccc, 0 6px 1px rgba(0, 0, 0, 0.1),
+    0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3),
+    0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+}
+
+.infopluslogo {
+  display: flex;
+  color: white;
+  text-shadow: 0 1px 0 #ccc, 0 6px 1px rgba(0, 0, 0, 0.1),
+    0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3),
+    0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+  margin-top: -25px;
+}
+
+.infodata {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.thecity {
+  font-size: 30px;
+  font-family: "Raleway", sans-serif;
+  /* margin-top: -5px; */
+}
+
+.timedate {
+  font-size: 15px;
+  font-family: "Raleway", sans-serif;
+}
+
+.unique {
+  margin-left: 20px;
+}
+
+.runique {
+  margin-left: -10px;
+}
+
+.txt {
+  color: white;
+}
+
+.charttag {
+  /* background-color: yellowgreen; */
+  display: inline;
+  
+  font-family: "Raleway", sans-serif;
+  font-size: 300%;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+}
+
+.hori-line {
+  background-image: linear-gradient(white, white);
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.2)
+  );
+  height: 3px;
+  width: 97%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.tago {
+  /* background-color: yellowgreen; */
+  display: inline;
+  font-family: "Raleway", sans-serif;
+  font-size: 130%;
+  font-weight: 600;
+
+  text-align: left;
+}
+
+.n1,
+.n2,
+.n3,
+.n4 {
+  display: flex;
+  /* background-color: yellow; */
+  padding: 10px;
+  margin-left: 20px;
+  height: 80%;
+  width: 90%;
+}
+
+.n1data,
+.n2data,
+.n4data {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.n3data {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-left: 30px;
+}
+
+.grido {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 0px;
+}
+
+.grp {
+  display: flex;
+  margin-bottom: 0;
+}
+
+.grpvalue {
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+
+.impdiv {
+  border-radius: 20px;
+  background-color: rgba(33, 150, 186, 0.2);
+  width: 75%;
+}
+.bar {
+  height: 70px;
+  /* border-radius: 15px; */
+  /* border: 1px solid #ccc; */
+  padding: 14px;
+  width: calc(60%);
+  box-sizing: border-box;
+  float: right;
+  padding-left: 0;
+  /* margin-top: -23px; */
+}
+.thevery {
+  font-size: 30px;
+}
+.slogo {
+  position: absolute;
+  top: 40px;
+  /* float: right; */
+  transform: translateY(-50%);
+  right: 30px;
+}
+
+@media (max-width: 1024px) {
+  .bar {
+    width: 70%;
+    margin-right: 5vw;
+  }
+  .thevery {
+    margin-bottom: -15px;
+    font-size: 15px;
+  }
+  .impdiv {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .twoparts {
+    width: 100%;
+  }
+  .scontainer {
+    display: none;
+  }
+
+  .whole {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .hori-line {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .n1value,
+  .n4name {
+    width: 90px;
+  }
+  .bold {
+    /* margin-bottom: 30px; */
+    margin-top: 15px;
+  }
+
+  .fhalf {
+    width: 100%;
+    margin-top: 0px;
+    /* height: 150px; */
+    display: flex;
+    /* flex-direction: column; */
+  }
+
+  .shalf {
+    height: 80%;
+    width: 100%;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .chartvalue {
+    font-size: 25px;
+  }
+  .n3value {
+    margin-top: -10px;
+  }
+
+  .n1,
+  .n2,
+  .n3,
+  .n4 {
+    width: 50%;
+  }
+
+  .charttag {
+    /* background-color: yellowgreen; */
+    display: inline;
+    font-family: "Raleway", sans-serif;
+    font-size: 120%;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    margin-left: 50px;
+  }
+
+  .thetag {
+    margin-left: 50px;
+  }
+
+  .slogo {
+    display: none;
+  }
+
+  .sgrid {
+    padding: 15px;
+    margin-left: 70px;
+    padding-top: 0px;
+    margin-top: 10px;
+  }
+
+  .headtext {
+    /* margin-left: 25vw; */
+
+    font-size: 400%;
+    text-align: center;
+    /* height: 15vh; */
+    /* width: 48vw; */
+  }
+
+  .infodata {
+    margin-left: 10px;
+  }
+
+  .theaqi {
+    margin-top: 10px;
+    /* margin-left:0px; */
+  }
+
+  .infopluslogo {
+    /* margin: auto; */
+    margin-bottom: 10px;
+    /* margin-left: 35vw; */
+  }
+
+  .thetag {
+    margin-top: 15px;
+  }
+
+  .wthr {
+    /* margin-top: 20px; */
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 700px) {
+  .headtext {
+    font-size: 50px;
+    margin-top: 30px;
+  }
+
+  .whole {
+    width: 100%;
+  }
+  .wea {
+    margin-top: 0;
+  }
+  .charttag,
+  .thetag {
+    margin-left: 13px;
+    margin-top: 0;
+  }
+
+  .infopluslogo {
+    margin-top: -20px;
+  }
+
+  .wthr,
+  .sgrid {
+    margin-left: 0;
+  }
+  .n1name,
+  .n2name,
+  .n3name,
+  .n4name {
+    margin-bottom: 0px;
+  }
+
+  /* 
+  .bold {
+    margin-bottom: -30px;
+    height: 100px;
+  } */
+
+  .fhalf {
+    width: 100%;
+    height: 0px;
+    display: flex;
+    /* flex-direction: column; */
+  }
+}
+
+@media (max-width: 520px) {
+  .i-container {
+    height: 670px;
+  }
+  .wthr {
+    margin-left: -10px;
+  }
+  .lg {
+    margin-top: 5px;
+  }
+  /* .sgrp {
+    margin-left: 50px;
+  } */
+
+  .n1data,
+  .n2data,
+  .n4data {
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 35px;
+    letter-spacing: 0em;
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  .n3data {
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 35px;
+    letter-spacing: 0em;
+    text-align: left;
+    padding-left: 30px;
+  }
+
+  .headtext {
+    margin-top: 17px;
+    font-size: 40px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    /* color: black; */
+  }
+
+  .thecity {
+    font-size: 20px;
+  }
+
+  .timedate {
+    font-size: 13px;
+  }
+
+  .infodata {
+    margin-top: 10px;
+  }
+
+  .thetag,
+  .charttag {
+    font-size: 25px;
+  }
+  .sgrid {
+    padding-bottom: 0;
+  }
+  .chartvalue {
+    /* font-style: italic; */
+    margin-top: 13px;
+  }
+  .impdiv {
+    width: 80%;
+  }
+}
+@media (max-width: 450px) {
+  .i-container {
+    height: 630px;
+  }
+  .n1data,
+  .n2data,
+  .n4data {
+    font-size: 12px;
+  }
+  .lg {
+    height: 12px;
+    width: 12px;
+  }
+  .n3data {
+    font-size: 12px;
+  }
+  .charttag,
+  .thetag {
+    font-size: 30px;
+  }
+  .sgrid {
+    margin-left: -15px;
+    padding-bottom: 0;
+  }
+  .wthr {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 350px) {
+  .impdiv {
+    width: 90%;
+  }
+  .sgrid {
+    padding-left: 0;
+  }
+}
+@media (max-width: 315px) {
+  .impdiv {
+    width: 90%;
+    padding-left: 0;
+  }
+  .twoparts {
+    margin-left: 0;
+  }
+  .thetag,
+  .charttag {
+    font-size: 12px;
+  }
+  .n1,
+  .n2,
+  .n3,
+  .n4 {
+    margin-left: 0px;
+  }
+}
+/* @media (max-width: 376px) {
+  .shalf {
+    width: 100%;
+    
+  }
+
+  .fhalf {
+    width: 100%;
+    
+  }
+
+ 
+
+  .n1name,
+  .n2name,
+  .n3name,
+  .n4name {
+    font-size: 13px;
+  }
+
+  .n1value,
+  .n2value,
+  .n3value,
+  .n4value {
+    font-size: 13px;
+  }
+
+  .headtext {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    
+  }
+
+  .lc {
+    margin-top: 22px;
+    margin-bottom: auto;
+    
+    
+  }
+
+  .thetag,
+  .charttag {
+    font-size: 15px;
+  }
+
+  .theaqi {
+    margin-top: -30px;
+  }
+
+  .lg {
+    height: 20px;
+  }
+} */
+
+/* @media (max-width: 320px) {
+  .i-container {
+    width: 100%;
+  }
+
+  .n1name,
+  .n2name,
+  .n3name,
+  .n4name {
+    font-size: 11px;
+    
+  }
+
+  .n1value,
+  .n2value,
+  .n3value,
+  .n4value {
+    font-size: 10px;
+    
+  }
+
+  .infodata {
+    margin-top: 10px;
+  }
+
+  .thetag,
+  .charttag {
+    font-size: 15px;
+  }
+
+  .chartvalue {
+    font-size: 8px;
+  }
+
+  .theaqi {
+    margin-top: -20px;
+  }
+
+  .lg {
+    height: 15px;
+    
+  }
+} */

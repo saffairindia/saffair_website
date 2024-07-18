@@ -1,0 +1,53 @@
+.auto-height {
+    height: auto;
+    max-height: 600px; /* You can adjust this value as needed */
+  }
+  .main {
+    position: relative;
+    padding: 10px 0;
+  }
+  
+  .manual-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .manual-controls button {
+    /* Style your buttons here */
+  }
+  
+  /* .prev-button {
+    position: absolute;
+    left: 10px;
+    background-color: white;
+  }
+  
+  .next-button {
+    position: absolute;
+    background-color: white;
+    width: 40px;
+    height: 30px;
+    border-radius: 20px;
+    right: 10px;
+  }
+   */
+   .prev-button,
+.next-button {
+  background-color: white;
+  border: none;
+  
+  font-size: 24px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  /* border-radius: 50%; */
+}

@@ -1,0 +1,160 @@
+.joinletter {
+  height: 300px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.Newsletter {
+  height: 100%;
+  align-content: center;
+  margin-left: 40px;
+  margin-top: 30px;
+}
+
+.uptodate {
+  color: #2196ba;
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: 400;
+  margin: 10px 13px;
+}
+
+.newst1 {
+  color: black;
+  font-size: 35px;
+  font-family: sans-serif;
+  font-weight: 700;
+  margin: 10px 13px;
+}
+
+.emailbtn {
+  color: #444;
+  height: 55px;
+  width: 500px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  padding-left: 20px;
+  margin: 10px 13px;
+  border: 1px solid #c9c9c9;
+}
+
+.submit {
+  width: 170px;
+  height: 55px;
+  background-color: #2196ba;
+  align-content: center;
+  border-radius: 6px;
+  color: white;
+  font-size: 18.75px;
+  font-family: sans-serif;
+  font-weight: 600;
+  margin-left: 10px;
+  border: none;
+  margin: 10px 13px;
+}
+
+.letterFooter {
+  color: black;
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  margin: 13px 13px;
+}
+
+.letterdesign {
+  overflow: hidden;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.letterdesign1 {
+  position: relative;
+  height: 524px;
+  width: 524px;
+  border-radius: 600px;
+  background-color: #2196ba;
+  margin-right: -105px;
+  margin-top: -100px;
+  z-index: 10;
+}
+
+.letterdesign2 {
+  position: absolute;
+  height: 324px;
+  width: 324px;
+  border-radius: 90%;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-left: 180px;
+  margin-top: -330px;
+  z-index: 12;
+}
+
+.letterdesign3 {
+  overflow: hidden;
+  position: absolute;
+  height: 224px;
+  width: 224px;
+  border-radius: 90%;
+  background-color: #2196ba;
+  margin-left: 245px;
+  margin-top: -265px;
+  z-index: 13;
+}
+@media (max-width: 1181px) {
+  .Newsletter {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .letterdesign,
+  .letterdesign1,
+  .letterdesign2,
+  .letterdesign3 {
+    display: none;
+  }
+
+  .emailbtn {
+    width: 90%;
+  }
+
+  .Newsletter {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .letterdesign,
+  .letterdesign1,
+  .letterdesign2,
+  .letterdesign3 {
+    display: none;
+  }
+
+  .emailbtn {
+    width: 90%;
+    margin-left: 0;
+  }
+  .submit {
+    width: 30%;
+    margin-left: 0;
+  }
+
+  .newst1 {
+    font-size: 25px;
+    margin-left: 0;
+  }
+
+  .uptodate {
+    font-size: 18px;
+    margin-left: 0;
+  }
+  .letterFooter {
+    margin-left: 0;
+  }
+}

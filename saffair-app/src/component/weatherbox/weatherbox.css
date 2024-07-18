@@ -1,0 +1,138 @@
+.weather-container {
+  /* position: relative; */
+  width: 27vw;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  margin-top: -20px;
+  background: #d29e9e;
+  /* background-image: url("./bg.png"); */
+}
+/* start of new css */
+.weather-container {
+  position: relative;
+}
+.spinnerr {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.wicon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.aqi-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.aqi-value {
+  font-size: 24px;
+  font-family: "Raleway";
+  font-weight: bold;
+}
+
+.air-quality {
+  font-size: 42px;
+  font-family: "Raleway";
+  font-weight: bold;
+}
+
+.thecity {
+  font-size: 30px;
+  font-family: "Raleway";
+  font-weight: bold;
+}
+/* end of new css */
+.wicon {
+  height: 100%;
+  overflow: hidden;
+}
+
+.image-container {
+  position: relative;
+}
+
+.bgimg {
+  width: 27vw;
+  min-height: 280px;
+  border-radius: 15px;
+}
+
+.temperature-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7vw;
+  color: black;
+
+  background-color: transparent;
+
+  padding: 10px;
+}
+
+.text-container {
+  top: 0;
+  left: 0;
+}
+
+.details {
+  position: absolute;
+  display: inline-block;
+  top: 70%;
+  width: 100%;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.humidity {
+  padding: 5.38px;
+  margin-left: 15px;
+}
+
+.sunimg {
+  position: absolute;
+  top: 70px;
+  left: 100px;
+  transform: translate(-50%, -50%);
+}
+
+.speed {
+  margin-left: 10px;
+  margin-top: 5px;
+  font-family: Inter;
+  font-size: 2vw;
+  font-weight: 400;
+  line-height: 30px;
+
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.value {
+  font-size: 2vw;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.airimg {
+  width: 200px;
+  height: 200px;
+}

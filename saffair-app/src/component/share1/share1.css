@@ -1,0 +1,30 @@
+.shareCon {
+    width: 27vw;
+    /* max-height: 99px; */
+    background: #2196BA;
+    border-radius: 10px;
+    gap: 50px;
+}
+
+.shareconTagline {
+    color: #ffffff;
+    padding: 10px;
+    font-family: "Raleway", sans-serif;
+    margin-bottom: 0px;
+    margin-left: 10px;
+
+}
+
+.shareicons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #ffffff;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.icons {
+    /* margin: 10px; */
+    font-size: 30px;
+}

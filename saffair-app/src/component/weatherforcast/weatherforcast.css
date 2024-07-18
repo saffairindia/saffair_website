@@ -1,0 +1,40 @@
+.mainContenaer{
+    /* background-color: darkgray; */
+    width: 1000px;
+    height: 200px;
+    position: absolute;
+    display: flex;
+    left: 500px;
+    top: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+
+}
+.days{
+    width: 19%;
+    height: 100%;
+    border: 2px solid;
+    border-radius: 20%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+
+}
+
+.days:hover{
+    width: 21%;
+    height: 110%;
+
+}
+
+.dates{
+    font-size: 40px;
+}
+
+.temp{
+    font-size: 20px;
+}

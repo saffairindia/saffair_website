@@ -1,0 +1,100 @@
+.vnm {
+  display: flex;
+  width: 93%;
+  justify-content: space-between;
+  /* margin: 20px 40px; */
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  /* border: 1px solid #2196ba; */
+}
+
+.vision,
+.mission {
+  width: 450px;
+ 
+}
+
+.hh1 {
+  color: #2196ba;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.vgoal {
+  font-size: 17px;
+  font-family: sans-serif;
+}
+
+.mgoal {
+  font-size: 17px;
+  font-family: sans-serif;
+  text-align: right;
+}
+
+@media (max-width: 1300px) {
+  .vision,
+  .mission {
+    width: 360px;
+  }
+
+  .vnmphoto {
+    display: flex;
+    align-items: center;
+    width: 270px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .vision,
+  .mission {
+    width: 350px;
+  }
+
+  .vnmphoto {
+    display: flex;
+    align-items: center;
+    width: 250px;
+  }
+}
+
+@media (max-width: 900px) {
+  .vnmphoto {
+    /* display: none; */
+  }
+}
+
+@media (max-width: 800px) {
+  .vnmphoto {
+    /* display: none;  */
+    margin-bottom: 10px;
+  }
+
+  .vnm {
+    flex-direction: column;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #2196ba;
+    border-radius: 30px;
+  }
+
+  .mgoal {
+    text-align: center;
+  }
+  .vgoal {
+    text-align: center;
+  }
+
+  .vision,
+  .mission {
+    width: 70%;
+    margin-bottom: 15px;
+  }
+}
