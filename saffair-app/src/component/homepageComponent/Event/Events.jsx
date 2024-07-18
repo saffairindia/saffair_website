@@ -72,7 +72,7 @@ const Events = () => {
               </Link>
               <div className="p-4">
                 <div className="flex flex-row justify-between items-center">
-                  <h2 className="text-xl font-normal text-gray-800 mb-2">event name: <p className="font-semibold text-4xl text-indigo-600">{event.eventTitle}</p></h2>
+                  <h2 className="text-xl font-normal text-gray-800 mb-2">EVENT NAME: <p className="font-semibold text-4xl text-indigo-600">{event.eventTitle}</p></h2>
                   <Link
                     to={`/events/${event._id}`}
                     className="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"

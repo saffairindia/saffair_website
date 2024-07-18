@@ -208,7 +208,11 @@ a.btn-apple {
   padding: 1px 16px;
   margin-top: 5px;
   line-height: 1.3333333;
+<<<<<<< HEAD
   border-radius: 28px;
+=======
+  border-radius: 5px;
+>>>>>>> master
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -284,6 +288,10 @@ a.btn-apple {
 
 .btn-apple {
   /* color: #5f3333;   */
+<<<<<<< HEAD
+=======
+  
+>>>>>>> master
   background-image: url(../../../public/assets/apple.png);
   background-size: 29px;
   background-repeat: no-repeat;
