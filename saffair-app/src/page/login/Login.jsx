@@ -105,7 +105,7 @@ export default function SignIn() {
             </Link>
           </div>
           {errorMessage && (
-            <div className="mt-5 text-red-500">{errorMessage}</div>
+            <div className="mt-5 text-red-500">invalid credentials</div>
           )}
         </div>
       </div>

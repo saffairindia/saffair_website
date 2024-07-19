@@ -54,7 +54,7 @@ export default function Home() {
             <ul className="foot1">
               <li>
                 <a href="/#" className="centerItem1" onClick={scrollToTop}>
-                  Knowledge centre
+                  Knowledge Centre
                 </a>
               </li>
               <li className="ml-4">
@@ -199,8 +199,8 @@ export default function Home() {
               <a href="tel:+919328696119">
                 <li>+91 93286 96119</li>
               </a>
-              <a href="mailto:support@saffair.in">
-                <li>support@saffair.in</li>
+              <a href="mailto:breath@saffair.in">
+                <li>breath@saffair.in</li>
               </a>
             </ul>
             <ul className="social">

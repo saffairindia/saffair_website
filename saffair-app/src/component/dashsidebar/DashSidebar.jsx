@@ -95,8 +95,7 @@ export default function DashSidebar() {
                 </Link>
                 <Link to="/dashboard?tab=posts" onClick={scrollToTop}>
                   <Sidebar.Item action={tab === "posts"} icon={HiDocumentText}>
-                    List of Readings
-                  </Sidebar.Item>
+                  My Contributions                  </Sidebar.Item>
                 </Link>
               </Sidebar.Collapse>
             </>
@@ -112,7 +111,7 @@ export default function DashSidebar() {
                 </Link>
                 <Link to="/dashboard?tab=posts" onClick={scrollToTop}>
                   <Sidebar.Item action={tab === "posts"} icon={HiDocumentText}>
-                    List of Readings
+                  My Contributions                  
                   </Sidebar.Item>
                 </Link>
               </Sidebar.Collapse>

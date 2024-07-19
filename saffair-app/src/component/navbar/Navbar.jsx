@@ -10,16 +10,20 @@ import {
   Dropdown,
 } from 'flowbite-react'
 import { useSelector, useDispatch } from 'react-redux'
-
+import { Button } from 'flowbite-react'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { SearchpostContext } from '../../page/Home'
 import { signoutSuccess } from '../../redux/user/userSlice'
-
+import { FaMoon, FaSun } from 'react-icons/fa'
+import { toggleTheme } from '../../redux/theme/themeSlice'
+import ThemeToggle from './themetoggle'
 
 export default function Navbar({ _id }) {
   const { currentUser } = useSelector((state) => state.user)
   const dispatch = useDispatch()
+
+  const theme = useSelector((state) => state.theme.mode);
 
   const { search, setSearch } = useContext(SearchpostContext)
   const [isOpen, setIsOpen] = useState(false)
@@ -152,7 +156,7 @@ export default function Navbar({ _id }) {
         <div className="flex justify-center items-center space-x-4">
           <Link to="/" className="links">
             <a
-              className={`centerItem ${activeLink === 'home' ? 'active' : ''}`}
+              className={`centerItem `}
               onClick={() => handleClick('home')}
               href="/#"
             >
@@ -161,7 +165,7 @@ export default function Navbar({ _id }) {
           </Link>
           <Link to="/calculator" className="links">
             <a
-              className={`centerItem ${activeLink === 'calculator' ? 'active' : ''}`}
+              className={`centerItem `}
               onClick={() => handleClick('calculator')}
               href="/#"
             >
@@ -172,7 +176,7 @@ export default function Navbar({ _id }) {
           <div className="read relative ">
             <Link
               to="/news"
-              className={`centerItem ${activeLink === 'news' ? 'active' : ''} relative  cursor-pointer`}
+              className={`centerItem`}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               onClick={() => handleClick('news')}
@@ -213,7 +217,7 @@ export default function Navbar({ _id }) {
 
           <Link to="/events">
             <a
-              className={`centerItem ${activeLink === 'campaigns' ? 'active' : ''}`}
+              className={`centerItem `}
               onClick={() => handleClick('campaigns')}
               href="/#"
             >
@@ -222,7 +226,7 @@ export default function Navbar({ _id }) {
           </Link>
           <Link to="/aboutus">
             <a href="/#"
-              className={`centerItem ${activeLink === 'aboutus' ? 'active' : ''}`}
+              className={`centerItem `}
               onClick={() => handleClick('aboutus')}
             >
               About Us
@@ -230,7 +234,7 @@ export default function Navbar({ _id }) {
           </Link>
           <Link to="/contactus">
             <a
-              className={`centerItem ${activeLink === 'contactus' ? 'active' : ''}`}
+              className={`centerItem `}
               onClick={() => handleClick('contactus')}
               href="/#"
             >
@@ -241,14 +245,9 @@ export default function Navbar({ _id }) {
 
       </div>
       <div className="rightNevbar">
-        {/* <Button
-          className="w-12 h-10 hidden sm:inline"
-          color="gray"
-          pill
-          onClick={() => dispatch(toggleTheme())}
-        >
-          {theme === "light" ? <FaSun /> : <FaMoon />}
-        </Button> */}
+        {/* <div className={theme === 'light' ? 'light-mode' : 'dark-mode'}>
+          <ThemeToggle />
+        </div> */}
         {currentUser ? (
           <Dropdown
             arrowIcon={false}
@@ -359,7 +358,7 @@ export default function Navbar({ _id }) {
 
 
         <div className="menu ">
-          <div  id="dropdownLink" onClick={toggleDropdown}>
+          <div id="dropdownLink" onClick={toggleDropdown}>
             <FontAwesomeIcon icon={faBars} />
           </div>
           <div

@@ -46,7 +46,8 @@ export default function DashEventEntrys() {
   }
   return <div><h2 className="mb-2 ">Event Entrys</h2>
     
-        <>
+    <div className="table-auto p-4 mx-auto overflow-x-scroll md:overflow-x-auto scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500">
+        
           <Table hoverable className="shadow-md">
             <Table.Head>
               <Table.HeadCell>Date updated</Table.HeadCell>
@@ -103,6 +104,6 @@ export default function DashEventEntrys() {
             ))}
           </Table>
          
-        </>
+        </div>
   </div>;
 }

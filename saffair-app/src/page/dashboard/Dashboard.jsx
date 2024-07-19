@@ -35,7 +35,7 @@ export default function Dashboard() {
         <DashSidebar />
       </div>
       <div className="flex-grow">
-        <div className="w-3/4  sm:mx-auto">
+        <div className="w-full  sm:mx-auto">
           {tab === "profile" && <DashProfile />}
           {tab === "posts" && <DashPosts />}
           {tab === "users" && <DashUsers />}

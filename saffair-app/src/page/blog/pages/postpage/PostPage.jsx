@@ -11,7 +11,7 @@ import Weatherbox from "../../../../component/weatherbox/Weatherbox";
 import { Spinner } from "flowbite-react";
 import CommentSection from "../../../../component/commentsection/CommentSection";
 import BookMark from "../../../../component/bookmark/BookMark";
-import Qna from "../../../../component/QnA/Qna";
+import Qna from "./qna";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 export default function PostPage() {
