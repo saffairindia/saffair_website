@@ -57,7 +57,7 @@ const AboutUsPage = () => {
           </div>
         </section>
       </main>
-
+{/* 
       <section className="section-team text-center bg-white p-6">
         <h2 className="text-2xl font-bold mb-6 text-[#2196BA]">Team Members</h2>
         <div className="team-list grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -109,12 +109,12 @@ const AboutUsPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <div className="thanks-section text-center p-6 bg-gray-100">
+      {/* <div className="thanks-section text-center p-6 bg-gray-100">
         <div className="thanks-message text-2xl font-bold">Thank you For Visiting Our Site</div>
         <div className="great-day-message text-xl mt-2">Have A Great Day!</div>
-      </div>
+      </div> */}
     </div>
   );
 };

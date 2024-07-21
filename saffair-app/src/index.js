@@ -9,6 +9,7 @@ import { PersistGate } from "redux-persist/integration/react";
 // import Home from './pages/home/Home';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <PersistGate persistor={persistor}>
     <Provider store={store}>

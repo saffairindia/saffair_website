@@ -97,6 +97,10 @@ export default function DashSidebar() {
                   <Sidebar.Item action={tab === "posts"} icon={HiDocumentText}>
                   My Contributions                  </Sidebar.Item>
                 </Link>
+                <Link to="/dashboard?tab=allposts" onClick={scrollToTop}>
+                  <Sidebar.Item action={tab === "allposts"} icon={HiDocumentText}>
+                  All Contributions                  </Sidebar.Item>
+                </Link>
               </Sidebar.Collapse>
             </>
           )}
@@ -123,9 +127,9 @@ export default function DashSidebar() {
               <Link to="/dashboard?tab=mycoins" onClick={scrollToTop}>
                 <Sidebar.Item icon={BiSolidCoin}>My Coins</Sidebar.Item>
               </Link>
-              <Link to="/dashboard?tab=myevent" onClick={scrollToTop}>
+              {/* <Link to="/dashboard?tab=myevent" onClick={scrollToTop}>
                 <Sidebar.Item icon={MdEvent}>My Events</Sidebar.Item>
-              </Link>
+              </Link> */}
               {!currentUser.isContributor && (
                 <Link to="/dashboard?tab=be-a-contributor" onClick={scrollToTop}>
                   <Sidebar.Item icon={BiSolidCoin}>Be a Contributor</Sidebar.Item>

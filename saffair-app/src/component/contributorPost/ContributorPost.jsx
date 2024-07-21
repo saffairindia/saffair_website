@@ -100,7 +100,7 @@ export default function ContributorPost() {
                     {new Date(post.updatedAt).toLocaleDateString()}
                   </Table.Cell>
                   <Table.Cell>
-                    <Link to={`/post/${post._id}`}>
+                    <Link to={`/post/${post.title}`}>
                       <img
                         src={post.image1}
                         alt={post.title}
@@ -111,7 +111,7 @@ export default function ContributorPost() {
                   <Table.Cell>
                     <Link
                       className="font-medium text-gray-900 dark:text-white"
-                      to={`/post/${post._id}`}
+                      to={`/post/${post.title}`}
                     >
                       {post.title}
                     </Link>

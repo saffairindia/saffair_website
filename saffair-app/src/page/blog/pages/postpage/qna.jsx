@@ -2,27 +2,65 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./qna.css";
-const Qna = ({ quiz }) => {
+import axios from "axios";
+import { useParams } from "react-router-dom";
+
+const Qna = ({ quiz , postId}) => {
     const { currentUser } = useSelector((state) => state.user);
     const [selectedOption, setSelectedOption] = useState("");
     const [showPopup, setShowPopup] = useState(false);
     const [showSubmit, setShowSubmit] = useState(true);
     const [correctAnswer, setCorrectAnswer] = useState("");
+    const [selectedRating, setSelectedRating] = useState(null);
+    const { title} = useParams();
+
+    const handleRatingClick = (rating) => {
+        setSelectedRating(rating);
+    };
 
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
-        setShowPopup(false); // Hide popup when option changes
+        setShowPopup(false);
     };
 
-    const handleSubmit = () => {
-        setShowPopup(true);
-        if (selectedOption === quiz[0].correctAnswer) {
-            setCorrectAnswer("");
+    const handleSubmit = async () => {
+        if (selectedRating !== null && selectedOption !== "") {
+            try {
+                await axios.post(`${process.env.REACT_APP_BACKEND_API}/api/rate`, { postId: postId, userId: currentUser._id, rating: selectedRating });
+                alert('Rating submitted successfully!');
+                setShowPopup(true);
+                if (selectedOption === quiz[0].correctAnswer) {
+                    setCorrectAnswer("");
+                } else {
+                    setCorrectAnswer(quiz[0].correctAnswer);
+                }
+                setShowSubmit(false);
+            } catch (error) {
+                alert('Error submitting rating: ' + error.message);
+            }
         } else {
-            setCorrectAnswer(quiz[0].correctAnswer);
+            if (selectedRating === null) {
+                alert('Please select a rating before submitting.');
+            } else {
+                alert('Please answer the quiz before submitting.');
+            }
         }
-        setShowSubmit(false); // Hide submit button after submission
     };
+
+    useEffect(() => {
+        const ratingItems = document.querySelectorAll('.feedback li');
+        ratingItems.forEach(item => {
+            item.addEventListener('click', () => {
+                ratingItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+        return () => {
+            ratingItems.forEach(item => {
+                item.removeEventListener('click', () => {});
+            });
+        };
+    }, []);
 
     return (
         <div className="p-4 bg-gray-100 rounded-md shadow-md">
@@ -54,12 +92,11 @@ const Qna = ({ quiz }) => {
                                             name="question"
                                             value={option}
                                             onChange={handleOptionChange}
-                                            disabled={!showSubmit} // Disable options after submission
+                                            disabled={!showSubmit}
                                         />
                                         <label
                                             htmlFor={`option${idx + 1}`}
-                                            className={`text-xl ml-3 ${selectedOption === option ? "text-blue-500" : ""
-                                                }`}
+                                            className={`text-xl ml-3 ${selectedOption === option ? "text-blue-500" : ""}`}
                                         >
                                             {option}
                                         </label>
@@ -69,100 +106,57 @@ const Qna = ({ quiz }) => {
                             </div>
                         </div>
                     </div>
-                   
+
                     <div>
                         <div className="ratings mt-5">
                             <p className="mb-5 text-md">Give Honest Rating </p>
-                            <ul class="feedback">
-                                <li class="angry">
-                                    <div>
-                                        <svg class="eye left">
-                                            <use xlinkHref="#eye"></use>
-                                        </svg>
-                                        <svg class="eye right">
-                                            <use xlinkHref="#eye"></use>
-                                        </svg>
-                                        <svg class="mouth">
-                                            <use xlinkHref="#mouth"></use>
-                                        </svg>
-                                    </div>
-                                </li>
-                                <li class="sad">
-                                    <div>
-                                        <svg class="eye left">
-                                            <use xlinkHref="#eye"></use>
-                                        </svg>
-                                        <svg class="eye right">
-                                            <use xlinkHref="#eye"></use>
-                                        </svg>
-                                        <svg class="mouth">
-                                            <use xlinkHref="#mouth"></use>
-                                        </svg>
-                                    </div>
-                                </li>
-                                <li class="ok">
-                                    <div></div>
-                                </li>
-                                <li class="good active">
-                                    <div>
-                                        <svg class="eye left">
-                                            <use xlinkHref="#eye"></use>
-                                        </svg>
-                                        <svg class="eye right">
-                                            <use xlinkHref="#eye"></use>
-                                        </svg>
-                                        <svg class="mouth">
-                                            <use xlinkHref="#mouth"></use>
-                                        </svg>
-                                    </div>
-                                </li>
-                                <li class="happy">
-                                    <div>
-                                        <svg class="eye left">
-                                            <use xlinkHref="#eye"></use>
-                                        </svg>
-                                        <svg class="eye right">
-                                            <use xlinkHref="#eye"></use>
-                                        </svg>
-                                    </div>
-                                </li>
+                            <ul className="feedback">
+                                {[1, 2, 3, 4, 5].map((rating) => (
+                                    <li
+                                        key={rating}
+                                        className={`${svgClasses[rating - 1]} ${selectedRating === rating ? 'active' : ''}`}
+                                        onClick={() => handleRatingClick(rating)}
+                                    >
+                                        <div>
+                                            {svgClasses[rating - 1] !== 'ok' && (
+                                                <>
+                                                    <svg className="eye left">
+                                                        <use xlinkHref="#eye"></use>
+                                                    </svg>
+                                                    <svg className="eye right">
+                                                        <use xlinkHref="#eye"></use>
+                                                    </svg>
+                                                    <svg className="mouth">
+                                                        <use xlinkHref="#mouth"></use>
+                                                    </svg>
+                                                </>
+                                            )}
+                                        </div>
+                                    </li>
+                                ))}
                             </ul>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" style={{ display: "none" }}>
-                                <symbol
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 7 4"
-                                    id="eye"
-                                >
+                            <svg xmlns="http://www.w3.org/2000/svg" style={{ display: 'none' }}>
+                                <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 4" id="eye">
                                     <path d="M1,1 C1.83333333,2.16666667 2.66666667,2.75 3.5,2.75 C4.33333333,2.75 5.16666667,2.16666667 6,1"></path>
                                 </symbol>
-                                <symbol
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 18 7"
-                                    id="mouth"
-                                >
+                                <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 7" id="mouth">
                                     <path d="M1,5.5 C3.66666667,2.5 6.33333333,1 9,1 C11.6666667,1 14.3333333,2.5 17,5.5"></path>
                                 </symbol>
                             </svg>
-
-                            <a class="dribbble" href="https://dribbble.com/ai" target="_blank">
+                            <a className="dribbble" href="https://dribbble.com/ai" target="_blank" rel="noreferrer">
                                 <img
                                     src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg"
                                     alt=""
-                                ></img>
+                                />
                             </a>
                             <p className="mt-2">(Do give the rating in order to submit the quiz)</p>
-                            {/* <a class="twitter" target="_blank" href="https://twitter.com/aaroniker_me"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72"><path d="M67.812 16.141a26.246 26.246 0 0 1-7.519 2.06 13.134 13.134 0 0 0 5.756-7.244 26.127 26.127 0 0 1-8.313 3.176A13.075 13.075 0 0 0 48.182 10c-7.229 0-13.092 5.861-13.092 13.093 0 1.026.118 2.021.338 2.981-10.885-.548-20.528-5.757-26.987-13.679a13.048 13.048 0 0 0-1.771 6.581c0 4.542 2.312 8.551 5.824 10.898a13.048 13.048 0 0 1-5.93-1.638c-.002.055-.002.11-.002.162 0 6.345 4.513 11.638 10.504 12.84a13.177 13.177 0 0 1-3.449.457c-.846 0-1.667-.078-2.465-.231 1.667 5.2 6.499 8.986 12.23 9.09a26.276 26.276 0 0 1-16.26 5.606A26.21 26.21 0 0 1 4 55.976a37.036 37.036 0 0 0 20.067 5.882c24.083 0 37.251-19.949 37.251-37.249 0-.566-.014-1.134-.039-1.694a26.597 26.597 0 0 0 6.533-6.774z"></path></svg></a> */}
-                            {/* <div className="submitbutton mt-4">
-            <button className="submit">Submit</button>
-          </div> */}
                         </div>
                     </div>
                     {currentUser ? (
                         showSubmit && (
                             <div className="submitbutton flex justify-center">
                                 <button className="submit" onClick={handleSubmit}>
-                                    Submit quiz 
+                                    Submit
                                 </button>
                             </div>
                         )
@@ -193,5 +187,13 @@ const Qna = ({ quiz }) => {
         </div>
     );
 };
+
+const svgClasses = [
+  'angry',
+  'sad',
+  'ok',
+  'good',
+  'happy'
+];
 
 export default Qna;

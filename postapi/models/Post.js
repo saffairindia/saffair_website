@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 const { type } = require("os");
 const { Schema, model } = mongoose;
+const ratingSchema = new Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true },
+  rating: { type: Number, required: true, min: 1, max: 5 },
+  createdAt: { type: Date, default: Date.now }
+});
 
 const PostSchema = new Schema(
   {
@@ -43,6 +48,7 @@ const PostSchema = new Schema(
     link2: {
       type: String,
     },
+    ratings: [ratingSchema],
 
     category: {
       type: [String],

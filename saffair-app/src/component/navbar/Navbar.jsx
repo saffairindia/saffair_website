@@ -245,9 +245,9 @@ export default function Navbar({ _id }) {
 
       </div>
       <div className="rightNevbar">
-        {/* <div className={theme === 'light' ? 'light-mode' : 'dark-mode'}>
+        <div className={theme === 'light' ? 'light-mode' : 'dark-mode'}>
           <ThemeToggle />
-        </div> */}
+        </div>
         {currentUser ? (
           <Dropdown
             arrowIcon={false}

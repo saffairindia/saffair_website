@@ -49,7 +49,7 @@ export default function DashBookMark() {
               <Table.Cell>
                 <Link
                   className="font-medium text-gray-900 dark:text-white"
-                  to={`/post/${post._id}`}
+                  to={`/post/${post.title}`}
                 >
                   {" "}
                   <img
@@ -63,7 +63,7 @@ export default function DashBookMark() {
               <Table.Cell>
                 <Link
                   className="font-medium text-gray-900 dark:text-white"
-                  to={`/post/${post._id}`}
+                  to={`/post/${post.title}`}
                 >
                   <span>{post.title}</span>
                 </Link>
@@ -71,7 +71,7 @@ export default function DashBookMark() {
               <Table.Cell>
               <Link
                   className="font-medium text-gray-900 dark:text-white"
-                  to={`/post/${post._id}`}
+                  to={`/post/${post.title}`}
                 >
                   <span>{post.contributionType}</span>
                 </Link></Table.Cell>

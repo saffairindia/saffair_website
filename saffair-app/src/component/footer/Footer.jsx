@@ -40,12 +40,16 @@ export default function Home() {
     scrollToTop();
     share();
   };
+  const phoneNumber = "919328696119"; // Replace with your phone number
+  const message = "Hi"; // Default message
+  const whatsappLink = `https://api.whatsapp.com/send/?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+
   return (
     <footer className="footMain ">
       <div className="foot-panel2">
         <div className="logo-foot">
           <a href="/">
-          <img className="imgfooter h-28 w-28 " src={img} />
+            <img className="imgfooter h-28 w-28 " src={img} />
 
           </a>
         </div>
@@ -199,8 +203,8 @@ export default function Home() {
               <a href="tel:+919328696119">
                 <li>+91 93286 96119</li>
               </a>
-              <a href="mailto:breath@saffair.in">
-                <li>breath@saffair.in</li>
+              <a href="mailto:breathe@saffair.in">
+                <li>breathe@saffair.in</li>
               </a>
             </ul>
             <ul className="social">
@@ -223,22 +227,22 @@ export default function Home() {
                 <a href="https://www.youtube.com/@Saffair-india" target="blank" className="icon1">
                   <FontAwesomeIcon icon={faSquareYoutube} />
                 </a>
-              
+
               </div>
               <div className="flex flex-col sm:flex-row">
 
               </div >
               <div className="flex mt-2 flex-col md:flex-row justify-center  items-center gap-4 align-middle">
-              <div className="playstore ">
-                <a class="btn btn-google " rel="noreferrer noopener" href="/#" title="Google Play">
-                  Google Play
-                </a>
-              </div>
-              <div className="appstore">
-                <a class="btn btn-apple" rel="noreferrer noopener" href="/#" title="App Store">
-                  App Store
-                </a>
-              </div>
+                <div className="playstore ">
+                  <a class="btn btn-google " rel="noreferrer noopener" href="/#" title="Google Play">
+                    Google Play
+                  </a>
+                </div>
+                <div className="appstore">
+                  <a class="btn btn-apple" rel="noreferrer noopener" href="/#" title="App Store">
+                    App Store
+                  </a>
+                </div>
               </div>
             </ul>
           </div>
@@ -254,26 +258,28 @@ export default function Home() {
           <Link to="https://agevole.in/" target="_blank">  ©2024 Saffair All rights reserved | Design and Developed by Agevole Innovation </Link>
         </div>
       </div>
+
+
       <div className="fixed bottom-10 right-10 z-50">
         <a
-          href="https://api.whatsapp.com/send/?phone=919328696119&text=Hi"
+          href={whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
           className="relative"
-        // onMouseEnter={handleMouseEnter}
-        // onMouseLeave={handleMouseLeave}
         >
           <img
             className="w-16 h-16 rounded-full shadow-lg cursor-pointer hover:shadow-xl transition duration-300 transform hover:scale-110"
             src={whatsappLogo}
             alt="WhatsApp"
           />
-
           <div className="absolute top-0 left-[-50px] bg-gray-800 text-white py-1 px-2 rounded-lg opacity-0 hover:opacity-100 transition duration-100">
-            Share
+            Chat with us
           </div>
         </a>
       </div>
+
+
+
     </footer>
   );
 }

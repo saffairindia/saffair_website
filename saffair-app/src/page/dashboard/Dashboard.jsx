@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import DashProfile from "../../component/dashprofile/DashProfile";
 import DashSidebar from "../../component/dashsidebar/DashSidebar";
 import DashPosts from "../../component/dashposts/DashPosts";
+import DashallPosts from "../../component/dashposts/Dashallpost";
 import DashUsers from "../../component/dashusers/DashUsers";
 import DashboardComp from "../../component/DashboardComp.jsx/DashboardComp";
 import Contributors from "../../component/contributors/Contributors";
@@ -19,6 +20,7 @@ import PostRequest from "../../component/PostRequest/PostRequest";
 import DashEventEntrys from "../../component/DashEventEntrys/DashEventEntrys";
 import CreateVoucherForm from "../../component/dashVoucherForm/CreateVoucherForm";
 import VoucherList from "../../component/dashshowvoucher/Dashshowvoucher";
+
 export default function Dashboard() {
   const location = useLocation();
   const [tab, setTab] = useState("");
@@ -38,12 +40,13 @@ export default function Dashboard() {
         <div className="w-full  sm:mx-auto">
           {tab === "profile" && <DashProfile />}
           {tab === "posts" && <DashPosts />}
+          {tab === "allposts" && <DashallPosts />}
           {tab === "users" && <DashUsers />}
           {tab === "contributors" && <Dashcontributors />}
           {tab === "dash" && <DashboardComp />}
           {tab === "be-a-contributor" && <Contributors />}
           {tab === "mycoins" && <Mycoins />}
-          {tab === "myevent" && <MyEvent />}
+          {/* {tab === "myevent" && <MyEvent />} */}
           {tab === "reqCon" && <DashReqContributor />}
           {tab === "comments" && <DashComments />}
           {tab === "event" && <DashEvent />}

@@ -16,7 +16,8 @@ export default function Post({
 }) {
 
 
- 
+  const encodedTitle = encodeURIComponent(title).replace(/%20/g, '_');
+
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -45,7 +46,7 @@ const prevtitle = truncateContent(title, 45);
 
       <div className=" postContainer w-[90%] sm:w-[350px] p-2 m-2 flex flex-col justify-evenly " onClick={scrollToTop}>
         <div className="card ">
-          <Link to={`/post/${_id}`}>
+          <Link to={`/post/${encodedTitle}`}>
             <div className="card__header  w-full flex flex-row justify-center">
               <img
                 src={image1}
@@ -58,7 +59,7 @@ const prevtitle = truncateContent(title, 45);
           </Link>
           <div className="card__body flex flex-col justify-evenly self-start">
             <span className="tag text-blue-900 text-[14px]">{readingType}</span>
-            <Link to={`/post/${_id}`} className="link">
+            <Link to={`/post/${encodedTitle}`} className="link">
               <div className="px-[4px] w-full flex flex-row justify-start">
                 <h5 className="text-[20px]  font-extrabold">{prevtitle}</h5>
               </div>

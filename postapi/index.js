@@ -14,6 +14,7 @@ const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const verifyToken = require("./utils/verifyUser");
 const voucher = require("./routes/voucher.routes.js");
+const {addRating, getAverageRating} = require('./controller/rating');
 // MIDDLLWARE
 dotenv.config();
 app.use(express.json());
@@ -85,8 +86,27 @@ app.post("/api/post", verifyToken, async (req, res, next) => {
   }
 });
 
-//api for getting the post
+//post Rating
 
+app.post('/api/rate', async (req, res) => {
+  const { postId, userId, rating } = req.body;
+  try {
+    const updatedPost = await addRating(postId, userId, rating);
+    res.json(updatedPost);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.get('/api/average-rating/:postId', async (req, res) => {
+  const { postId } = req.params;
+  try {
+    const averageRating = await getAverageRating(postId);
+    res.json({ averageRating });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 app.get("/api/getposts", async (req, res, next) => {
   try {
     const startIndex = parseInt(req.query.startIndex) || 0;
@@ -139,12 +159,31 @@ app.get("/api/post", async (req, res) => {
 });
 
 //API FOR SHOW THE POST
+app.get("/api/post/:title", async (req, res) => {
+  const { title } = req.params;
 
-app.get("/api/post/:id", async (req, res) => {
-  const { id } = req.params;
-  const postDoc = await Post.findById(id);
-  res.json(postDoc);
+  try {
+    const decodedTitle = decodeURIComponent(title.replace(/_/g, ' '));
+
+    // Find the post by title
+    const postDoc = await Post.findOne({ title: decodedTitle });
+
+    if (!postDoc) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    res.json(postDoc);
+  } catch (error) {
+    console.error("Error fetching post:", error);
+    res.status(500).json({ message: "Server error" });
+  }
 });
+
+// app.get("/api/post/:id", async (req, res) => {
+//   const { id } = req.params;
+//   const postDoc = await Post.findById(id);
+//   res.json(postDoc);
+// });
 
 //API FOR DELETING POST
 

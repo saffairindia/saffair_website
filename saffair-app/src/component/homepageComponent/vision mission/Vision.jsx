@@ -6,10 +6,9 @@ export default function Vision() {
     <div className="vnm ">
       <div className="vision">
         <div className="hh1">Vision</div>
-        <div className="vgoal">
+        <div className="vgoal mt-14">
           <p>
-          We're pioneering a world where sustainability isn't just a buzzword but a way of life. Through collaborative efforts and innovative design, we're ensuring cleaner air for everyone, today and tomorrow
-          </p>
+            We envision to create Sustainable Ecosystem where clean air is a basic right, driven by community cooperation and innovative solutions.          </p>
         </div>
       </div>
       <div className="vnmphoto">
@@ -17,11 +16,10 @@ export default function Vision() {
       </div>
       <div className="mission">
         <div className="hh1">Mission</div>
-        <div className="mgoal">
+        <div className="mgoal mt-14">
           <p>
-          At Saffair, we're committed to democratizing clean air access. Through community engagement and advanced technology, we're not just purifying air; we're empowering communities and building trust, ensuring that clean air remains a fundamental right for all.
-          </p>
-         
+            At Saffair, we ensure everyone can breathe clean air by uniting technology with community efforts, making it accessible and reliable.          </p>
+
         </div>
       </div>
     </div>

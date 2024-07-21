@@ -34,6 +34,7 @@ import ProductPage from "./product/ProductPage"
 import ReviewPost from "./blog/pages/editpost/ReviewPost";
 import Calculator from "./calculator/Calculator";
 // import { Discuss } from "react-loader-spinner";
+import { useSelector } from "react-redux";
 
 export const WeatherImageContext = createContext();
 
@@ -55,8 +56,12 @@ export default function Home() {
     airQuality: "",
     city: ""
   });
+  const theme = useSelector((state) => state.theme.mode);
+
 
   return (
+    <div className={theme === "light" ? "light-mode" : "dark-mode"}>
+
     <WeatherImageContext.Provider value={{ airData, setAirData }}>
       <SearchContext.Provider value={{ newCity, setNewCity }}>
         <cityContext.Provider value={{ location, setLocation }}>
@@ -79,7 +84,7 @@ export default function Home() {
                 <Route path="/aboutus" element={<AboutUs />} />
                 <Route path="/contactus" element={<ContactUs />} />
                 {/* <div style={{ minHeight: "800px" }}> */}
-                <Route path="/post/:id" element={<PostPage />} />
+                <Route path="/post/:title" element={<PostPage />} />
                 <Route path="/events/:id" element={<EventPage />} />
                 <Route path="/events" element={<Events />} />
                 <Route path="/product" element={<ProductPage />} />
@@ -122,5 +127,6 @@ export default function Home() {
         </cityContext.Provider>
       </SearchContext.Provider>
     </WeatherImageContext.Provider>
+    </div>
   );
 }

@@ -6,6 +6,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios'
+import { Link } from "react-router-dom";
 export default function EventPage() {
   const { id } = useParams();
   const [eventInfo, setEventInfo] = useState(null);
@@ -112,16 +113,16 @@ export default function EventPage() {
   function extractDate(dateStr) {
     // Use Date object to parse the date string
     const dateObj = new Date(dateStr);
-  
+
     // Year, month, day (zero-indexed)
     const year = dateObj.getFullYear();
     const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Add leading zero for single-digit months
     const day = String(dateObj.getDate()).padStart(2, '0');
-  
+
     // Format the date as YYYY-MM-DD
     return `${year}-${month}-${day}`;
   }
-  
+
   return (
     <div className="mt-20">
       {eventInfo ? (
@@ -135,7 +136,7 @@ export default function EventPage() {
           <div className="flex flex-col items-start my-4 p-4 lg:p-8 mx-auto max-w-5xl bg-white rounded-lg shadow-md">
             <div className="text-4xl font-bold mb-2 text-teal-600">Event Title: {eventInfo.eventTitle}</div>
             <div className="text-lg text-gray-600">
-            Start Date: {extractDate(eventInfo.startDate)} | End Date: {extractDate(eventInfo.endDate)}
+              Start Date: {extractDate(eventInfo.startDate)} | End Date: {extractDate(eventInfo.endDate)}
             </div>
           </div>
           <div
@@ -161,73 +162,92 @@ export default function EventPage() {
             </div>
           )}
 
-          <div className="flex flex-col justify-between items-center  m-8">
-
+          <div className="flex flex-col justify-between items-center m-8">
             <div>
               <h1 className="text-center text-3xl my-7 font-semibold">
                 Are you willing to join?
               </h1>
-              {show ? (
-                <>
+              {currentUser ? (<>
+                {show ? (
+                  <>
+                    <div className="flex justify-center mt-4 space-x-4">
+                      <button
+                        onClick={() => handleButtonClick("Yes")}
+                        className={`${selectedOption === "Yes"
+                          ? "bg-green-800"
+                          : "bg-green-200 hover:bg-green-600"
+                          } text-white font-bold py-2 px-4 rounded transition duration-300`}
+                      >
+                        Yes
+                      </button>
+                      <button
+                        onClick={() => handleButtonClick("No")}
+                        className={`${selectedOption === "No"
+                          ? "bg-red-800"
+                          : "bg-red-200 hover:bg-red-600"
+                          } text-white font-bold py-2 px-4 rounded transition duration-300`}
+                      >
+                        No
+                      </button>
+                      <button
+                        onClick={() => handleButtonClick("Maybe")}
+                        className={`${selectedOption === "Maybe"
+                          ? "bg-blue-800"
+                          : "bg-blue-200 hover:bg-blue-600"
+                          } text-white font-bold py-2 px-4 rounded transition duration-300`}
+                      >
+                        Maybe
+                      </button>
+                    </div>
 
-                  <div className="flex justify-center mt-4 space-x-4">
-                    <button
-                      onClick={() => handleButtonClick("yes")}
-                      className={`${selectedOption === "Yes" ? "bg-green-800" : "bg-green-200 hover:bg-green-600"
-                        } text-white font-bold py-2 px-4 rounded transition duration-300`}
-                    >
-                      Yes
-                    </button>
-                    <button
-                      onClick={() => handleButtonClick("no")}
-                      className={`${selectedOption === "No" ? "bg-red-800" : "bg-red-200 hover:bg-red-600"
-                        } text-white font-bold py-2 px-4 rounded transition duration-300`}
-                    >
-                      No
-                    </button>
-                    <button
-                      onClick={() => handleButtonClick("maybe")}
-                      className={`${selectedOption === "Maybe" ? "bg-blue-800" : "bg-blue-200 hover:bg-blue-600"
-                        } text-white font-bold py-2 px-4 rounded transition duration-300`}
-                    >
-                      Maybe
-                    </button>
+                    {currentUser?.isAdmin ? (
+                      <div className="flex flex-col justify-between items-center m-8">
+                        <div>
+                          <h1 className="text-center text-3xl my-7 font-semibold">
+                            Response Counts of this Event
+                          </h1>
+                          <div className="flex justify-center mt-4 space-x-4">
+                            <div className="bg-green-400 text-white font-bold py-2 px-4 rounded">
+                              Yes: {responseCounts.yes}
+                            </div>
+                            <div className="bg-red-400 text-white font-bold py-2 px-4 rounded">
+                              No: {responseCounts.no}
+                            </div>
+                            <div className="bg-blue-400 text-white font-bold py-2 px-4 rounded">
+                              Maybe: {responseCounts.maybe}
+                            </div>
+                          </div>
+                          <button
+                            onClick={fetchResponseCounts}
+                            className="text-center mt-4 bg-gray-800 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
+                          >
+                            Refresh Counts
+                          </button>
+                        </div>
+                      </div>) :
+                      (
+                        <></>
+                      )}
+                  </>
+                ) : (
+                  <h5 className="flex gap">
+                    Your response <p className="text-red-700 mx-2">{ans}</p> recorded.
+                  </h5>
+                )}
+              </>
 
-                  </div>
-                </>
               ) : (
-                <>
-                  <h5 className="flex gap">your response <p className="text-red-700 mx-2">{ans} </p>recorded.</h5>
-                </>
+                <div className="text-sm text-teal-500 my-5 flex gap-1">
+                  You must be signed in to submit the response.
+                  <Link className="text-red-600 hover:underline" to={"/login"}>
+                    Sign In
+                  </Link>
+                </div>
               )}
+
             </div>
           </div>
-          {currentUser.isAdmin && (
-             <div className="flex flex-col justify-between items-center m-8">
-             <div>
-               <h1 className="text-center text-3xl my-7 font-semibold">
-                 Response Counts of this Event
-               </h1>
-               <div className="flex justify-center mt-4 space-x-4">
-                 <div className="bg-green-400  text-white font-bold py-2 px-4 rounded">
-                   Yes: {responseCounts.yes}
-                 </div>
-                 <div className="bg-red-400  text-white font-bold py-2 px-4 rounded">
-                   No: {responseCounts.no}
-                 </div>
-                 <div className="bg-blue-400  text-white font-bold py-2 px-4 rounded">
-                   Maybe: {responseCounts.maybe}
-                 </div>
-               </div>
-               <button
-                 onClick={fetchResponseCounts}
-                 className=" text-center mt-4 bg-gray-800 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
-               >
-                 Refresh Counts
-               </button>
-             </div>
-           </div>
-          )}
+
 
         </>
       ) : (

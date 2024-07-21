@@ -58,7 +58,7 @@ const Event = () => {
     <>
       {event.map((val, index) => (
         <div key={val._id} className={`main ${index === currentImageIndex ? "" : "hidden"}`}>
-          <div className="mt-20 mx-0 w-screen items-center">
+          <div className="mt-20 mx-0 w-9/10   max-h-[550px]  items-center">
             <Link to={`/events/${val._id}`} className="link" onClick={handleLinkClick}>
               <img
                 src={val.eventImage}

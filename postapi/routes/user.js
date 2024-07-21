@@ -369,7 +369,7 @@ routes.post("/unbookmark/:postId", async (req, res) => {
 routes.put("/add-event/:id", async (req, res) => {
   try {
     const { eventName, coinsEarned, date } = req.body;
-    if (coinsEarned <= 100) {
+    if (coinsEarned <= 100) { 
       // Find the user by username
       const user = await Users.findOne({ _id: req.params.id });
 
@@ -381,7 +381,6 @@ routes.put("/add-event/:id", async (req, res) => {
       user.coinHistory.push({
         eventName,
         coinsEarned,
-        date,
       });
 
       // Save the updated user document

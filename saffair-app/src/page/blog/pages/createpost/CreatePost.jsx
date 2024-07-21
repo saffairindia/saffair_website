@@ -366,7 +366,7 @@ export default function CreatePost() {
               onChange={(e) =>
                 setFormData({ ...formData, readingType: e.target.value })
               }
-            >
+            ><option value=" ">select</option>
               <option value="Blog">Blog</option>
               <option value="News">News</option>
               <option value="Update">Update</option>

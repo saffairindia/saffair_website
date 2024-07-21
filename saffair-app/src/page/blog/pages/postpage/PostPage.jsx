@@ -13,12 +13,15 @@ import CommentSection from "../../../../component/commentsection/CommentSection"
 import BookMark from "../../../../component/bookmark/BookMark";
 import Qna from "./qna";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSelector } from "react-redux";
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 export default function PostPage() {
+  const { currentUser } = useSelector((state) => state.user);
   const [postInfo, setPostInfo] = useState(null);
   const [posts, setPosts] = useState([]);
-  const { id } = useParams();
   const [loading, setLoading] = useState(true);
+  const [hasRated, setHasRated] = useState(false);
+  const { title } = useParams();
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_BACKEND_API}/api/post`)
@@ -37,32 +40,29 @@ export default function PostPage() {
   }, []);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACKEND_API}/api/post/${id}`)
-      .then((response) => {
+    // Fetch the post data by title
+    const encodedTitle = encodeURIComponent(title).replace(/%20/g, '_');
+
+    fetch(`${process.env.REACT_APP_BACKEND_API}/api/post/${encodedTitle}`)
+      .then(response => {
         if (!response.ok) {
-          throw new Error("Failed to fetch post");
+          throw new Error('Failed to fetch post');
         }
         return response.json();
       })
-      .then((postInfo) => {
-        let index = 0;
-        const modifiedContent = postInfo.content.replace(
-          /<h([1-6])[^>]*>(.*?)<\/h\1>/g,
-          (match, level, content) => {
-            const id = `heading-${index}`;
-            index++;
-            return `<h${level} id="${id}">${content}</h${level}>`;
-          }
-        );
-        postInfo.content = modifiedContent;
+      .then(postInfo => {
         setPostInfo(postInfo);
         setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching post:", error);
-      });
-  }, [id]);
 
+        if (currentUser) {
+          const userHasRated = postInfo.ratings.some(rating => rating.userId === currentUser._id);
+          setHasRated(userHasRated);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching post:', error);
+      });
+  }, [title, currentUser]);
 
 
   if (!postInfo) return null;
@@ -134,8 +134,8 @@ export default function PostPage() {
                 </div>
                 <div className="otherhalf my-2  flex flex-col">
                   <div className="mt-2 w-full flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
-                    
-                    
+
+
                   </div>
 
                   <div className="postDataCon mt-2">
@@ -169,13 +169,32 @@ export default function PostPage() {
                     )}
 
                   </div>
-                  <div>
-                    {postInfo.quiz && postInfo.quiz.length > 0 ? (
-                      <Qna quiz={postInfo.quiz} />
-                    ) : (
-                      <></>
-                    )}
-                  </div>
+                  {currentUser ? (
+                    <>
+                      {hasRated ? (
+                        <p className="m-2  text-red-700 font-bold text-xl">Thank you for participating in the quiz</p>
+                      ) : (
+                        <div>
+                          {postInfo.quiz && postInfo.quiz.length > 0 ? (
+                            <Qna quiz={postInfo.quiz} postId ={postInfo._id} />
+                          ) : (
+                            <></>
+                          )}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <div>
+                      {postInfo.quiz && postInfo.quiz.length > 0 ? (
+                        <Qna quiz={postInfo.quiz} postId ={postInfo._id}/>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  )}
+
+
+
                   <div className="authInfo">
                     <AdminInfo userId={postInfo.userId} />
                     <Share2 />

@@ -28,11 +28,14 @@ export default function Homepage() {
   return (
     <>
       <div>
-        <WeatherUpdate />
+        <div className="z-50">
+          <WeatherUpdate />
+
+        </div>
         {/* <Healthadvice /> */}
 
         <div className="">
-          
+
           <Vision />
         </div>
         <div className=" overflow-hidden">
@@ -46,17 +49,19 @@ export default function Homepage() {
             className="readingtitle"
             style={{ display: "flex", alignItems: "center", margin: "20px" }}
           >
-            <h2 className="text-2xl font-bold">Readings</h2>
+            <h2 className="text-2xl font-bold" style={{ marginRight: "10px" }}>
+              Knowledge Centre
+            </h2>
             <hr
               style={{
-                width: "95%",
+                flex: "1",
                 height: "2px",
-                margin: "10px",
                 backgroundColor: "#2196BA",
                 border: "none",
               }}
             />
           </div>
+
           <div class="cards-wrapper" id="style-5">
             <div className="homeReadings">
               {posts.map((post) => (

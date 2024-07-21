@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
-import { FaMinus,FaCheck, FaTimes } from "react-icons/fa";
+import { FaMinus, FaCheck, FaTimes } from "react-icons/fa";
 import {
   Avatar,
   Navbar as Nb,
@@ -123,7 +123,7 @@ export default function PostRequest() {
                     {new Date(post.updatedAt).toLocaleDateString()}
                   </Table.Cell>
                   <Table.Cell>
-                    <Link to={`/post/${post._id}`}>
+                    <Link to={`/post/${post.title}`}>
                       <img
                         src={post.image1}
                         alt={post.title}
@@ -134,7 +134,7 @@ export default function PostRequest() {
                   <Table.Cell className="text-center align-middle">
                     <Link
                       className="font-medium text-gray-900 dark:text-white"
-                      to={`/post/${post._id}`}
+                      to={`/post/${post.title}`}
                     >
                       {post.title}
                     </Link>
@@ -162,7 +162,6 @@ export default function PostRequest() {
                     {post.isReviewed ? (
                       < div className="flex gap-2 flex-row ">
                         <FaCheck className="text-green-500" />
-
                       </div>
                     ) : (
                       < div className="flex flex-row gap-2" >
