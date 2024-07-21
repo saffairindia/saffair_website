@@ -120,7 +120,7 @@ export default function EditContributorPost() {
 
       if (updatePostRes.ok) {
         setPublishError(null);
-        navigate(`/post/${postId}`);
+        navigate(`/post/${formData.title}`);
       }
 
       const updatedCoinHestory = {

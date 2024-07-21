@@ -363,10 +363,12 @@ export default function CreatePost() {
               Select reading type
             </label>
             <Select
+                      required
+
               onChange={(e) =>
                 setFormData({ ...formData, readingType: e.target.value })
               }
-            ><option value=" ">select</option>
+            ><option value="">select</option>
               <option value="Blog">Blog</option>
               <option value="News">News</option>
               <option value="Update">Update</option>
@@ -385,6 +387,7 @@ export default function CreatePost() {
 
           required
         >
+          <option value="">select</option>
           <option value="News / Update">News / Update</option>
           <option value="Legal Updates">Legal Updates</option>
           <option value="innovation">innovation</option>

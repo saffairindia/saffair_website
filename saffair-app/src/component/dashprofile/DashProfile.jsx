@@ -8,6 +8,8 @@ import {
 } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { ToggleSwitch } from "flowbite-react";
+
 import {
   getDownloadURL,
   getStorage,
@@ -37,9 +39,20 @@ import {
 import { useDispatch } from "react-redux";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import Pincode from "react-pincode";
+import Education from "../contributors/education";
+import WorkExperience from "../contributors/WorkExperience";
+import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 export default function DashProfile() {
   // const [biofield, setBiofield] = useState("");
+  const genderOptions = [
+    { value: "", label: "Select Gender" },
+    { value: "Male", label: "Male" },
+    { value: "Female", label: "Female" },
+    { value: "Other", label: "Other" },
+  ];
+
   const { currentUser, error, loading } = useSelector((state) => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
@@ -52,6 +65,8 @@ export default function DashProfile() {
   const [formData, setFormData] = useState({});
   const filePickerRef = useRef();
   const dispatch = useDispatch();
+  const [showEducationWork, setShowEducationWork] = useState(false);
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -59,6 +74,12 @@ export default function DashProfile() {
       setImageFileUrl(URL.createObjectURL(file));
     }
   };
+  const [isVerified, setIsVerified] = useState(false);
+  useEffect(() => {
+    if (currentUser.isVerify) {
+      setIsVerified(true);
+    }
+  }, [currentUser]);
   useEffect(() => {
     if (imageFile) {
       uploadImage();
@@ -103,11 +124,35 @@ export default function DashProfile() {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
+  const handlePincodeChange = (data) => {
+    setFormData({
+      ...formData,
+      city: data.city,
+      state: data.stateName,
+      pincode: data.pincode,
+    });
+    console.log(data);
+  };
+  const updateEducationData = (educationDetails) => {
+    setFormData({
+      ...formData,
+      education: educationDetails,
+    });
+  };
+
+  const updateWorkExperienceData = (workExperienceDetails) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      workExperience: workExperienceDetails,
+    }));
+  };
+
   const handleSubmit = async (e) => {
-    console.log(formData)
+    console.log(formData);
     e.preventDefault();
     setUpdateUserError(null);
     setUpdateUserSuccess(null);
+
     if (Object.keys(formData).length === 0) {
       setUpdateUserError("No changes made");
       return;
@@ -167,9 +212,12 @@ export default function DashProfile() {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/api/user/signout`, {
-        method: "POST",
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_API}/api/user/signout`,
+        {
+          method: "POST",
+        }
+      );
       const data = await res.json();
       if (!res.ok) {
         console.log(data.message);
@@ -182,10 +230,9 @@ export default function DashProfile() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-3 w-full">
+    <div className="max-w-[624px] mx-auto p-3 w-full">
       <h1 className="my-7 text-center font-semibold text-3xl">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        
         <input
           type="file"
           accept="image/*"
@@ -211,9 +258,8 @@ export default function DashProfile() {
                   left: 0,
                 },
                 path: {
-                  stroke: `rgba(62, 152, 199, ${
-                    imageFileUploadProgress / 100
-                  })`,
+                  stroke: `rgba(62, 152, 199, ${imageFileUploadProgress / 100
+                    })`,
                 },
               }}
             />
@@ -221,15 +267,50 @@ export default function DashProfile() {
           <img
             src={imageFileUrl || currentUser.profilePicture}
             alt="user"
-            className={`rounded-full w-full h-full object-cover border-8 border-[lightgray] ${
-              imageFileUploadProgress &&
+            className={`rounded-full w-full h-full object-cover border-8 border-[lightgray] ${imageFileUploadProgress &&
               imageFileUploadProgress < 100 &&
               "opacity-60"
-            }`}
+              }`}
           />
         </div>
         {imageFileUploadError && (
           <Alert color="failure">{imageFileUploadError}</Alert>
+        )}
+        {!currentUser.isAdmin && (
+          <div className="flex justify-center mt-4">
+            <div
+              className={`
+    flex flex-col items-center
+    max-w-sm w-full px-4 py-3 rounded-lg shadow-md
+   ${isVerified
+                  ? "bg-green-100 border border-green-400 text-green-700"
+                  : "bg-red-100 border border-red-400 text-red-700"
+                }
+ `}
+            >
+              <span className="font-bold text-lg mb-2">
+                {isVerified ? "Verified" : "Unverified"}
+              </span>
+              <div className="flex flex-row items-center justify-center space-x-2 text-center">
+                <p className="text-sm">
+                  {isVerified
+                    ? "Your account has been successfully verified."
+                    : "Please verify your account to redeem Voucher."}
+                </p>
+                {!isVerified && (
+                  <Link
+                    to="/dashboard?tab=verify"
+                    className="inline-flex items-center"
+                  >
+                    <FontAwesomeIcon
+                      icon={faUpRightFromSquare}
+                      className="ml-1"
+                    />
+                  </Link>
+                )}
+              </div>
+            </div>
+          </div>
         )}
         <TextInput
           type="text"
@@ -265,6 +346,68 @@ export default function DashProfile() {
           placeholder="password"
           onChange={handleChange}
         />
+        <TextInput
+          type="number"
+          defaultValue={currentUser.number}
+          id="number"
+          max={10}
+          placeholder="phone number"
+          onChange={handleChange}
+        />
+        <label className="font-semibold">Location</label>
+        <div className="flex flex-col md:flex-row justify-start gap-4">
+          <div>
+            <label>Pincode</label>
+            <div>
+              <Pincode
+                placeholder="Pincode"
+                id="pincode"
+                getData={handlePincodeChange}
+                invalidError="Please check pincode"
+                lengthError="Check length"
+                showArea={false}
+                showState={false}
+                showDistrict={false}
+                showCity={false}
+                defaultValue={currentUser.pincode}
+                value={formData.pincode}
+                className="
+                    block
+                    w-full
+                    rounded-md
+                    px-3
+                    py-2
+                    border border-gray-300
+                   shadow-sm"
+              />
+            </div>
+          </div>
+          <div>
+            <label>City</label>
+            <TextInput
+              type="text"
+              placeholder="City"
+              id="city"
+              onChange={handleChange}
+              value={formData.city}
+              defaultValue={currentUser.city}
+              readOnly
+            />
+          </div>
+          <div>
+            <label>State</label>
+            <TextInput
+              type="text"
+              placeholder="State"
+              id="state"
+              defaultValue={currentUser.state}
+              value={formData.state}
+              onChange={handleChange}
+              readOnly
+            />
+          </div>
+        </div>
+
         {(currentUser.isAdmin || currentUser.isContributor) && (
           <>
             <div className="bio mb-1">
@@ -284,7 +427,10 @@ export default function DashProfile() {
               <label>Social Media Links</label>
 
               <div className="facebookpart flex gap-2 mb-2 mt-2">
-                <FontAwesomeIcon icon={faSquareFacebook} className="text-2xl mt-2" />
+                <FontAwesomeIcon
+                  icon={faSquareFacebook}
+                  className="text-2xl mt-2"
+                />
                 <TextInput
                   type="text"
                   placeholder="Facebook"
@@ -297,7 +443,10 @@ export default function DashProfile() {
               </div>
 
               <div className="twitterpart flex gap-2 mb-2">
-                <FontAwesomeIcon icon={faSquareXTwitter} className="text-2xl mt-2" />
+                <FontAwesomeIcon
+                  icon={faSquareXTwitter}
+                  className="text-2xl mt-2"
+                />
                 <TextInput
                   type="text"
                   placeholder="Twitter"
@@ -310,7 +459,10 @@ export default function DashProfile() {
               </div>
 
               <div className="instapart flex gap-2 mb-2 ">
-                <FontAwesomeIcon icon={faSquareInstagram} className="text-2xl mt-2" />
+                <FontAwesomeIcon
+                  icon={faSquareInstagram}
+                  className="text-2xl mt-2"
+                />
                 <TextInput
                   type="text"
                   placeholder="Instagram"
@@ -334,18 +486,56 @@ export default function DashProfile() {
                   defaultValue={currentUser.linkedin}
                 />
               </div>
-              <div className="linkedinpart flex gap-2 mb-2">
-                <FontAwesomeIcon icon={faSquareWhatsapp} className="text-2xl mt-2" />
-                <TextInput
-                  type="text"
-                  placeholder="WhatsApp"
-                  id="WhatsApp"
-                  className="w-full ml-1"
-                  name="WhatsApp"
-                  onChange={handleChange}
-                  defaultValue={currentUser.Whatsapp}
-                />
-              </div>
+
+              <ToggleSwitch
+                className="my-3"
+                checked={showEducationWork}
+                label="job alert"
+                onChange={() => setShowEducationWork(!showEducationWork)}
+              />
+              {showEducationWork && (
+                <>
+                  <div className="personaldetails mt-3 w-5/3">
+                    <p className="personaltag mb-4 font-bold">
+                      Personal Details
+                    </p>
+                    <div className="mb-2">
+                      <div className="grid grid-cols-1 mb-3 md:flex sm:grid-cols-2 gap-5 ">
+                        <div>
+                          <label>Date of Birth</label>
+                          <TextInput
+                            type="date"
+                            id="dob"
+                            onChange={handleChange}
+                          />
+                        </div>
+                        <div></div>
+                        <div>
+                          <label>Gender</label>
+                          <br />
+                          <select id="gender" onChange={handleChange}>
+                            {genderOptions.map((option) => (
+                              <option key={option.value} value={option.value}>
+                                {option.label}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr className="hr-line border-1 border-black mt-3 opacity-30 mb-3"></hr>
+
+                  <Education updateEducationData={updateEducationData} />
+
+                  <hr className="hr-line border-1 border-black mt-3 opacity-30 mb-3"></hr>
+
+                  <WorkExperience
+                    updateWorkExperienceData={updateWorkExperienceData}
+                  />
+                </>
+              )}
             </div>
           </>
         )}

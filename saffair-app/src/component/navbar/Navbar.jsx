@@ -146,7 +146,6 @@ export default function Navbar({ _id }) {
         <div className="logoContainer">
           <Link to="/" className='logoNevbar'>
             <img
-              src="./assets/transperent logo 1.svg"
               alt="logo"
               className="logoImage"
             />

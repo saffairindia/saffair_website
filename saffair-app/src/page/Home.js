@@ -27,7 +27,6 @@ import Updates from "./newUpdates/Updates";
 import Showevent from "../component/homepageComponent/Event/Showevent";
 import ContributorPost from "../component/contributorPost/ContributorPost";
 import EditContributorPost from "./blog/pages/editpost/EditContributorPost";
-import UserContribution from "../component/userContribution/UserContribution";
 import EventPage from "../component/eventpage/EventPage";
 import Events from "../component/homepageComponent/Event/Events"
 import ProductPage from "./product/ProductPage"
@@ -101,10 +100,7 @@ export default function Home() {
                 <Route element={<OnlyAdminPrivateRoute />}>
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/createblog" element={<CreatePost />} />
-                  <Route
-                    path="/usercontribution"
-                    element={<UserContribution />}
-                  />
+                 
                   <Route path="/edit/:postId" element={<EditPost />} />
                   <Route
                     path="/editContributor/:postId"
