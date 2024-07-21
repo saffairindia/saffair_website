@@ -46,6 +46,7 @@ routes.put("/update/:userId", verifyToken, async (req, res, next) => {
           password: req.body.password,
           firstName: req.body.firstName,
           lastName: req.body.lastName,
+          
           number: req.body.number,
           dob: req.body.dob,
           gender: req.body.gender,
@@ -58,6 +59,7 @@ routes.put("/update/:userId", verifyToken, async (req, res, next) => {
           facebook: req.body.facebook,
           twitter: req.body.twitter,
           instagram: req.body.instagram,
+          whatsapp: req.body.whatsapp,
           linkedin: req.body.linkedin,
           education: req.body.education,
           work: req.body.workExperience,
@@ -274,8 +276,28 @@ routes.get("/:userId", async (req, res, next) => {
   }
 });
 
-//admin
+//verify
+routes.put("/verify/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const user = await Users.findById(userId);
 
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Toggle the isContributor value
+    user.isVerify = !user.isVerify;
+
+    // Save the updated user
+    await user.save();
+
+    res.json({ message: "isVerify value updated successfully", user });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+});
 //
 routes.put("/toggleContributor/:userId", async (req, res) => {
   try {

@@ -105,7 +105,7 @@ export default function DashSidebar() {
             </>
           )}
 
-          {currentUser.isContributor && (
+          {(currentUser.isContributor &&  !currentUser.isAdmin)&& (
             <>
               <Sidebar.Collapse icon={HiDocumentText} label="Readings">
                 <Link to="/createblog" onClick={scrollToTop}>
@@ -138,7 +138,7 @@ export default function DashSidebar() {
             </>
           )}
 
-          {currentUser.isContributor && (
+          {(currentUser.isContributor && !currentUser.isAdmin )&& (
             <Link to="/dashboard?tab=posts" onClick={scrollToTop}>
               <Sidebar.Item
                 active={tab === "posts"}

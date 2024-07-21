@@ -34,6 +34,7 @@ import ReviewPost from "./blog/pages/editpost/ReviewPost";
 import Calculator from "./calculator/Calculator";
 // import { Discuss } from "react-loader-spinner";
 import { useSelector } from "react-redux";
+import AdminLogin from "./login/AdminLogin";
 
 export const WeatherImageContext = createContext();
 
@@ -74,6 +75,7 @@ export default function Home() {
               <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/adminlogin" element={<AdminLogin />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/Showevent" element={<Showevent />} />
                 <Route path="/blog" element={<Blog />} />

@@ -48,13 +48,17 @@ const UsersSchema = new Schema(
       maxlength: 10,
       unique: true,
     },
+    isVerify: {
+      type: Boolean,
+      default: false,
+    },
     isAdmin: {
       type: Boolean,
       default: false,
     },
     isContributor: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     isReq: {
       type: Boolean,
