@@ -22,9 +22,7 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    console.log("Email:", formData.email);
-    console.log("Admin Email from Env:", process.env.REACT_APP_ADMIN_EMAIL);
-  
+   
     // Check if email does not match the admin email
     if (formData.email !== process.env.REACT_APP_ADMIN_EMAIL) {
       if (!formData.email || !formData.password) {

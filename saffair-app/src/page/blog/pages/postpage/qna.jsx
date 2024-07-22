@@ -5,14 +5,50 @@ import "./qna.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const Qna = ({ quiz , postId}) => {
+const Qna = ({ quiz, postId }) => {
     const { currentUser } = useSelector((state) => state.user);
     const [selectedOption, setSelectedOption] = useState("");
     const [showPopup, setShowPopup] = useState(false);
     const [showSubmit, setShowSubmit] = useState(true);
     const [correctAnswer, setCorrectAnswer] = useState("");
     const [selectedRating, setSelectedRating] = useState(null);
-    const { title} = useParams();
+    const { title } = useParams();
+    const [prizeeror, setPrizeError] = useState(null);
+    const [prizeeror1, setsucces] = useState(null);
+
+    const handlequizprize = async () => {
+        if (selectedRating !== null && selectedOption !== ""){
+            if (selectedOption === quiz[0].correctAnswer) {
+                const eventName = "quiz prize";
+                const coinsEarned = 5;
+                try {
+                    const response = await axios.put(
+                        `${process.env.REACT_APP_BACKEND_API}/api/user/add-event/${currentUser._id}`,
+                        { eventName, coinsEarned },
+                        {
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        }
+                    );
+    
+                    if (response.status === 200) {
+                        setPrizeError(null);
+                        setsucces("Congratulations! You have earned 5 coins");
+                    } else {
+                        setPrizeError(response.data.message);
+                    }
+                } catch (error) {
+                    setPrizeError(error.message);
+                }
+            } else {
+                setPrizeError("Better luck next time");
+            }
+        }else{
+            console.log("Please select the rating and answer the quiz");
+        }
+        
+    };
 
     const handleRatingClick = (rating) => {
         setSelectedRating(rating);
@@ -22,12 +58,20 @@ const Qna = ({ quiz , postId}) => {
         setSelectedOption(event.target.value);
         setShowPopup(false);
     };
+    const bothhandle = async () => {
+        try {
+            await handlequizprize();
+            await handleSubmit();
+        } catch (error) {
+            console.error("Error in bothhandle:", error);
+            // Handle the error appropriately
+        }
+    };
 
     const handleSubmit = async () => {
         if (selectedRating !== null && selectedOption !== "") {
             try {
                 await axios.post(`${process.env.REACT_APP_BACKEND_API}/api/rate`, { postId: postId, userId: currentUser._id, rating: selectedRating });
-                alert('Rating submitted successfully!');
                 setShowPopup(true);
                 if (selectedOption === quiz[0].correctAnswer) {
                     setCorrectAnswer("");
@@ -57,7 +101,7 @@ const Qna = ({ quiz , postId}) => {
         });
         return () => {
             ratingItems.forEach(item => {
-                item.removeEventListener('click', () => {});
+                item.removeEventListener('click', () => { });
             });
         };
     }, []);
@@ -155,7 +199,7 @@ const Qna = ({ quiz , postId}) => {
                     {currentUser ? (
                         showSubmit && (
                             <div className="submitbutton flex justify-center">
-                                <button className="submit" onClick={handleSubmit}>
+                                <button className="submit" onClick={bothhandle}>
                                     Submit
                                 </button>
                             </div>
@@ -182,6 +226,8 @@ const Qna = ({ quiz , postId}) => {
                             )}
                         </div>
                     )}
+                    {prizeeror && <div className="text-red-500">{prizeeror}</div>}
+                    {prizeeror1 && <div className="text-green-500">{prizeeror1}</div>}
                 </div>
             ))}
         </div>
@@ -189,11 +235,11 @@ const Qna = ({ quiz , postId}) => {
 };
 
 const svgClasses = [
-  'angry',
-  'sad',
-  'ok',
-  'good',
-  'happy'
+    'angry',
+    'sad',
+    'ok',
+    'good',
+    'happy'
 ];
 
 export default Qna;
