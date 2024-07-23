@@ -6,8 +6,27 @@ export default function CreateVoucherForm() {
   const [voucherName, setVoucherName] = useState("");
   const [voucherCost, setVoucherCost] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
+  const [code, setCode] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const shift = 3;
+const [info, setinfo] = useState("");
+  function encryptVoucherCode(code) {
+    return code
+      .split('')
+      .map(char => {
+        if (char.match(/[a-z]/i)) {
+          const code = char.charCodeAt(0);
+          if ((code >= 65) && (code <= 90)) {
+            return String.fromCharCode(((code - 65 + shift) % 26) + 65);
+          } else if ((code >= 97) && (code <= 122)) {
+            return String.fromCharCode(((code - 97 + shift) % 26) + 97);
+          }
+        }
+        return char;
+      })
+      .join('');
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,6 +36,8 @@ export default function CreateVoucherForm() {
       name: voucherName,
       cost: voucherCost,
       expiryDate: expiryDate,
+      code: encryptVoucherCode(code),
+      info:info,
     };
 
     try {
@@ -37,8 +58,9 @@ export default function CreateVoucherForm() {
         setVoucherName("");
         setVoucherCost("");
         setExpiryDate("");
+        setCode("");
         // Optionally, redirect to another page
-        navigate("/dashboard?tab=vouchers");
+        navigate("/dashboard?tab=voucherlist");
       }
     } catch (error) {
       console.error("Error creating voucher:", error);
@@ -46,11 +68,11 @@ export default function CreateVoucherForm() {
   };
 
   return (
-    
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Create Voucher</h2>
+
+    <div className="w-full p-4">
+      <h2 className="  text-xl font-bold mb-4">Create Voucher</h2>
       <form onSubmit={handleSubmit}>
-        <div className="mb-4">
+        <div className=" w-[300px] mb-4">
           <label htmlFor="voucherName" className="block text-sm font-medium text-gray-700">
             Voucher Name
           </label>
@@ -63,9 +85,9 @@ export default function CreateVoucherForm() {
             required
           />
         </div>
-        <div className="mb-4">
+        <div className=" w-[300px] mb-4">
           <label htmlFor="voucherCost" className="block text-sm font-medium text-gray-700">
-            Voucher Coins
+            Voucher Coins cost
           </label>
           <input
             type="number"
@@ -76,7 +98,7 @@ export default function CreateVoucherForm() {
             required
           />
         </div>
-        <div className="mb-4">
+        <div className="w-[300px] mb-4">
           <label htmlFor="expiryDate" className="block text-sm font-medium text-gray-700">
             Expiry Date
           </label>
@@ -89,10 +111,36 @@ export default function CreateVoucherForm() {
             required
           />
         </div>
+        <div className="w-[300px] mb-4">
+          <label htmlFor="expiryDate" className="block text-sm font-medium text-gray-700">
+            voucher info
+          </label>
+          <input
+            type="info"
+            id="info"
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            value={info}
+            onChange={(e) => setinfo(e.target.value)}
+            required
+          />
+        </div>
+        <div className="w-[300px] mb-4">
+          <label htmlFor="expiryDate" className="block text-sm font-medium text-gray-700">
+            Vocher code
+          </label>
+          <input
+            type="code"
+            id="code"
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            required
+          />
+        </div>
         <button
           type="submit"
           className="bg-blue-500 text-white p-2 rounded-md"
-         >
+        >
           Create Voucher
         </button>
       </form>

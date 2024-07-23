@@ -49,7 +49,7 @@ export default function Home() {
       <div className="foot-panel2">
         <div className="logo-foot">
           <a href="/">
-            <img className="imgfooter h-28 w-28 " src={img} />
+            <img className="imgfooter h-48 w-48 " src={img} />
 
           </a>
         </div>

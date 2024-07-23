@@ -65,6 +65,7 @@ const UsersSchema = new Schema(
       default: false,
     },
     coinHistory: [CoinHistorySchema],
+   
     bookmarks: [
       {
         type: Schema.Types.ObjectId,
@@ -112,56 +113,59 @@ const UsersSchema = new Schema(
     linkedin: {
       type: String,
     },
-    education: [{
-      instituteName: {
-        type: String,
+    education: [
+      {
+        instituteName: {
+          type: String,
+        },
+        degree: {
+          type: String,
+        },
+        fieldOfStudy: {
+          type: String,
+        },
+        grade: {
+          type: String,
+        },
+        startDate: {
+          type: String,
+        },
+        endDate: {
+          type: String,
+        },
       },
-      degree: {
-        type: String,
+    ],
+    work: [
+      {
+        position: {
+          type: String,
+        },
+        companyName: {
+          type: String,
+        },
+        fieldType: {
+          type: String,
+        },
+        employmentType: {
+          type: String,
+        },
+        companyCity: {
+          type: String,
+        },
+        companyState: {
+          type: String,
+        },
+        companyPincode: {
+          type: String,
+        },
+        companyJoiningDate: {
+          type: String,
+        },
+        companyEndDate: {
+          type: String,
+        },
       },
-      fieldOfStudy: {
-        type: String,
-      },
-      grade: {
-        type: String,
-      },
-      startDate: {
-        type: String,
-      },
-      endDate: {
-        type: String,
-      }
-    }],
-    work:[{
-      position: {
-        type: String,
-      },
-      companyName: {
-        type: String,
-      },
-      fieldType:{
-        type: String,
-      },
-      employmentType: {
-        type: String,
-      },
-      companyCity: {
-        type: String,
-      },
-      companyState: {
-        type: String,
-      },
-      companyPincode: {
-        type: String,
-      },
-      companyJoiningDate: {
-        type: String,
-      },
-      companyEndDate: {
-        type: String,
-      },
-    }]
-    
+    ],
   },
   { timestamps: true }
 );

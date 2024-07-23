@@ -5,7 +5,7 @@ import "./qna.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const Qna = ({ quiz, postId }) => {
+const Qna = ({ quiz, postId, quizprize}) => {
     const { currentUser } = useSelector((state) => state.user);
     const [selectedOption, setSelectedOption] = useState("");
     const [showPopup, setShowPopup] = useState(false);
@@ -20,7 +20,7 @@ const Qna = ({ quiz, postId }) => {
         if (selectedRating !== null && selectedOption !== ""){
             if (selectedOption === quiz[0].correctAnswer) {
                 const eventName = "quiz prize";
-                const coinsEarned = 5;
+                const coinsEarned = quizprize;
                 try {
                     const response = await axios.put(
                         `${process.env.REACT_APP_BACKEND_API}/api/user/add-event/${currentUser._id}`,
@@ -34,7 +34,7 @@ const Qna = ({ quiz, postId }) => {
     
                     if (response.status === 200) {
                         setPrizeError(null);
-                        setsucces("Congratulations! You have earned 5 coins");
+                        setsucces(`Congratulations! You have earned ${quizprize} coins`);
                     } else {
                         setPrizeError(response.data.message);
                     }

@@ -227,6 +227,7 @@ export default function DashSidebar() {
           )}
 
           {currentUser.isAdmin && (
+           <>
             <Link to="/dashboard?tab=createvoucherform" onClick={scrollToTop}>
               <Sidebar.Item
                 active={tab === "createvoucherform"}
@@ -236,6 +237,16 @@ export default function DashSidebar() {
                 Create Voucher
               </Sidebar.Item>
             </Link>
+            <Link to="/dashboard?tab=voucherlist" onClick={scrollToTop}>
+            <Sidebar.Item
+              active={tab === "createvoucherform"}
+              icon={HiShoppingBag}
+              as="div"
+            >
+              Available Voucher
+            </Sidebar.Item>
+          </Link>
+           </>
           )}
           {currentUser.isContributor && (
             <Link to="/dashboard?tab=voucherlist" onClick={scrollToTop}>
@@ -244,7 +255,7 @@ export default function DashSidebar() {
                 icon={HiGift}
                 as="div"
               >
-                My Voucher
+                Redeem Voucher
               </Sidebar.Item>
             </Link>
           )}

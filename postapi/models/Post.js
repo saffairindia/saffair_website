@@ -2,9 +2,13 @@ const mongoose = require("mongoose");
 const { type } = require("os");
 const { Schema, model } = mongoose;
 const ratingSchema = new Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users",
+    required: true,
+  },
   rating: { type: Number, required: true, min: 1, max: 5 },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
 });
 
 const PostSchema = new Schema(
@@ -19,10 +23,10 @@ const PostSchema = new Schema(
     title: {
       type: String,
       required: true,
-      unique:false
+      unique: false,
     },
-    eventtitle:{
-      type:String,
+    eventtitle: {
+      type: String,
     },
 
     image1: {
@@ -38,7 +42,7 @@ const PostSchema = new Schema(
     coinalloted: {
       type: Number,
     },
-    isReviewed:{
+    isReviewed: {
       type: Boolean,
       default: false,
     },
@@ -49,7 +53,10 @@ const PostSchema = new Schema(
       type: String,
     },
     ratings: [ratingSchema],
-
+    quizprize: {
+      type: Number,
+      default: 5,
+    },
     category: {
       type: [String],
       default: "uncategorized",
@@ -69,21 +76,24 @@ const PostSchema = new Schema(
       type: Boolean,
       default: false,
     },
-    bookmarks: [{
-      type:String
-    }],
-    quiz: [{
-      quizQuestion: {
+    bookmarks: [
+      {
         type: String,
       },
-      quizOptions: {
-        type: [String],
+    ],
+    quiz: [
+      {
+        quizQuestion: {
+          type: String,
+        },
+        quizOptions: {
+          type: [String],
+        },
+        correctAnswer: {
+          type: String,
+        },
       },
-      correctAnswer: {
-        type: String,
-      },
-    }]
-    
+    ],
   },
   { timestamps: true }
 );

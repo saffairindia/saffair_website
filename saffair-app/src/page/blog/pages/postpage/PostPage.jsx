@@ -176,7 +176,7 @@ export default function PostPage() {
                       ) : (
                         <div>
                           {postInfo.quiz && postInfo.quiz.length > 0 ? (
-                            <Qna quiz={postInfo.quiz} postId ={postInfo._id} />
+                            <Qna quiz={postInfo.quiz} postId ={postInfo._id} quizprize={postInfo.quizprize} />
                           ) : (
                             <></>
                           )}
@@ -186,7 +186,7 @@ export default function PostPage() {
                   ) : (
                     <div>
                       {postInfo.quiz && postInfo.quiz.length > 0 ? (
-                        <Qna quiz={postInfo.quiz} postId ={postInfo._id}/>
+                        <Qna quiz={postInfo.quiz} postId ={postInfo._id} quizprize={postInfo.quizprize}/>
                       ) : (
                         <></>
                       )}
