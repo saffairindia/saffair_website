@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import './Reward.css';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, faDeleteLeft, faDumpster, faDumpsterFire, faRemove, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Table } from 'flowbite-react';
 
 const VoucherList = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const VoucherList = () => {
   const [coin, setCoin] = useState(0);
   const shift = 3;
   const [redeemedVouchers, setRedeemedVouchers] = useState([]);
-
+  const [allredeemedVouchers, setAllredeemedVouchers] = useState([]);
 
   useEffect(() => {
     fetchVouchers();
@@ -63,8 +64,10 @@ const VoucherList = () => {
       } else {
         const unredeemedVouchers = data.filter(voucher => !voucher.isRedeemed);
         const userredeemedVouchers = data.filter(voucher => voucher.isRedeemed && voucher.userId === currentUser._id);
+        const allredeemedVouchers = data.filter(voucher => voucher.isRedeemed);
         setVouchers(unredeemedVouchers);
         setRedeemedVouchers(userredeemedVouchers);
+        setAllredeemedVouchers(allredeemedVouchers)
       }
     } catch (error) {
       console.error('Error fetching vouchers:', error);
@@ -113,6 +116,24 @@ const VoucherList = () => {
     });
   };
 
+  const handledelete = async (id) => {
+    try {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/api/vouchers/delete/${id}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.error(data.message);
+      } else {
+        alert('Voucher deleted successfully!');
+        fetchVouchers();
+      }
+    } catch (error) {
+      console.error('Error deleting voucher:', error);
+      alert('An error occurred while deleting the voucher.');
+    }
+  }
+
   return (
     <div className="reward-container">
 
@@ -128,48 +149,122 @@ const VoucherList = () => {
                 <p>Expiry Date: {new Date(voucher.expiryDate).toLocaleDateString()}</p>
                 <p>{voucher.info}</p>
               </div>
-              <button
-                onClick={() => handleRedeem(voucher._id, voucher.cost)}
-                className="redeem-button"
-                disabled={currentUser.totalCoins < voucher.cost}
-              >
-                {currentUser.totalCoins < voucher.cost ? 'Insufficient Coins' : 'Redeem'}
-              </button>
+              <div className='flex flex-row justify-between'>
+                <button
+                  onClick={() => handleRedeem(voucher._id, voucher.cost)}
+                  className="redeem-button"
+                  disabled={currentUser.totalCoins < voucher.cost}
+                >
+                  {currentUser.totalCoins < voucher.cost ? 'Insufficient Coins' : 'Redeem'}
+                </button>
+                {currentUser.isAdmin && (
+                  <button
+                    onClick={() => handledelete(voucher._id)}
+                    className="redeem-button bg-red-600"
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                )}
+              </div>
             </div>
           ))}
         </div>
       </>
-      <div>
-        <div className="title mt-4"> Your Redeemed Voucher</div>
-        <div className='reward-cards'>
-          {redeemedVouchers.map((voucher) => (
-            <div key={voucher._id} className="reward-card">
-              <div className="voucher-info">
-                <h2>{voucher.name}</h2>
-                <p>Coins: {voucher.cost}</p>
-                <p>Expiry Date: {new Date(voucher.expiryDate).toLocaleDateString()}</p>
-                <p>{voucher.info}</p>
-                <div className="flex justify-evenly px-2 py-2 items-center gap-2 rounded-lg border-2 border-dotted border-blue-500">
-                  <p className="text-lg">{decryptVoucherCode(voucher.code)}</p>
-                  <button
-                    className="text-blue-500 hover:text-blue-700 focus:outline-none transform transition-transform duration-200 hover:scale-105"
-                    onClick={() => {
-                      copyToClipboard(decryptVoucherCode(voucher.code));
-                      // Add your animation trigger here if needed
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faCopy} />
-                  </button>
-                </div>
 
-              </div>
+      {currentUser.isAdmin && (
+        <>
+          <div className='title mt-4 '>
+            Redeemed Voucher History
+          </div>
+          <div className="mt-2 table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500">
+            <Table hoverable>
+              {/* Table headers */}
+              <Table.Head>
+                <Table.HeadCell>User</Table.HeadCell>
+                <Table.HeadCell>Voucher name</Table.HeadCell>
+                <Table.HeadCell>Voucher Cost</Table.HeadCell>
+                <Table.HeadCell>Voucher info</Table.HeadCell>
+                {/* <Table.HeadCell>BookMark</Table.HeadCell> */}
+              </Table.Head>
+              {/* Table body */}
+              {allredeemedVouchers.map((voucher) => (
+                <Table.Body key={voucher._id} className="divide-y">
+                  <Table.Row className="bg-white">
+                   
+
+                    <Table.Cell>
+
+                      <span>{voucher.userId}</span>
+                    </Table.Cell>
+
+                    <Table.Cell>
+
+                      <span>{voucher.name}</span>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <span>{voucher.cost}</span>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <span>{voucher.info}</span>
+                    </Table.Cell>
+
+
+                  </Table.Row>
+                </Table.Body>
+              ))}
+            </Table>
+
+          </div>
+          <div>
+            <div className='reward-cards'>
 
             </div>
-          ))}
-        </div>
 
-      </div>
+          </div>
+        </>
+      )}
+
+      {!currentUser.isAdmin && (
+        <>
+          <div>
+            <div className='title mt-4 '>
+              Your Redeemed Voucher
+            </div>
+            <div className='reward-cards'>
+              {redeemedVouchers.map((voucher) => (
+                <div key={voucher._id} className="reward-card">
+                  <div className="voucher-info">
+                    <h2>{voucher.name}</h2>
+                    <p>Coins: {voucher.cost}</p>
+                    <p>Expiry Date: {new Date(voucher.expiryDate).toLocaleDateString()}</p>
+                    <p>{voucher.info}</p>
+                    <div className="flex justify-evenly px-2 py-2 items-center gap-2 rounded-lg border-2 border-dotted border-blue-500">
+                      <p className="text-lg">{decryptVoucherCode(voucher.code)}</p>
+                      <button
+                        className="text-blue-500 hover:text-blue-700 focus:outline-none transform transition-transform duration-200 hover:scale-105"
+                        onClick={() => {
+                          copyToClipboard(decryptVoucherCode(voucher.code));
+                          // Add your animation trigger here if needed
+                        }}
+                      >
+                        <FontAwesomeIcon icon={faCopy} />
+                      </button>
+                    </div>
+
+                  </div>
+
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+
+
+
     </div>
+
+
   );
 };
 

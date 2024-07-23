@@ -119,7 +119,9 @@ export default function DashProfile() {
       }
     );
   };
-
+  const ok = () => {
+    console.log(formData)
+  }
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
@@ -233,6 +235,9 @@ export default function DashProfile() {
     <div className="max-w-[624px] mx-auto p-3 w-full">
       <h1 className="my-7 text-center font-semibold text-3xl">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <button onClick={ok}>
+          ok
+        </button>
         <input
           type="file"
           accept="image/*"
@@ -350,28 +355,46 @@ export default function DashProfile() {
           type="number"
           defaultValue={currentUser.number}
           id="number"
-          max={10}
           placeholder="phone number"
           onChange={handleChange}
         />
         <label className="font-semibold">Location</label>
         <div className="flex flex-col md:flex-row justify-start gap-4">
-          <div>
-            <label>Pincode</label>
-            <div>
-              <Pincode
-                placeholder="Pincode"
-                id="pincode"
-                getData={handlePincodeChange}
-                invalidError="Please check pincode"
-                lengthError="Check length"
-                showArea={false}
-                showState={false}
-                showDistrict={false}
-                showCity={false}
-                defaultValue={currentUser.pincode}
-                value={formData.pincode}
-                className="
+          {currentUser.pincode ? (
+            <>
+              <div>
+                <div>
+                  <label>Pincode</label>
+                  <TextInput
+                    type="text"
+                    placeholder="City"
+                    id="city"
+                    onChange={handleChange}
+                    value={formData.pincode}
+                    defaultValue={currentUser.pincode}
+                    readOnly
+                  />
+                </div>
+              </div>
+
+            </>
+          ) : (
+            <>
+              <div>
+                <label>Pincode</label>
+                <div>
+                  <Pincode
+                    placeholder="Pincode"
+                    id="pincode"
+                    getData={handlePincodeChange}
+                    invalidError="Please check pincode"
+                    lengthError="Check length"
+                    showArea={false}
+                    showState={false}
+                    showDistrict={false}
+                    showCity={false}
+                    value={formData.pincode}
+                    className="
                     block
                     w-full
                     rounded-md
@@ -379,9 +402,12 @@ export default function DashProfile() {
                     py-2
                     border border-gray-300
                    shadow-sm"
-              />
-            </div>
-          </div>
+                  />
+                </div>
+              </div>
+
+            </>
+          )}
           <div>
             <label>City</label>
             <TextInput

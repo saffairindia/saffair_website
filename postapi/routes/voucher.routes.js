@@ -28,6 +28,24 @@ router.post('/create', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+//delet voucher
+router.delete('/delete/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const voucher = await Voucher.findByIdAndDelete(id);
+
+    if (!voucher) {
+      return res.status(404).json({ message: 'Voucher not found' });
+    }
+
+    res.status(200).json({ message: 'Voucher deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting voucher:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 
 // Fetch vouchers endpoint
 router.get('/list', async (req, res) => {
@@ -39,6 +57,7 @@ router.get('/list', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
 router.post('/redeem/:id', async (req, res) => {
   try {
     const { userId, voucherCost } = req.body;
@@ -109,5 +128,6 @@ function decryptVoucherCode(code) {
     })
     .join('');
 }
+
 
 module.exports = router;
