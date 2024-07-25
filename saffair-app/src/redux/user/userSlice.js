@@ -19,6 +19,13 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = null;
     },
+    setOtpStateId: (state, action) => {
+      if (state.currentUser) {
+        state.currentUser.stateId = action.payload;
+        state.loading = false;
+        state.error = null;
+      }
+    },
     signInFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
@@ -61,6 +68,7 @@ export const {
   signInStart,
   signInSuccess,
   signInFailure,
+  setOtpStateId,  
   updateStart,
   updateSuccess,
   updateFailure,

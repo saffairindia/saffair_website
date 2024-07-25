@@ -4,15 +4,20 @@ const Users = require("../models/Users");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { errorHandler } = require("./../utils/error");
-
 router.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    // Check if the user already exists
-    const existingUser = await Users.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: "User already exists" });
+    // Check if the user already exists by email
+    const existingEmail = await Users.findOne({ email });
+    if (existingEmail) {
+      return res.status(400).json({ message: "Email already registered" });
+    }
+
+    // Check if the username already exists
+    const existingUsername = await Users.findOne({ username });
+    if (existingUsername) {
+      return res.status(400).json({ message: "Username already taken" });
     }
 
     // Hash the password
@@ -27,12 +32,14 @@ router.post("/register", async (req, res) => {
 
     // Save the user to the database
     const user = await newUser.save();
-    res.status(200).json(user);
+    res.status(201).json(user);
   } catch (error) {
     console.error("Error during user registration:", error);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: error.message });
   }
 });
+
+module.exports = router;
 
 router.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
