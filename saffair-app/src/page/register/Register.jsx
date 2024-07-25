@@ -29,6 +29,9 @@ export default function Register() {
         return setErrorMessage(data.message);
       }
       setLoading(false);
+      if(!res.ok){ 
+        setErrorMessage(data.message);
+      }
       if (res.ok) {
         navigate("/login");
       }

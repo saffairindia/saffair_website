@@ -35,6 +35,7 @@ import Calculator from "./calculator/Calculator";
 // import { Discuss } from "react-loader-spinner";
 import { useSelector } from "react-redux";
 import AdminLogin from "./login/AdminLogin";
+import NotFound from "./404";
 
 export const WeatherImageContext = createContext();
 
@@ -117,6 +118,8 @@ export default function Home() {
                     element={<ContributorPost />}
                   />
                 </Route>
+                <Route path="*" element={<NotFound />} />
+
               </Routes>
 
               <Footer />

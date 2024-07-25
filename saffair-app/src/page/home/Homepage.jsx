@@ -18,8 +18,12 @@ export default function Homepage() {
         }
         return response.json();
       })
-      .then((posts) => {
-        setPosts(posts);
+      .then((fetchedPosts) => {
+        const newsPosts = fetchedPosts.filter(
+          (post) =>  post.publish === true
+        );
+
+        setPosts(newsPosts);
       })
       .catch((error) => {
         console.error("Error fetching posts:", error);

@@ -46,7 +46,7 @@ const UsersSchema = new Schema(
     number: {
       type: String,
       maxlength: 10,
-      unique: true,
+      
     },
     isVerify: {
       type: Boolean,
