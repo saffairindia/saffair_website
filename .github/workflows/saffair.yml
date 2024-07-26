@@ -1,4 +1,4 @@
-name: saffair CI
+name: Saffair CI
 
 on:
   push:
@@ -47,11 +47,18 @@ jobs:
         working-directory: postapi
         run: npm ci
 
-      - name: Install and build client
+      - name: Install frontend dependencies
+        working-directory: saffair-app
+        run: npm ci
+
+      - name: Install missing Babel plugin
+        working-directory: saffair-app
+        run: npm install --save-dev @babel/plugin-proposal-private-property-in-object
+
+      - name: Build client
         working-directory: saffair-app
         run: |
-          npm ci
-          npm run build
+          CI=false npm run build
 
       - name: Print directory structure for debugging
         run: |

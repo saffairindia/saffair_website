@@ -22,6 +22,18 @@ import ThemeToggle from './themetoggle'
 export default function Navbar({ _id }) {
   const { currentUser } = useSelector((state) => state.user)
   const dispatch = useDispatch()
+  const [selectedLanguage, setSelectedLanguage] = useState('English');
+  const languages = [
+    { code: 'en', label: 'English' },
+    { code: 'hi', label: 'हिन्दी' },
+    { code: 'gu', label: 'ગુજરાતી' },
+  ];
+
+  const handleLanguageChange = (event) => {
+    setSelectedLanguage(event.target.value);
+    console.log(`Selected Language: ${event.target.value}`);
+    // Add logic here to change the language of your application
+  };
 
   const theme = useSelector((state) => state.theme.mode);
 
@@ -248,6 +260,25 @@ export default function Navbar({ _id }) {
         {/* <div className={theme === 'light' ? 'light-mode' : 'dark-mode'}>
           <ThemeToggle />
         </div> */}
+        <div
+          className=" hidden md:inline flex items-center p-0.5 rounded"
+          style={{ border: '2px solid #2196ba' }}
+
+        >
+          <select
+            id="language-selector"
+            value={selectedLanguage}
+            onChange={handleLanguageChange}
+            className="block w-full p-2 appearance-none bg-transparent	 border-none focus:outline-none"
+          >
+            {languages.map((language) => (
+              <option key={language.code} value={language.label}>
+                {language.label}
+              </option>
+            ))}
+          </select>
+        </div>
+     
         {currentUser ? (
           <Dropdown
             arrowIcon={false}
