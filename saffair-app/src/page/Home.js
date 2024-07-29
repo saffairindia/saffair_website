@@ -83,7 +83,7 @@ export default function Home() {
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/weather" element={<Weather />} />
                 <Route path="/privacypolicy" element={<PrivacypolicyPage />} />
-                <Route path="/readings" element={<Readings />} />
+                <Route path="/knowledge-centre" element={<Readings />} />
                 <Route path="/aboutus" element={<AboutUs />} />
                 <Route path="/contactus" element={<ContactUs />} />
                 {/* <div style={{ minHeight: "800px" }}> */}

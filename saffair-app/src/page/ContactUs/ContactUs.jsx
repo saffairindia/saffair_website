@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Spinner } from "flowbite-react";
 import { useSelector } from "react-redux";
-import { faChevronDown,faEnvelope,faBrush, faGear, faSignal, faHandshake } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faEnvelope, faBrush, faGear, faSignal, faHandshake } from "@fortawesome/free-solid-svg-icons";
 import emailjs from "@emailjs/browser";
 import "./contactus.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -84,7 +84,9 @@ const ContactUs = () => {
               <p className="contact-text">
                 We are here to help you, whatever kind of help you need
               </p>
-              <p className="contact-email">breath@saffair.in</p>
+              <a href="mailto:breathe@saffair.in">
+                <p className="contact-email">breathe@saffair.in</p>
+              </a>
             </div>
             <div className="contact-info-item">
               <div className="horizontal-line"></div>
@@ -185,65 +187,65 @@ const ContactUs = () => {
         )}
       </div>
       <div className="join-us-section">
-      <h1>Join Our Company</h1>
-      <div className="Role">
-        <div className="Role-member" id="r1">
-          <div className="logo">
-            <span className="material-symbols-outlined">
-            <FontAwesomeIcon icon={faGear} />
-              
-            </span>
+        <h1>Join Our Company</h1>
+        <div className="Role">
+          <div className="Role-member" id="r1">
+            <div className="logo">
+              <span className="material-symbols-outlined">
+                <FontAwesomeIcon icon={faGear} />
+
+              </span>
+            </div>
+            <h3>Engineer</h3>
+            <p>
+              <a href="mailto:join@saffair.in">
+                <FontAwesomeIcon icon={faEnvelope} /> join@saffair.in
+              </a>
+            </p>
           </div>
-          <h3>Engineer</h3>
-          <p>
-            <a href="mailto:join@saffair.in">
-              <FontAwesomeIcon icon={faEnvelope} /> join@saffair.in
-            </a>
-          </p>
-        </div>
-        <div className="Role-member" id="r2">
-          <div className="logo">
-          <span className="material-symbols-outlined">
-          <FontAwesomeIcon icon={faBrush} />
-              
-            </span>
+          <div className="Role-member" id="r2">
+            <div className="logo">
+              <span className="material-symbols-outlined">
+                <FontAwesomeIcon icon={faBrush} />
+
+              </span>
+            </div>
+            <h3>Designer</h3>
+            <p>
+              <a href="mailto:join@saffair.in">
+                <FontAwesomeIcon icon={faEnvelope} /> join@saffair.in
+              </a>
+            </p>
           </div>
-          <h3>Designer</h3>
-          <p>
-            <a href="mailto:join@saffair.in">
-              <FontAwesomeIcon icon={faEnvelope} /> join@saffair.in
-            </a>
-          </p>
-        </div>
-        <div className="Role-member" id="r3">
-          <div className="logo">
-          <span className="material-symbols-outlined">
-          <FontAwesomeIcon icon={faSignal} />
-              
-            </span>
+          <div className="Role-member" id="r3">
+            <div className="logo">
+              <span className="material-symbols-outlined">
+                <FontAwesomeIcon icon={faSignal} />
+
+              </span>
+            </div>
+            <h3>Marketing</h3>
+            <p>
+              <a href="mailto:marketing@saffair.in">
+                <FontAwesomeIcon icon={faEnvelope} /> marketing@saffair.in
+              </a>
+            </p>
           </div>
-          <h3>Marketing</h3>
-          <p>
-            <a href="mailto:marketing@saffair.in">
-              <FontAwesomeIcon icon={faEnvelope} /> marketing@saffair.in
-            </a>
-          </p>
-        </div>
-        <div className="Role-member" id="r4">
-          <div className="logo">
-          <span className="material-symbols-outlined">
-          <FontAwesomeIcon icon={faHandshake} />
-              
-            </span>          </div>
-          <h3>Dealership</h3>
-          <p>
-            <a href="mailto:Dealers@saffair.in">
-              <FontAwesomeIcon icon={faEnvelope} /> Dealers@saffair.in
-            </a>
-          </p>
+          <div className="Role-member" id="r4">
+            <div className="logo">
+              <span className="material-symbols-outlined">
+                <FontAwesomeIcon icon={faHandshake} />
+
+              </span>          </div>
+            <h3>Dealership</h3>
+            <p>
+              <a href="mailto:Dealers@saffair.in">
+                <FontAwesomeIcon icon={faEnvelope} /> Dealers@saffair.in
+              </a>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
       <div className="faq-section">
         <div className="wrapper">
           <h1>Frequently Asked Questions</h1>

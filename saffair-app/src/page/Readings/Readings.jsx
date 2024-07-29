@@ -79,7 +79,7 @@ export default function Readings() {
               </Link>
               <p className="text-gray-500">&gt;</p>
               <Link to={"/readings"} className="link">
-                <Breadcrumb.Item className="p-2">Readings</Breadcrumb.Item>
+                <Breadcrumb.Item className="p-2">Kowledge centre</Breadcrumb.Item>
               </Link>
             </Breadcrumb>
             <div className="blogtitle">

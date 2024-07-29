@@ -24,6 +24,7 @@ export default function PostPage() {
   const { title } = useParams();
 
   useEffect(() => {
+    // Fetch posts from the server
     fetch(`${process.env.REACT_APP_BACKEND_API}/api/post`)
       .then((response) => {
         if (!response.ok) {
@@ -31,8 +32,12 @@ export default function PostPage() {
         }
         return response.json();
       })
-      .then((posts) => {
-        setPosts(posts);
+      .then((fetchedPosts) => {
+        const newsPosts = fetchedPosts.filter(
+          (post) =>  post.publish === true
+        );
+
+        setPosts(newsPosts);
       })
       .catch((error) => {
         console.error("Error fetching posts:", error);
@@ -81,7 +86,10 @@ export default function PostPage() {
 
   return (
     <>
-      <div style={{ Height: "800px" }}>
+      <div style={{ Height: "800px" }}
+      
+      >
+      
         {loading ? (
           <div className="spinnerr" style={{ height: "90vh" }}>
             <Spinner size="xl" />
@@ -233,7 +241,7 @@ export default function PostPage() {
                   marginBottom: "20px",
                 }}
               >
-                <h2 className="text-2xl font-bold">Readings</h2>
+                <h2 className="text-2xl font-bold">konwledge Centre</h2>
                 <hr
                   style={{
                     width: "70%",

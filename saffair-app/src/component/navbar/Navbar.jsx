@@ -421,11 +421,7 @@ export default function Navbar({ _id }) {
                 Calculator
               </a>
             </Link>
-            <Link to="/blog">
-              <a className="dropdown-item" href="/#" onClick={toggleDropdown}>
-                Blogs
-              </a>
-            </Link>
+            
             <Link to="/news">
               <a className="dropdown-item" href="/#" onClick={toggleDropdown}>
                 Knowledge Centre
