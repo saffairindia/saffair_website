@@ -323,7 +323,6 @@ export default function WeatherUpdate() {
           src={getBackgroundImage()}
           alt="cloudy"
           className="background-image "
-          style={{ filter: "blur(2px)" }} // Apply blur effect here
 
         />
         {loading ? (
@@ -423,12 +422,14 @@ export default function WeatherUpdate() {
 
 
                             <div className="n1data txt">
+                              <span>
+                                <p className="inline n1name whitespace-nowrap">
+                                  PM 2.5
+                                </p>
+                              </span>
 
-                              <p className="n1name">
-                                PM 2.5
-                              </p>
-                              <p className="n3value ">
-                                {pm2_5} <span id="units">ug/m³</span>
+                              <p className="n3value whitespace-nowrap">
+                                {pm2_5} <span id="units">µg/m³</span>
                               </p>
                             </div>
                           </div>
@@ -438,12 +439,14 @@ export default function WeatherUpdate() {
 
 
                             <div className="n1data txt">
+                              <span>
+                                <p className="n1name whitespace-nowrap">
+                                  PM 10
+                                </p>
+                              </span>
 
-                              <p className="n1name">
-                                PM 10
-                              </p>
-                              <p className="n3value ">
-                                {pm10} <span id="units">ug/m³</span>
+                              <p className="n3value whitespace-nowrap ">
+                                {pm10} <span id="units">µg/m³</span>
                               </p>
                             </div>
                           </div>
@@ -457,8 +460,8 @@ export default function WeatherUpdate() {
                               <p className="n1name">
                                 CO
                               </p>
-                              <p className="n3value">
-                                {co} <span id="units">ug/m³</span>
+                              <p className="n3value whitespace-nowrap">
+                                {co} <span id="units">µg/m³</span>
                               </p>
                             </div>
                           </div>
@@ -472,8 +475,8 @@ export default function WeatherUpdate() {
                               <p className="n1name">
                                 SO<sub>2</sub>
                               </p>
-                              <p className="n3value ">
-                                {so2} <span id="units">ug/m³</span>
+                              <p className="n3value whitespace-nowrap ">
+                                {so2} <span id="units">µg/m³</span>
                               </p>
                             </div>
                           </div>

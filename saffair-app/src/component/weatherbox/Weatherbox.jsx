@@ -8,8 +8,12 @@ import { cityContext } from "../../page/Home";
 import { Button, Spinner } from "flowbite-react";
 
 export default function Weatherbox() {
-  const { airData, setAirData } = useContext(WeatherImageContext);
-  const { location } = useContext(cityContext);
+  const [airData, setAirData] = useState({
+    imageUrl: "",
+    aqiValue: "",
+    airQuality: "",
+    city: ""
+  });  const { location } = useContext(cityContext);
   const [loading, setLoading] = useState(true); // Initial loading state set to true
   const [weather, setWeather] = useState({
     loading: true, // Initial loading state for weather data

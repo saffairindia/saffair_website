@@ -53,7 +53,7 @@ export default function Post({
   const prevtitle = truncateContent(title, 45);
   const formattedRating = Number.isInteger(averageRating)
   ? averageRating.toFixed(0)  // No decimal places if it's an integer
-  : averageRating.toFixed(2); // Two decimal places if it's not an integer
+  : averageRating.toFixed(1); // Two decimal places if it's not an integer
 
   return (
     <>
@@ -74,7 +74,7 @@ export default function Post({
           <div className="card__body flex flex-col justify-evenly self-start px-4">
             <div className="flex flex-row w-full justify-between items-center pr-6 ">
               <span className="tag text-blue-900 text-[14px]">{readingType}</span>
-              {!averageRating ? (<div className="text-gray-500 text-sm font-medium">No ratings</div>): (
+              {!averageRating ? (<></>): (
                 <>
                 <span className="self-end">
                 <span >{formattedRating}/5 </span>

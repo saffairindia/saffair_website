@@ -39,32 +39,36 @@ router.post("/register", async (req, res) => {
   }
 });
 
-module.exports = router;
-
 router.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
-    if (!email || !password || email === "" || password === "") {
-      return next(errorHandler(400, "All fields are required"));
+    // Check if both email and password are provided
+    if (!email || !password || email.trim() === "" || password.trim() === "") {
+      throw errorHandler(400, "All fields are required");
     }
 
+    // Find user by email
     const validUser = await Users.findOne({ email });
     if (!validUser) {
-      return next(errorHandler(404, "User not found"));
+      throw errorHandler(404, "User not found");
     }
 
+    // Compare the provided password with the stored hashed password
     const validPassword = await bcrypt.compare(password, validUser.password);
     if (!validPassword) {
-      return next(errorHandler(400, "Invalid password"));
+      throw errorHandler(400, "Invalid password");
     }
 
+    // Generate JWT token
     const token = jwt.sign(
       { id: validUser._id, isAdmin: validUser.isAdmin },
-      process.env.JWT_SECRET
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' } // Add an expiration time for security
     );
 
-    const { password: pass, ...rest } = validUser._doc;
+    // Exclude the password from the user data
+    const { password: pass, ...userData } = validUser._doc;
 
     // Set the JWT token as a cookie in the response
     res.cookie("access_token", token, {
@@ -72,11 +76,12 @@ router.post("/login", async (req, res, next) => {
     });
 
     // Send the user data in the response
-    res.status(200).json(rest);
+    res.status(200).json(userData);
   } catch (error) {
     next(error);
   }
 });
+
 
 router.post("/google", async (req, res, next) => {
   const { email, name, googlePhotoUrl } = req.body;

@@ -1,0 +1,25 @@
+version: '3'
+services:
+  saffair-app:
+    build:
+      context: ./saffair-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./saffair-app:/app
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - ./saffair-app/.env
+
+  postapi:
+    build:
+      context: ./postapi
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./postapi:/app
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - ./postapi/.env

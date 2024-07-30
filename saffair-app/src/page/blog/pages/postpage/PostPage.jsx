@@ -14,7 +14,7 @@ import BookMark from "../../../../component/bookmark/BookMark";
 import Qna from "./qna";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from "react-redux";
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { faLink, faShareSquare } from '@fortawesome/free-solid-svg-icons';
 export default function PostPage() {
   const { currentUser } = useSelector((state) => state.user);
   const [postInfo, setPostInfo] = useState(null);
@@ -84,6 +84,22 @@ export default function PostPage() {
     })
   );
 
+  const handleShareClick = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Check this out!',
+        url: window.location.href
+      }).then(() => {
+        console.log('Thanks for sharing!');
+      }).catch((error) => {
+        console.log('Share failed:', error.message);
+      });
+    } else {
+      // Fallback for browsers that don't support the Web Share API
+      alert('Share functionality is not supported in this browser.');
+    }
+  };
+
   return (
     <>
       <div style={{ Height: "800px" }}
@@ -128,16 +144,18 @@ export default function PostPage() {
                     ))}
                   </div>
 
+                  <div className="flex flex-row gap-2 items-center">
                   <div
-                    style={{
-                      top: "2px",
-                      right: "8px",
-                      zIndex: "10",
-                      fontSize: "35px",
-                    }}
+                   
                     className="self-align"
                   >
                     <BookMark post={postInfo} />
+                  </div>
+                  <div>
+                  <FontAwesomeIcon icon={faShareSquare} className="w-8 h-8 text-black"         onClick={handleShareClick} 
+                  />
+
+                  </div>
                   </div>
                 </div>
                 <div className="otherhalf my-2  flex flex-col">
@@ -167,7 +185,7 @@ export default function PostPage() {
                   <div className="flex flex-warp mb-4 gap-4 items-start">
                     {postInfo.link1 && (
                       <a target="_blank" rel="noopener noreferrer" href={postInfo.link1} className="bg-blue-100 text-white font-bold py-2 px-4 rounded-full w-[100px] max-w-xs flex flex-row justify-center">
-                        <FontAwesomeIcon icon={faLink} className="w-6 h-6 text-blue-500" />
+
                       </a>
                     )}
                     {postInfo.link2 && (

@@ -206,6 +206,14 @@ export default function Home() {
               <a href="mailto:breathe@saffair.in">
                 <li>breathe@saffair.in</li>
               </a>
+              <div className="flex  flex-col gap-0">
+                <Link to="/terms">
+                  <a href="/#">Terms & Conditions</a>
+                </Link>
+                <Link to="/privacy">
+                  <a href="/#">Privacy Policy</a>
+                </Link>
+              </div>
             </ul>
             <ul className="social">
               <p className="text-align">Socials</p>
@@ -249,11 +257,7 @@ export default function Home() {
         </div>
       </div>
       <div className="foot-panel4">
-        <div className="pages">
-          <a href="/#">Conditions of Use</a>
-          <a href="/#">Privacy Notice</a>
-          <a href="/#">Your Ads Privacy Choices</a>
-        </div>
+
         <div className="copyright">
           <Link to="https://agevole.in/" target="_blank">  ©2024 Saffair All rights reserved | Design and Developed by Agevole Innovation </Link>
         </div>

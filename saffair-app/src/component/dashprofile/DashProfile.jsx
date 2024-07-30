@@ -42,7 +42,7 @@ import { Link } from "react-router-dom";
 import Pincode from "react-pincode";
 import Education from "../contributors/education";
 import WorkExperience from "../contributors/WorkExperience";
-import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash, faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 export default function DashProfile() {
   // const [biofield, setBiofield] = useState("");
@@ -86,9 +86,16 @@ export default function DashProfile() {
     }
   }, [imageFile]);
 
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+ 
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
   const uploadImage = async () => {
     setImageFileUploading(true);
     setImageFileUploadError(null);
+    
     const storage = getStorage(app);
     const fileName = new Date().getTime() + imageFile.name;
     const storageRef = ref(storage, fileName);
@@ -235,9 +242,7 @@ export default function DashProfile() {
     <div className="max-w-[624px] mx-auto p-3 w-full">
       <h1 className="my-7 text-center font-semibold text-3xl">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <button onClick={ok}>
-          ok
-        </button>
+     
         <input
           type="file"
           accept="image/*"
@@ -345,12 +350,38 @@ export default function DashProfile() {
           defaultValue={currentUser.email}
           onChange={handleChange}
         />
-        <TextInput
-          type="password"
-          id="password"
-          placeholder="password"
-          onChange={handleChange}
-        />
+         <div style={{ position: 'relative', display: 'inline-block' }}>
+      <TextInput
+        type={isPasswordVisible ? 'text' : 'password'}
+        id="password"
+        placeholder="Password"
+        value={currentUser.password}
+        onChange={handleChange}
+        style={{ paddingRight: '30px' }} // Space for the icon
+      />
+      <button
+        type="button"
+        onClick={togglePasswordVisibility}
+        style={{
+          position: 'absolute',
+          right: '5px',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          border: 'none',
+          background: 'transparent',
+          cursor: 'pointer',
+          fontSize: '16px',
+        }}
+      >
+        {isPasswordVisible ?  <FontAwesomeIcon
+                  icon={faEye}
+                  className="text-2xl mt-2"
+                /> :  <FontAwesomeIcon
+                icon={faEyeSlash}
+                className="text-2xl mt-2"
+              />}
+      </button>
+    </div>
         <TextInput
           type="number"
           defaultValue={currentUser.number}

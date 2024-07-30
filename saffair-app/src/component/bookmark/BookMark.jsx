@@ -83,12 +83,12 @@ const BookMark = ({ post }) => {
         (isBookmarked ? (
           <>
             <button onClick={handleUnbookmark} >
-            <FaBookmark style={{color:'black'}} />
+            <FaBookmark style={{color:'black'}} className="w-8 h-8"  />
             </button>
           </>
         ) : (
           <button onClick={handleBookmark}>
-         <FaRegBookmark  style={{color:'black'}}/>
+         <FaRegBookmark  style={{color:'black'}} className="w-8 h-8"  />
           </button>
         ))}
     </div>

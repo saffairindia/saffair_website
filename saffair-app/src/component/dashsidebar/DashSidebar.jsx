@@ -25,7 +25,7 @@ export default function DashSidebar() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   const [tab, setTab] = useState("");
-  
+
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const tabFromUrl = urlParams.get("tab");
@@ -90,22 +90,22 @@ export default function DashSidebar() {
               <Sidebar.Collapse icon={HiDocumentText} label="Readings">
                 <Link to="/createblog" onClick={scrollToTop}>
                   <Sidebar.Item icon={FaClipboardList}>
-                    Create Readings
+                    Let's Contribute
                   </Sidebar.Item>
                 </Link>
                 <Link to="/dashboard?tab=posts" onClick={scrollToTop}>
                   <Sidebar.Item action={tab === "posts"} icon={HiDocumentText}>
-                  My Contributions                  </Sidebar.Item>
+                    My Contributions                  </Sidebar.Item>
                 </Link>
                 <Link to="/dashboard?tab=allposts" onClick={scrollToTop}>
                   <Sidebar.Item action={tab === "allposts"} icon={HiDocumentText}>
-                  All Contributions                  </Sidebar.Item>
+                    All Contributions                  </Sidebar.Item>
                 </Link>
               </Sidebar.Collapse>
             </>
           )}
 
-          {(currentUser.isContributor &&  !currentUser.isAdmin)&& (
+          {(currentUser.isContributor && !currentUser.isAdmin) && (
             <>
               <Sidebar.Collapse icon={HiDocumentText} label="Readings">
                 <Link to="/createblog" onClick={scrollToTop}>
@@ -115,7 +115,7 @@ export default function DashSidebar() {
                 </Link>
                 <Link to="/dashboard?tab=posts" onClick={scrollToTop}>
                   <Sidebar.Item action={tab === "posts"} icon={HiDocumentText}>
-                  My Contributions                  
+                    My Contributions
                   </Sidebar.Item>
                 </Link>
               </Sidebar.Collapse>
@@ -138,7 +138,7 @@ export default function DashSidebar() {
             </>
           )}
 
-          {(currentUser.isContributor && !currentUser.isAdmin )&& (
+          {(currentUser.isContributor && !currentUser.isAdmin) && (
             <Link to="/dashboard?tab=posts" onClick={scrollToTop}>
               <Sidebar.Item
                 active={tab === "posts"}
@@ -166,7 +166,7 @@ export default function DashSidebar() {
                   <Link
                     to="/dashboard?tab=contributors"
                     onClick={scrollToTop}
-                    style={{ textDecoration: "none", color: "inherit", marginBottom: "10px", marginLeft:"10px" }}
+                    style={{ textDecoration: "none", color: "inherit", marginBottom: "10px", marginLeft: "10px" }}
                   >
                     <Sidebar.Item icon={FaClipboardList}>Total Contributors</Sidebar.Item>
                   </Link>
@@ -227,26 +227,26 @@ export default function DashSidebar() {
           )}
 
           {currentUser.isAdmin && (
-           <>
-            <Link to="/dashboard?tab=createvoucherform" onClick={scrollToTop}>
-              <Sidebar.Item
-                active={tab === "createvoucherform"}
-                icon={HiShoppingBag}
-                as="div"
-              >
-                Create Voucher
-              </Sidebar.Item>
-            </Link>
-            <Link to="/dashboard?tab=voucherlist" onClick={scrollToTop}>
-            <Sidebar.Item
-              active={tab === "createvoucherform"}
-              icon={HiShoppingBag}
-              as="div"
-            >
-              Available Voucher
-            </Sidebar.Item>
-          </Link>
-           </>
+            <>
+              <Link to="/dashboard?tab=createvoucherform" onClick={scrollToTop}>
+                <Sidebar.Item
+                  active={tab === "createvoucherform"}
+                  icon={HiShoppingBag}
+                  as="div"
+                >
+                  Create Voucher
+                </Sidebar.Item>
+              </Link>
+              <Link to="/dashboard?tab=voucherlist" onClick={scrollToTop}>
+                <Sidebar.Item
+                  active={tab === "createvoucherform"}
+                  icon={HiShoppingBag}
+                  as="div"
+                >
+                  Available Voucher
+                </Sidebar.Item>
+              </Link>
+            </>
           )}
           {currentUser.isContributor && (
             <Link to="/dashboard?tab=voucherlist" onClick={scrollToTop}>
@@ -270,7 +270,7 @@ export default function DashSidebar() {
               </Sidebar.Item>
             </Link>
           )}
-          
+
           <Sidebar.Item
             icon={HiArrowSmRight}
             className="cursor-pointer"

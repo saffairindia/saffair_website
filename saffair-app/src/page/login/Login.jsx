@@ -14,6 +14,7 @@ export default function SignIn() {
   const { loading, error } = useSelector((state) => state.user);
   const [loading1, setLoading1] = useState(false);
   const [loading2, setLoading2] = useState(false);
+  const [error1, setError]= useState()
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
@@ -36,6 +37,7 @@ export default function SignIn() {
       dispatch(setOtpStateId(result.state_id));
       return result.state_id;
     } catch (err) {
+      
       console.error(err);
       throw new Error('Failed to send OTP: ' + err.message);
     }
@@ -65,16 +67,17 @@ export default function SignIn() {
       navigate('/');
     } catch (err) {
       dispatch(signInFailure(err.message));
+      setError(err.message)
     }
   };
 
   const handleSubmit = async (e) => {
-    setLoading1(true)
     e.preventDefault();
     if (!formData.email || !formData.password) {
       return dispatch(signInFailure('Please fill all the fields'));
     }
     try {
+      setLoading1(true);
       dispatch(signInStart());
       const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/api/auth/login`, {
         method: 'POST',
@@ -85,24 +88,27 @@ export default function SignIn() {
       });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.message);
+        throw new Error(data.message || 'An error occurred');
       }
       if (data.isAdmin) {
         const stateId = await sendOtp(data.email);
         setFormData({ ...data, stateId });
         setShowOtpInput(true);
-        setLoading1(false);
-
+        setError(null)
       } else {
         dispatch(signInSuccess(data));
         navigate('/');
-        setLoading1(false);
       }
     } catch (error) {
       dispatch(signInFailure(error.message));
+      setError(error.message);
+    } finally {
+      setLoading1(false);
     }
+  
   };
 
+  
   return (
     <div className="h-full my-40">
       <div className="flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5">
@@ -154,6 +160,8 @@ export default function SignIn() {
                   "Login"
                 )}
               </Button>
+              {error1 && <Alert color="failure" className="mt-5">{error1}</Alert>}
+
               <Oauth />
               <div className="flex gap-2 text-sm mt-5">
                 <span>Don't have a account?</span>
@@ -189,9 +197,10 @@ export default function SignIn() {
                     'Login'
                   )}
                 </Button>
+                {error1 && <Alert color="failure" className="mt-5">{error1}</Alert>}
+
               </div></>
           )}
-          {error && <Alert color="failure" className="mt-5">{error}</Alert>}
 
 
         </div>
