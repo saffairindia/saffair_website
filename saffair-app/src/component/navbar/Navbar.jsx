@@ -152,7 +152,7 @@ export default function Navbar({ _id }) {
   };
   return (
     <div
-      className={`navbarContainer  top-0 ${isScrolled ? 'scrolled' : ''}`}
+      className={`z-50 navbarContainer  top-0 ${isScrolled ? 'scrolled' : ''}`}
     >
       <div className="leftNevbar flex flex-row justify-center items-center">
         <div className="logoContainer">
@@ -278,7 +278,7 @@ export default function Navbar({ _id }) {
             ))}
           </select>
         </div>
-     
+
         {currentUser ? (
           <Dropdown
             arrowIcon={false}
@@ -344,11 +344,7 @@ export default function Navbar({ _id }) {
                   <Dropdown.Item>Profile</Dropdown.Item>
                 </Link>
                 <Link
-                  to={
-                    currentUser.isContributor
-                      ? '/createblog'
-                      : '/dashboard?tab=be-a-contributor'
-                  }
+                  to='/createblog'
                   onClick={scrollToTop}
                 >
                   <Dropdown.Item>
@@ -421,7 +417,7 @@ export default function Navbar({ _id }) {
                 Calculator
               </a>
             </Link>
-            
+
             <Link to="/news">
               <a className="dropdown-item" href="/#" onClick={toggleDropdown}>
                 Knowledge Centre

@@ -207,11 +207,11 @@ export default function Home() {
                 <li>breathe@saffair.in</li>
               </a>
               <div className="flex  flex-col gap-0">
-                <Link to="/terms">
-                  <a href="/#">Terms & Conditions</a>
+                <Link to="/terms" >
+                  <a href="/#" onClick={scrollToTop}>Terms & Conditions</a>
                 </Link>
-                <Link to="/privacy">
-                  <a href="/#">Privacy Policy</a>
+                <Link to="/privacy" >
+                  <a href="/#" onClick={scrollToTop}>Privacy Policy</a>
                 </Link>
               </div>
             </ul>
@@ -258,7 +258,7 @@ export default function Home() {
       </div>
       <div className="foot-panel4">
 
-        <div className="copyright">
+        <div className="copyright mt-6">
           <Link to="https://agevole.in/" target="_blank">  ©2024 Saffair All rights reserved | Design and Developed by Agevole Innovation </Link>
         </div>
       </div>

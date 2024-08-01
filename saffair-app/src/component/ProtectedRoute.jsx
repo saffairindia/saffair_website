@@ -9,7 +9,7 @@ export const ProtectedRoute = ({ adminOnly = false }) => {
     return <Navigate to="/login" />;
   }
 
-  if (adminOnly && (!currentUser.isAdmin || !currentUser.otpVerified)) {
+  if (adminOnly && (!currentUser.isAdmin )) {
     return <Navigate to="/login" />;
   }
 

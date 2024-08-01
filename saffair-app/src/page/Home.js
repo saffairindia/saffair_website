@@ -28,8 +28,8 @@ import Showevent from "../component/homepageComponent/Event/Showevent";
 import ContributorPost from "../component/contributorPost/ContributorPost";
 import EditContributorPost from "./blog/pages/editpost/EditContributorPost";
 import EventPage from "../component/eventpage/EventPage";
-import Events from "../component/homepageComponent/Event/Events"
-import ProductPage from "./product/ProductPage"
+import Events from "../component/homepageComponent/Event/Events";
+import ProductPage from "./product/ProductPage";
 import ReviewPost from "./blog/pages/editpost/ReviewPost";
 import Calculator from "./calculator/Calculator";
 // import { Discuss } from "react-loader-spinner";
@@ -45,8 +45,6 @@ export const SearchContext = createContext();
 export const cityContext = createContext();
 export const aqiDataContext = createContext();
 
-
-
 export default function Home() {
   const [newCity, setNewCity] = useState("surat");
   const [location, setLocation] = useState("");
@@ -56,80 +54,76 @@ export default function Home() {
     imageUrl: "",
     aqiValue: "",
     airQuality: "",
-    city: ""
+    city: "",
   });
   const theme = useSelector((state) => state.theme.mode);
 
-
   return (
     <div className={theme === "light" ? "light-mode" : "dark-mode"}>
+      <WeatherImageContext.Provider value={{ airData, setAirData }}>
+        <SearchContext.Provider value={{ newCity, setNewCity }}>
+          <cityContext.Provider value={{ location, setLocation }}>
+            <SearchpostContext.Provider value={{ search, setSearch }}>
+              <aqiDataContext.Provider value={{ aqiData, setAqiData }}>
+                <CityContext />
 
-    <WeatherImageContext.Provider value={{ airData, setAirData }}>
-      <SearchContext.Provider value={{ newCity, setNewCity }}>
-        <cityContext.Provider value={{ location, setLocation }}>
-          <SearchpostContext.Provider value={{ search, setSearch }}>
-            <aqiDataContext.Provider value={{ aqiData, setAqiData }}>
-              <CityContext />
+                    <Navbar />
+                  <Routes>
+                    <Route path="/" element={<Homepage />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/Showevent" element={<Showevent />} />
+                    <Route path="/blog" element={<Blog />} />
+                    <Route path="/weather" element={<Weather />} />
+                    <Route path="/privacy" element={<PrivacypolicyPage />} />
+                    <Route path="/terms" element={<Terms />} />
 
-              <div>
-                <Navbar />
-              </div>
-              <Routes>
-                <Route path="/" element={<Homepage />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/Showevent" element={<Showevent />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/weather" element={<Weather />} />
-                <Route path="/privacy" element={<PrivacypolicyPage />} />
-                <Route path="/terms" element={<Terms />} />
+                    <Route path="/knowledge-centre" element={<Readings />} />
+                    <Route path="/aboutus" element={<AboutUs />} />
+                    <Route path="/contactus" element={<ContactUs />} />
+                    {/* <div style={{ minHeight: "800px" }}> */}
+                    <Route path="/post/:title" element={<PostPage />} />
+                    <Route path="/events/:id" element={<EventPage />} />
+                    <Route path="/events" element={<Events />} />
+                    <Route path="/product" element={<ProductPage />} />
+                    {/* </div> */}
+                    <Route path="/airquality" element={<AirQuality />} />
+                    <Route path="/community" element={<Community />} />
+                    <Route path="/news" element={<News />} />
+                    <Route path="/update" element={<Updates />} />
+                    <Route path="/calculator" element={<Calculator />} />
+                    <Route path="/searchpage" element={<Searchpage />} />
+                    <Route element={<PrivateRoute />}>
+                      <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/createblog" element={<CreatePost />} />
+                      <Route path="/edit/:postId" element={<EditPost />} />
 
-                <Route path="/knowledge-centre" element={<Readings />} />
-                <Route path="/aboutus" element={<AboutUs />} />
-                <Route path="/contactus" element={<ContactUs />} />
-                {/* <div style={{ minHeight: "800px" }}> */}
-                <Route path="/post/:title" element={<PostPage />} />
-                <Route path="/events/:id" element={<EventPage />} />
-                <Route path="/events" element={<Events />} />
-                <Route path="/product" element={<ProductPage />} />
-                {/* </div> */}
-                <Route path="/airquality" element={<AirQuality />} />
-                <Route path="/community" element={<Community />} />
-                <Route path="/news" element={<News />} />
-                <Route path="/update" element={<Updates />} />
-                <Route path="/calculator" element={<Calculator />} />
-                <Route path="/searchpage" element={<Searchpage />} />
-                <Route element={<PrivateRoute />}>
-                  <Route path="/dashboard" element={<Dashboard />} />
-                </Route>
-                <Route element={<AdminRoute />}>
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/createblog" element={<CreatePost />} />
-                 
-                  <Route path="/edit/:postId" element={<EditPost />} />
-                  <Route
-                    path="/editContributor/:postId"
-                    element={<EditContributorPost />}
-                  />
-                  <Route
-                    path="/reviewContributor/:postId"
-                    element={<ReviewPost />}
-                  />
-                  <Route
-                    path="/contributorpost/:userId"
-                    element={<ContributorPost />}
-                  />
-                </Route>
-                <Route path="*" element={<NotFound />} />
+                    </Route>
+                    <Route element={<AdminRoute />}>
+                     
 
-              </Routes>
-
-              <Footer />
-            </aqiDataContext.Provider>
-          </SearchpostContext.Provider>
-        </cityContext.Provider>
-      </SearchContext.Provider>
-    </WeatherImageContext.Provider>
+                      <Route
+                        path="/editContributor/:postId"
+                        element={<EditContributorPost />}
+                      />
+                      <Route
+                        path="/reviewContributor/:postId"
+                        element={<ReviewPost />}
+                      />
+                      <Route
+                        path="/contributorpost/:userId"
+                        element={<ContributorPost />}
+                      />
+                    </Route>
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                    <Footer />
+              </aqiDataContext.Provider>
+            </SearchpostContext.Provider>
+          </cityContext.Provider>
+        </SearchContext.Provider>
+      </WeatherImageContext.Provider>
     </div>
   );
 }

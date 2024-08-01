@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  mode: 'light', // Default mode is light
+  mode: 'dark', // Default mode is light
 };
 
 const themeSlice = createSlice({

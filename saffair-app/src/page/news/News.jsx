@@ -80,7 +80,7 @@ export default function News() {
                 </Breadcrumb.Item>{" "}
               </Link>
               <p className="text-gray-500">&gt;</p>
-              <Link to={"/readings"} className="link">
+              <Link to={"/knowledge-centre"} className="link">
                 <Breadcrumb.Item className="p-2">Knowledge Centre</Breadcrumb.Item>
               </Link>
               <p className="text-gray-500">&gt;</p>
@@ -93,7 +93,7 @@ export default function News() {
               <hr />
             </div>
 
-            <div className="flex flex-wrap  justify-evenly w-full">
+            <div className="flex flex-wrap justify-start w-full gap-4 ">
               <>
                 {posts.map((post) => (
                   <Post key={post._id} {...post} color="black" />

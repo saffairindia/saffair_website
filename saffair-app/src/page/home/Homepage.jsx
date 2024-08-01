@@ -20,7 +20,7 @@ export default function Homepage() {
       })
       .then((fetchedPosts) => {
         const newsPosts = fetchedPosts.filter(
-          (post) =>  post.publish === true
+          (post) => post.publish === true
         );
 
         setPosts(newsPosts);
@@ -66,13 +66,14 @@ export default function Homepage() {
             />
           </div>
 
-          <div class="cards-wrapper" id="style-5">
-            <div className="homeReadings">
+          <div className="cards-wrapper overflow-x-auto overflow-y-hidden" id="style-5">
+            <div className="flex flex-row justify-start">
               {posts.map((post) => (
                 <Post key={post._id} {...post} color="black" />
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </>

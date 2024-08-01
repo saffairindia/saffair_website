@@ -322,274 +322,280 @@ export default function WeatherUpdate() {
         <img
           src={getBackgroundImage()}
           alt="cloudy"
-          className="background-image "
-
+          className="background-image w-full h-full object-cover"
         />
-        {loading ? (
-          <div className="spinnerr">
-            <Spinner size="xl" />
-          </div>
-        ) : (
-          <div>
-            <div className="content">
-              <div className="whole ">
-                <div className="fhalf">
-                  <div className="mx-auto">
-                    {weather.error && (
-                      <>
-                        <br />
-                        <br />
-                        <span className="error-message">
-                          <span style={{ fontSize: "20px" }}></span>
-                        </span>
-                      </>
-                    )}
-                    {!weather.error && weather.data && weather.data.main ? (
-                      <div className="bold">
-                        <div className=" thevery   text-left" id="very">
-                          {aqi === 4 ? "Very " : ""}
-                        </div>
-                        <p className="headtext  ">{air_quailty}</p>
-                        <div className="infopluslogo flex items-center">
-                          <FontAwesomeIcon
-                            icon={faLocationDot}
-                            className="text-4xl lg:mr-2"
-                          />
-                          <div className="infodata">
-                            <p className="thecity">{weather.data.name}</p>
-                            <p className="thecity">{pincode}</p>
-                            <p className="thecity">{state}</p>
-                            <p className="timedate">{toDateFunction()}</p>
+
+
+        <div className="absolute inset-0 bg-black bg-opacity-25 z-10"></div>
+
+        <div className="relative z-20 p-4">
+          {loading ? (
+            <div className="spinnerr">
+              <Spinner size="xl" />
+            </div>
+          ) : (
+            <div>
+              <div className="content">
+                <div className="whole ">
+                  <div className="fhalf">
+                    <div className="mx-auto">
+                      {weather.error && (
+                        <>
+                          <br />
+                          <br />
+                          <span className="error-message">
+                            <span style={{ fontSize: "20px" }}></span>
+                          </span>
+                        </>
+                      )}
+                      {!weather.error && weather.data && weather.data.main ? (
+                        <div className="bold">
+                          <div className=" thevery   text-left" id="very">
+                            {aqi === 4 ? "Very " : ""}
+                          </div>
+                          <p className="headtext  ">{air_quailty}</p>
+                          <div className="infopluslogo flex items-center">
+                            <FontAwesomeIcon
+                              icon={faLocationDot}
+                              className="text-4xl lg:mr-2"
+                            />
+                            <div className="infodata">
+                              <p className="thecity">{weather.data.name}</p>
+                              <p className="thecity">{pincode}</p>
+                              <p className="thecity">{state}</p>
+                              <p className="timedate">{toDateFunction()}</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ) : (
-                      <div className="bold">
-                        <p className="headtext mt-0">Good</p>
-                        <div className="infopluslogo flex items-center">
-                          <FontAwesomeIcon
-                            icon={faLocationDot}
-                            className="text-3xl lg:mr-2 lc"
-                          />
-                          <div className="infodata">
-                            <p className="thecity">Surat</p>
-                            <p className="timedate">27 April</p>
+                      ) : (
+                        <div className="bold">
+                          <p className="headtext mt-0">Good</p>
+                          <div className="infopluslogo flex items-center">
+                            <FontAwesomeIcon
+                              icon={faLocationDot}
+                              className="text-3xl lg:mr-2 lc"
+                            />
+                            <div className="infodata">
+                              <p className="thecity">Surat</p>
+                              <p className="timedate">27 April</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )}
-                    {/* </div> */}
+                      )}
+                      {/* </div> */}
+                    </div>
                   </div>
-                </div>
-                <div className="shalf">
-                  <div className="scontainer">
-                    <TextInput
-                      type="text"
-                      className="bar"
-                      placeholder="Your Country, City or Location"
-                      name="query"
-                      value={input}
-                      onChange={(event) => setInput(event.target.value)}
-                      onKeyPress={handleKeyPress}
-                    />
-                    <Button
-                      outline
-                      color="light"
-                      className="sbutton"
-                      onClick={() => {
-                        search();
-                      }}
-                    >
-                      Search
-                    </Button>
-                  </div>
-                  {errormessage ? <p className="not">City not found</p> : ""}
-                  <div className="impdiv mt-4 pl-3">
-                    <div className="twoparts">
-                      <div className="theaqi flex flex-col justify-center">
-                        <div className="charttag ">AQI : {aqiValue}</div>
-                        {/* <div className="charts">
+                  <div className="shalf">
+                    <div className="scontainer">
+                      <TextInput
+                        type="text"
+                        className="bar"
+                        placeholder="Your Country, City or Location"
+                        name="query"
+                        value={input}
+                        onChange={(event) => setInput(event.target.value)}
+                        onKeyPress={handleKeyPress}
+                      />
+                      <Button
+                        outline
+                        color="light"
+                        className="sbutton"
+                        onClick={() => {
+                          search();
+                        }}
+                      >
+                        Search
+                      </Button>
+                    </div>
+                    {errormessage ? <p className="not">City not found</p> : ""}
+                    <div className="impdiv mt-4 pl-3">
+                      <div className="twoparts">
+                        <div className="theaqi flex flex-col justify-center">
+                          <div className="charttag ">AQI : {aqiValue}</div>
+                          {/* <div className="charts">
                            <FontAwesomeIcon
                             icon={faChartSimple}
                             className="text-4xl text-white lg"
                           /> 
                           <p className="chartvalue">{aqiValue}</p> 
                         </div> */}
-                        <div className="grido sgrid">
-                          <div className="n4 sgrp">
-                            <img src={pm2icon} alt="co"
-                              className="h-5 w-5 sm:h-8 sm:w-8 md:h-10 md:w-10object-contain text-2xl lg " />
+                          <div className="grido sgrid">
+                            <div className="n4 sgrp">
+                              <img src={pm2icon} alt="co"
+                                className="h-5 w-5 sm:h-8 sm:w-8 md:h-10 md:w-10object-contain text-2xl lg " />
 
 
-                            <div className="n1data txt">
-                              <span>
-                                <p className="inline n1name whitespace-nowrap">
-                                  PM 2.5
+                              <div className="n1data txt">
+                                <span>
+                                  <p className="inline n1name whitespace-nowrap">
+                                    PM 2.5
+                                  </p>
+                                </span>
+
+                                <p className="n3value whitespace-nowrap">
+                                  {pm2_5} <span id="units">µg/m³</span>
                                 </p>
-                              </span>
-
-                              <p className="n3value whitespace-nowrap">
-                                {pm2_5} <span id="units">µg/m³</span>
-                              </p>
+                              </div>
                             </div>
-                          </div>
-                          <div className="n4 sgrp">
-                            <img src={pm10icon} alt="co"
-                              className="h-5 w-5 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-8 lg:w-8 object-contain text-2xl lg " />
+                            <div className="n4 sgrp">
+                              <img src={pm10icon} alt="co"
+                                className="h-5 w-5 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-8 lg:w-8 object-contain text-2xl lg " />
 
 
-                            <div className="n1data txt">
-                              <span>
-                                <p className="n1name whitespace-nowrap">
-                                  PM 10
+                              <div className="n1data txt">
+                                <span>
+                                  <p className="n1name whitespace-nowrap">
+                                    PM 10
+                                  </p>
+                                </span>
+
+                                <p className="n3value whitespace-nowrap ">
+                                  {pm10} <span id="units">µg/m³</span>
                                 </p>
-                              </span>
+                              </div>
+                            </div>
 
-                              <p className="n3value whitespace-nowrap ">
-                                {pm10} <span id="units">µg/m³</span>
-                              </p>
+                            <div className="n4 sgrp">
+                              <img src={coicon} alt="co"
+                                className="h-5 w-5 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain text-2xl lg " />
+
+                              <div className="n1data txt">
+
+                                <p className="n1name">
+                                  CO
+                                </p>
+                                <p className="n3value whitespace-nowrap">
+                                  {co} <span id="units">µg/m³</span>
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="n4 sgrp">
+                              <img src={so2icon} alt="co"
+                                className="h-5 w-5 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-8 lg:w-8 object-contain text-2xl lg " />
+
+                              <div className="n1data txt">
+
+                                <p className="n1name">
+                                  SO<sub>2</sub>
+                                </p>
+                                <p className="n3value whitespace-nowrap ">
+                                  {so2} <span id="units">µg/m³</span>
+                                </p>
+                              </div>
                             </div>
                           </div>
-
-                          <div className="n4 sgrp">
-                            <img src={coicon} alt="co"
-                              className="h-5 w-5 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain text-2xl lg " />
-
-                            <div className="n1data txt">
-
-                              <p className="n1name">
-                                CO
-                              </p>
-                              <p className="n3value whitespace-nowrap">
-                                {co} <span id="units">µg/m³</span>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div className="n4 sgrp">
-                            <img src={so2icon} alt="co"
-                              className="h-5 w-5 sm:h-8 sm:w-8 md:h-8 md:w-8 lg:h-8 lg:w-8 object-contain text-2xl lg " />
-
-                            <div className="n1data txt">
-
-                              <p className="n1name">
-                                SO<sub>2</sub>
-                              </p>
-                              <p className="n3value whitespace-nowrap ">
-                                {so2} <span id="units">µg/m³</span>
-                              </p>
-                            </div>
-                          </div>
+                          <div className="hori-line"></div>
                         </div>
-                        <div className="hori-line"></div>
-                      </div>
 
-                      <div className="wea">
-                        <div className="tago">
-                          <p className="thetag"></p>
+                        <div className="wea">
+                          <div className="tago">
+                            <p className="thetag"></p>
+                          </div>
+                          {weather && weather.data && weather.data.main ? (
+                            <div className="grido wthr">
+                              <div className="n1">
+                                <FontAwesomeIcon
+                                  icon={faTemperatureHigh}
+                                  className="text-2xl lg"
+                                />
+                                <div className="n1data">
+                                  <p className="n1name">Temperature</p>
+                                  <p className="n1value">
+                                    {" "}
+                                    {weather.data.main.temp} °C{" "}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="n2">
+                                <FontAwesomeIcon
+                                  icon={faWind}
+                                  className="text-2xl lg"
+                                />
+                                <div className="n2data">
+                                  <p className="n2name">Wind</p>
+                                  <p className="n1value">
+                                    {weather.data.wind.speed} m/s
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="n3 special">
+                                <FontAwesomeIcon
+                                  icon={faDroplet}
+                                  className="text-2xl lg"
+                                />
+                                <div className="n3data runique plus ">
+                                  <p className="n3name">Humidity</p>
+                                  <p className="n3value ">
+                                    {weather.data.main.humidity}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="n4 special">
+                                <FontAwesomeIcon
+                                  icon={faSun}
+                                  className="text-2xl lg"
+                                />
+                                <div className="n4data ">
+                                  <p className="n4name">UV Index</p>
+                                  <p className="n3value">3</p>
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="grido wthr">
+                              <div className="n1">
+                                <FontAwesomeIcon
+                                  icon={faTemperatureHigh}
+                                  className="text-4xl lg"
+                                />
+                                <div className="n1data">
+                                  <p className="n1name">Temperature</p>
+                                  <p className="n1value">21°C </p>
+                                </div>
+                              </div>
+                              <div className="n2">
+                                <FontAwesomeIcon
+                                  icon={faWind}
+                                  className="text-4xl lg"
+                                />
+                                <div className="n2data">
+                                  <p className="n2name">Wind</p>
+                                  <p className="n2value">2.06 m/s</p>
+                                </div>
+                              </div>
+                              <div className="n3 special">
+                                <FontAwesomeIcon
+                                  icon={faDroplet}
+                                  className="text-4xl lg"
+                                />
+                                <div className="n3data runique plus ">
+                                  <p className="n3name">Humidity</p>
+                                  <p className="n3value ">36</p>
+                                </div>
+                              </div>
+                              <div className="n4 special">
+                                <FontAwesomeIcon
+                                  icon={faSun}
+                                  className="text-4xl lg"
+                                />
+                                <div className="n4data ">
+                                  <p className="n4name">UV Index</p>
+                                  <p className="n3value">3</p>
+                                </div>
+                              </div>
+                            </div>
+                          )}
                         </div>
-                        {weather && weather.data && weather.data.main ? (
-                          <div className="grido wthr">
-                            <div className="n1">
-                              <FontAwesomeIcon
-                                icon={faTemperatureHigh}
-                                className="text-2xl lg"
-                              />
-                              <div className="n1data">
-                                <p className="n1name">Temperature</p>
-                                <p className="n1value">
-                                  {" "}
-                                  {weather.data.main.temp} °C{" "}
-                                </p>
-                              </div>
-                            </div>
-                            <div className="n2">
-                              <FontAwesomeIcon
-                                icon={faWind}
-                                className="text-2xl lg"
-                              />
-                              <div className="n2data">
-                                <p className="n2name">Wind</p>
-                                <p className="n1value">
-                                  {weather.data.wind.speed} m/s
-                                </p>
-                              </div>
-                            </div>
-                            <div className="n3 special">
-                              <FontAwesomeIcon
-                                icon={faDroplet}
-                                className="text-2xl lg"
-                              />
-                              <div className="n3data runique plus ">
-                                <p className="n3name">Humidity</p>
-                                <p className="n3value ">
-                                  {weather.data.main.humidity}
-                                </p>
-                              </div>
-                            </div>
-                            <div className="n4 special">
-                              <FontAwesomeIcon
-                                icon={faSun}
-                                className="text-2xl lg"
-                              />
-                              <div className="n4data ">
-                                <p className="n4name">UV Index</p>
-                                <p className="n3value">3</p>
-                              </div>
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="grido wthr">
-                            <div className="n1">
-                              <FontAwesomeIcon
-                                icon={faTemperatureHigh}
-                                className="text-4xl lg"
-                              />
-                              <div className="n1data">
-                                <p className="n1name">Temperature</p>
-                                <p className="n1value">21°C </p>
-                              </div>
-                            </div>
-                            <div className="n2">
-                              <FontAwesomeIcon
-                                icon={faWind}
-                                className="text-4xl lg"
-                              />
-                              <div className="n2data">
-                                <p className="n2name">Wind</p>
-                                <p className="n2value">2.06 m/s</p>
-                              </div>
-                            </div>
-                            <div className="n3 special">
-                              <FontAwesomeIcon
-                                icon={faDroplet}
-                                className="text-4xl lg"
-                              />
-                              <div className="n3data runique plus ">
-                                <p className="n3name">Humidity</p>
-                                <p className="n3value ">36</p>
-                              </div>
-                            </div>
-                            <div className="n4 special">
-                              <FontAwesomeIcon
-                                icon={faSun}
-                                className="text-4xl lg"
-                              />
-                              <div className="n4data ">
-                                <p className="n4name">UV Index</p>
-                                <p className="n3value">3</p>
-                              </div>
-                            </div>
-                          </div>
-                        )}
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>{" "}
-          </div>
-        )}
+              </div>{" "}
+            </div>
+          )}
+        </div>
+
       </div>
       <div className="HA">
         <img

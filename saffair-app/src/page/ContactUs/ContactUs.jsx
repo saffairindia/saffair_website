@@ -5,6 +5,7 @@ import { faChevronDown, faEnvelope, faBrush, faGear, faSignal, faHandshake } fro
 import emailjs from "@emailjs/browser";
 import "./contactus.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import market from "../ContactUs/promote.png"
 const ContactUs = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const { loading, error: errorMessage } = useSelector((state) => state.user);
@@ -219,9 +220,9 @@ const ContactUs = () => {
           </div>
           <div className="Role-member" id="r3">
             <div className="logo">
-              <span className="material-symbols-outlined">
-                <FontAwesomeIcon icon={faSignal} />
-
+              <span className="material-symbols-outlined p-5">
+              <img src={market} alt="market" srcset=""         className="w-24 h-auto md:w-36 md:h-auto"
+              />
               </span>
             </div>
             <h3>Marketing</h3>

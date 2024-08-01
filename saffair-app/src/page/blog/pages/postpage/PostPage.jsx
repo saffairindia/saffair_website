@@ -138,7 +138,7 @@ export default function PostPage() {
                   <div className="flex flex-wrap items-center gap-2">
                     <p>Categories : </p>
                     {postInfo.category.map((cat, index) => (
-                      <div key={index} className="flex items-center m-1 p-2 bg-blue-100 text-[#2a758a] rounded-full shadow-sm">
+                      <div key={index} className="flex items-center m-1 p-2 bg-blue-100 text-blue-500 rounded-full shadow-sm">
                         <span className="font-medium">{cat}</span>
                       </div>
                     ))}

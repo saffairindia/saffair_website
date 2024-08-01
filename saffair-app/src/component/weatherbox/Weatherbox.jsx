@@ -61,7 +61,7 @@ export default function Weatherbox() {
     let newAqiValue;
     let newAirQuality;
     let imgValue;
-
+    
     if (aqi === 1) {
       newAqiValue = "0 - 100";
       newAirQuality = "Good";

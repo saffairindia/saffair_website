@@ -78,7 +78,7 @@ export default function Readings() {
                 </Breadcrumb.Item>{" "}
               </Link>
               <p className="text-gray-500">&gt;</p>
-              <Link to={"/readings"} className="link">
+              <Link to={"/knowledge-centre"} className="link">
                 <Breadcrumb.Item className="p-2">Kowledge centre</Breadcrumb.Item>
               </Link>
             </Breadcrumb>
