@@ -26,6 +26,7 @@ const corsOption = {
   exposedHeaders: ['authorization'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 };
+
 app.use(cors(corsOption));
 
 //DB CONNECTION

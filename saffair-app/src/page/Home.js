@@ -37,6 +37,8 @@ import { useSelector } from "react-redux";
 import NotFound from "./404";
 import { AdminRoute } from "../component/ProtectedRoute";
 import Terms from "./extra/Terms";
+import Forget from "./login/Forget";
+import ResetPassword from "./login/Resetpage";
 
 export const WeatherImageContext = createContext();
 
@@ -77,6 +79,8 @@ export default function Home() {
                     <Route path="/weather" element={<Weather />} />
                     <Route path="/privacy" element={<PrivacypolicyPage />} />
                     <Route path="/terms" element={<Terms />} />
+                    <Route path="/forget-password" element={<Forget />} />
+                    <Route path="/reset-password" element={<ResetPassword />} />
 
                     <Route path="/knowledge-centre" element={<Readings />} />
                     <Route path="/aboutus" element={<AboutUs />} />
@@ -93,8 +97,8 @@ export default function Home() {
                     <Route path="/update" element={<Updates />} />
                     <Route path="/calculator" element={<Calculator />} />
                     <Route path="/searchpage" element={<Searchpage />} />
+
                     <Route element={<PrivateRoute />}>
-                      <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/createblog" element={<CreatePost />} />
                       <Route path="/edit/:postId" element={<EditPost />} />

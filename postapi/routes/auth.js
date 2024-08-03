@@ -4,6 +4,8 @@ const Users = require("../models/Users");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { errorHandler } = require("./../utils/error");
+const rateLimit = require("express-rate-limit");
+
 router.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -64,7 +66,7 @@ router.post("/login", async (req, res, next) => {
     const token = jwt.sign(
       { id: validUser._id, isAdmin: validUser.isAdmin },
       process.env.JWT_SECRET,
-      { expiresIn: '1h' } // Add an expiration time for security
+      { expiresIn: "1h" } // Add an expiration time for security
     );
 
     // Exclude the password from the user data
@@ -81,7 +83,6 @@ router.post("/login", async (req, res, next) => {
     next(error);
   }
 });
-
 
 router.post("/google", async (req, res, next) => {
   const { email, name, googlePhotoUrl } = req.body;
@@ -128,6 +129,111 @@ router.post("/google", async (req, res, next) => {
     }
   } catch (error) {
     next(error);
+  }
+});
+
+router.post("/recovery", async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await Users.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    
+    const resetToken = globalThis.crypto.randomUUID();
+
+    // Set expiration time (1 hour from now)
+    const resetTokenExpiration = Date.now() + 3600000
+
+    user.resetToken = resetToken;
+    user.resetTokenExpiration = resetTokenExpiration;
+    await user.save();
+
+    // Generate reset URL
+    const resetUrl = `${process.env.EMAILURL}/?token=${resetToken}`;
+
+    // Send password reset email using Firebase
+    const actionCodeSettings = {
+      url: resetUrl,
+      handleCodeInApp: true,
+      // dynamicLinkDomain: process.env.DYNAMIC_LINK_DOMAIN,
+      // iOS: {
+      //   bundleId: "com.yourapp.ios",
+      // },
+      // android: {
+      //   packageName: "com.yourapp.android",
+      //   installApp: true,
+      //   minimumVersion: "12",
+      // },
+    };
+
+   
+
+    res.status(200).json({actionCodeSettings});
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Verify reset token
+router.get("/verify-reset-token", async (req, res) => {
+  const { token } = req.query;
+
+  try {
+    const user = await User.findOne({
+      resetToken: token,
+      resetTokenExpiration: { $gt: Date.now() },
+    });
+
+    res.json({ valid: !!user });
+  } catch (error) {
+    res.status(500).json({ message: "Error verifying token" });
+  }
+});
+
+// Rate limiting
+const resetLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // Limit each IP to 5 requests per windowMs
+  message: "Too many password reset attempts, please try again later.",
+});
+
+// Reset password
+router.post("/reset", resetLimiter, async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  const { token, password } = req.body;
+
+  try {
+    const user = await User.findOne({
+      resetToken: token,
+      resetTokenExpiration: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      return res
+        .status(400)
+        .json({ message: "Invalid or expired reset token" });
+    }
+
+    // Hash the new password
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    // Update user's password and clear reset token
+    user.password = hashedPassword;
+    user.resetToken = undefined;
+    user.resetTokenExpiration = undefined;
+    await user.save();
+
+    res.json({ message: "Password has been reset successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error resetting password" });
   }
 });
 

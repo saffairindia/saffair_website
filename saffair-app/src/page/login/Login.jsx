@@ -14,7 +14,7 @@ export default function SignIn() {
   const { loading, error } = useSelector((state) => state.user);
   const [loading1, setLoading1] = useState(false);
   const [loading2, setLoading2] = useState(false);
-  const [error1, setError]= useState()
+  const [error1, setError] = useState()
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
@@ -37,7 +37,7 @@ export default function SignIn() {
       dispatch(setOtpStateId(result.state_id));
       return result.state_id;
     } catch (err) {
-      
+
       console.error(err);
       throw new Error('Failed to send OTP: ' + err.message);
     }
@@ -97,7 +97,7 @@ export default function SignIn() {
         setError(null)
       } else {
         dispatch(signInSuccess(data));
-        navigate('/');
+        navigate('/createblog');
       }
     } catch (error) {
       dispatch(signInFailure(error.message));
@@ -105,10 +105,10 @@ export default function SignIn() {
     } finally {
       setLoading1(false);
     }
-  
+
   };
 
-  
+
   return (
     <div className="h-full my-40">
       <div className="flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5">
@@ -160,14 +160,20 @@ export default function SignIn() {
                   "Login"
                 )}
               </Button>
+
               {error1 && <Alert color="failure" className="mt-5">{error1}</Alert>}
 
               <Oauth />
-              <div className="flex gap-2 text-sm mt-5">
+              <div className='flex flex-col md:flex-row justify-between'>
+              <Link to="/forget-password" className="underline text-sm text-blue-900">
+                Forget Password?
+              </Link>
+              <div className=" text-sm ">
                 <span>Don't have a account?</span>
-                <Link to="/register" className="text-blue-500">
+                <Link to="/register" className="underline ml-1 text-blue-900">
                   Register
                 </Link>
+              </div>
               </div>
             </form>) : (
             <>
@@ -177,14 +183,14 @@ export default function SignIn() {
                   <TextInput
                     type="text"
                     placeholder="Enter OTP"
-                    
+
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
                   />
                 </div>
                 <Button
                   gradientDuoTone="cyanToBlue"
-                outline
+                  outline
                   onClick={verifyOtp}
                   disabled={loading2}
                 >
