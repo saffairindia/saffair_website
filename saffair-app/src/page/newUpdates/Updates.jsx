@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import "./../blog/blog.css";
 import { SearchpostContext } from "../Home";
-import { Breadcrumb, Spinner} from "flowbite-react";
+import { Breadcrumb, Spinner } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 
 import { Navbar, } from "flowbite-react";
@@ -58,22 +58,22 @@ export default function Updates() {
           </div>
         ) : (
           <>
-          <Navbar fluid rounded className="flex justify-center ">
-      <Navbar.Collapse  >
-        <Link to="/blog">
-        <Navbar.Link className="text-xl  " >
-          Blogs
-        </Navbar.Link>
-        </Link>
-        <Link to="/news">
-        <Navbar.Link className="text-xl  ">News</Navbar.Link></Link>
-        <Link to="/Update">
-        <Navbar.Link className="text-xl border-b-2 border-customBlue " active>Updates</Navbar.Link></Link>
-        
-      </Navbar.Collapse>
-    </Navbar>
-     
-    <Breadcrumb style={{ fontFamily: "myFont" }}>
+            <Navbar fluid rounded className="flex justify-center ">
+              <Navbar.Collapse  >
+                <Link to="/blog">
+                  <Navbar.Link className="text-xl  " >
+                    Blogs
+                  </Navbar.Link>
+                </Link>
+                <Link to="/news">
+                  <Navbar.Link className="text-xl  ">News</Navbar.Link></Link>
+                <Link to="/Update">
+                  <Navbar.Link className="text-xl border-b-2 border-customBlue " active>Updates</Navbar.Link></Link>
+
+              </Navbar.Collapse>
+            </Navbar>
+
+            <Breadcrumb style={{ fontFamily: "myFont" }}>
               <Link to={"/"} className="link">
                 {" "}
                 <Breadcrumb.Item icon={HiHome} className="p-2">
@@ -94,16 +94,26 @@ export default function Updates() {
               <hr />
             </div>
 
-            <div className="flex flex-wrap justify-start w-full gap-4 ">
-              <>
-                {posts.map((post) => (
-                  <Post key={post._id} {...post} color="black" />
-                ))}
-              </>
-            </div>
+            {posts ? (
+              <div className="flex flex-wrap justify-start w-full gap-2 ">
+
+                <>
+                  {posts.map((post) => (
+                    <Post key={post._id} {...post} color="black" />
+                  ))}
+                </>
+              </div>
+            ) : (
+              <h1 className="h-[400px]">
+                No post available
+              </h1>
+
+            )}
+
+            
           </>
         )}
-      </div>
+      </div >
     </>
   );
 }

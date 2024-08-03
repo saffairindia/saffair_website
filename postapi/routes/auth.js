@@ -182,14 +182,14 @@ router.get("/verify-reset-token", async (req, res) => {
   const { token } = req.query;
 
   try {
-    const user = await User.findOne({
+    const user = await Users.findOne({
       resetToken: token,
       resetTokenExpiration: { $gt: Date.now() },
     });
 
     res.json({ valid: !!user });
   } catch (error) {
-    res.status(500).json({ message: "Error verifying token" });
+    res.status(500).json(error.message);
   }
 });
 
@@ -202,15 +202,15 @@ const resetLimiter = rateLimit({
 
 // Reset password
 router.post("/reset", resetLimiter, async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
+  // const errors = validationResult(req);
+  // if (!errors.isEmpty()) {
+  //   return res.status(400).json({ errors: errors.array() });
+  // }
 
   const { token, password } = req.body;
 
   try {
-    const user = await User.findOne({
+    const user = await Users.findOne({
       resetToken: token,
       resetTokenExpiration: { $gt: Date.now() },
     });

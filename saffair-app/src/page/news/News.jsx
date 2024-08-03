@@ -93,13 +93,21 @@ export default function News() {
               <hr />
             </div>
 
-            <div className="flex flex-wrap justify-start w-full gap-4 ">
-              <>
-                {posts.map((post) => (
-                  <Post key={post._id} {...post} color="black" />
-                ))}
-              </>
-            </div>
+            {posts ? (
+              <div className="flex flex-wrap justify-start w-full gap-2 ">
+
+                <>
+                  {posts.map((post) => (
+                    <Post key={post._id} {...post} color="black" />
+                  ))}
+                </>
+              </div>
+            ) : (
+              <h1 className="h-[400px]">
+                No post available
+              </h1>
+
+            )}
           </>
         )}
       </div>

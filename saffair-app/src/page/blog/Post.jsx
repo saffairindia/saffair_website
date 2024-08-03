@@ -58,7 +58,7 @@ export default function Post({
   return (
     <>
 
-      <div className=" postContainer w-[90%] sm:w-[350px] p-2 m-2 flex flex-col justify-evenly " onClick={scrollToTop}>
+      <div className=" postContainer w-[325px] p-1 m-1  flex flex-col justify-evenly " onClick={scrollToTop}>
         <div className="card ">
           <Link to={`/post/${encodedTitle}`}>
             <div className="card__header  w-full flex flex-row justify-center">
