@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
+import Loadder from "../../lottie/Loadder";
 
 const ResetPassword = () => {
     const [password, setPassword] = useState('');
@@ -136,7 +137,7 @@ const ResetPassword = () => {
                             type="submit"
                             disabled={loading}
                         >
-                            {loading ? <Spinner size="sm" /> : 'Reset Password'}
+                            {loading ? <Loadder/> : 'Reset Password'}
                         </Button>
                     </form>
                     {message && <Alert color="success" className="mt-5">{message}</Alert>}

@@ -8,6 +8,7 @@ import { Navbar, } from "flowbite-react";
 import { Link } from "react-router-dom";
 import Post from "../blog/Post";
 import "./../../component/homepageComponent/weatherupdates/weatherupdate.css";
+import Loadder from "../../lottie/Loadder";
 
 export default function Updates() {
   const { search } = useContext(SearchpostContext);
@@ -54,7 +55,7 @@ export default function Updates() {
       <div className="blog-container">
         {loading ? (
           <div className="spinnerr" style={{ height: "90vh" }}>
-            <Spinner size="xl" />
+            <Loadder/>
           </div>
         ) : (
           <>

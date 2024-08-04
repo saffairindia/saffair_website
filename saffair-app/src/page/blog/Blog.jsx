@@ -8,6 +8,7 @@ import { Breadcrumb, Spinner, Tabs } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 
 import "./../../component/homepageComponent/weatherupdates/weatherupdate.css";
+import Loadder from "../../lottie/Loadder";
 
 export default function Blog() {
   const { search } = useContext(SearchpostContext);
@@ -55,7 +56,7 @@ export default function Blog() {
       <div className="blog-container">
         {loading ? (
           <div className="spinnerr" style={{ height: "90vh" }}>
-            <Spinner size="xl" />
+            <Loadder/>
           </div>
         ) : (
           <>

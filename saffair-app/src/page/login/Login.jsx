@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signInStart, signInSuccess, signInFailure, setOtpStateId } from '../../redux/user/userSlice';
 import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
 import Oauth from '../../component/oauth/Oauth';
+import Loadder from "../../lottie/Loadder";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -153,7 +154,7 @@ export default function SignIn() {
               >
                 {loading1 ? (
                   <>
-                    <Spinner size="sm" />
+                    <Loadder/>
                     <span className="pl-3">Loading...</span>
                   </>
                 ) : (
@@ -196,7 +197,7 @@ export default function SignIn() {
                 >
                   {loading2 ? (
                     <>
-                      <Spinner size="sm" />
+                      <Loadder/>
                       <span className="pl-3">Verifying...</span>
                     </>
                   ) : (

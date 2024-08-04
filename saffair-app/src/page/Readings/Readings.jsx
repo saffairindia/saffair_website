@@ -7,6 +7,7 @@ import {  Spinner, Breadcrumb,  } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { SearchpostContext } from "../Home";
 import { HiHome } from "react-icons/hi";
+import Loadder from "../../lottie/Loadder";
 
 import "./../../component/homepageComponent/weatherupdates/weatherupdate.css";
 
@@ -47,7 +48,7 @@ export default function Readings() {
       <div className="blog-container">
         {loading ? (
           <div className="spinnerr" style={{ height: "90vh" }}>
-            <Spinner size="xl" />
+            <Loadder/>
           </div>
         ) : (
           <>

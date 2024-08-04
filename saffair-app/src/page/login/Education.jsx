@@ -129,7 +129,7 @@ export default function SignIn() {
               >
                 {loading ? (
                   <>
-                    <Spinner size="sm" />
+                    <Loadder/>
                     <span className="pl-1">Loading...</span>
                   </>
                 ) : (

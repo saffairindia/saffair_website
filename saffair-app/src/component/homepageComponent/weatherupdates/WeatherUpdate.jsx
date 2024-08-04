@@ -19,6 +19,7 @@ import coicon from './co.png'
 import so2icon from './so2.png'
 import pm2icon from './pm 2.5.png'
 import pm10icon from './pm 10.png'
+import Loadder from "../../../lottie/Loadder";
 
 export default function WeatherUpdate() {
   const [errormessage, setErormessage] = useState(false);
@@ -331,7 +332,7 @@ export default function WeatherUpdate() {
         <div className="relative z-20 p-4">
           {loading ? (
             <div className="spinnerr">
-              <Spinner size="xl" />
+              <Loadder/>
             </div>
           ) : (
             <div>

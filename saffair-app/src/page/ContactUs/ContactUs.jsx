@@ -6,6 +6,8 @@ import emailjs from "@emailjs/browser";
 import "./contactus.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import market from "../ContactUs/promote.png"
+import Loadder from "../../lottie/Loadder";
+
 const ContactUs = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const { loading, error: errorMessage } = useSelector((state) => state.user);
@@ -49,25 +51,71 @@ const ContactUs = () => {
 
   const faqData = [
     {
-      question: "What is Krushi?",
-      answer: "Krushi is a Public Charitable Trust designed to carry out farming on extensive scale Natural & Sustainable methods."
+      question: "What is the Saffair Community?",
+      answer:"Saffair is an online platform for environmental enthusiasts and professionals dedicated to sustainable living. It encourages knowledge sharing and collaborative efforts toward environmental good deeds. Members can earn coins, redeemable for vouchers, by contributing to the community. Saffair's vision and mission emphasize these values to create a sustainable future for current and future generations"
     },
     {
-      question: "How does it work?",
-      answer: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis saepe molestiae distinctio asperiores cupiditate consequuntur dolor ullam, iure eligendi harum eaque hic corporis debitis porro consectetur voluptate rem officiis architecto."
+      question: "What can I contribute?",
+      answer: "You can contribute various types of content, such as campaigns, latest innovations, news,legal updates, legal reforms, and more, as long as they relate to the environment, sustainability, and health. For specific options, refer to the ' Let's Contribute ' section in your profile"
     },
     {
-      question: "What are the major challenges of current agriculture?",
-      answer: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis saepe molestiae distinctio asperiores cupiditate consequuntur dolor ullam, iure eligendi harum eaque hic corporis debitis porro consectetur voluptate rem officiis architecto."
+      question: "What is a campaign, and how can I join one?",
+      answer: " Campaigns are events listed on the Campaign page of our website. Each campaign includes details such as the date, activities involved, and rewards. You can join a campaign by clicking 'Yes,' 'No,' or 'Maybe' based on your interest and availability"
     },
     {
-      question: "How does the Krushi address the above challenges?",
-      answer: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis saepe molestiae distinctio asperiores cupiditate consequuntur dolor ullam, iure eligendi harum eaque hic corporis debitis porro consectetur voluptate rem officiis architecto."
+      question: "How do I earn coins for joining a campaign?",
+      answer:"After selecting 'Yes' or 'Maybe' for a campaign, navigate to 'Let's Contribute -> Campaign -> [Your Selected Campaign]' and upload the required photos as specified in the campaign details. Once approved by the Saffair Team, you will receive coins based on your participation and contributions."
     },
     {
-      question: "How can I be a part of Krushi?",
-      answer: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis saepe molestiae distinctio asperiores cupiditate consequuntur dolor ullam, iure eligendi harum eaque hic corporis debitis porro consectetur voluptate rem officiis architecto."
+      question: " How can I check my contributions?",
+      answer:"You can view your contribution history by going to Profile -> My Contributions."
     },
+    {
+      question: " How can I earn coins, and how many can I earn?",
+      answer:"There are two main ways to earn coins: 1. Reading Articles: Visit the Knowledge Centre, read articles, and answer the questions provided. Correct answers will earn you 5 to 10 coins. 2. Contributing Content: Submit contributions through your profile in the 'Let's Contribute' section. The number of coins earned depends on the type and depth of your contribution. There is no upper limit; contributions can earn anywhere from 0 to 100 coins, with extra coins possible for deeper involvement."
+    },
+    {
+      question: "How can I see my coin history?",
+      answer:"To view your coin history, go to 'Profile -> My Coins.'"
+    },
+    {
+      question: " I made a contribution but didn't receive reward coins. What should I do?",
+      answer:"Coins are awarded for each valid contribution. If you haven't received coins, please wait 2-3 days for review. If the issue persists, contact the Saffair Team at Breathe@saffair.in or through the Contact Us page. Note that for contributions like'News', if another user has already shared the same, you may not receive coins. In such cases, contact the Saffair ko Pi team for clarification."
+    },
+    {
+      question: "What can I use these coins for?",
+      answer:"Coins can be redeemed for vouchers available on our website. The value and type of vouchers vary, and you can choose based on your preferences."
+    },
+
+    {
+      question: "How can I redeem my coins?",
+      answer: "To redeem your coins, go to 'Login -> Profile -> Redeem Voucher,' select your preferred voucher, and receive a mail receipt."
+    },
+    {
+      question: "How do I receive the voucher code?",
+      answer: "The voucher code will be included in the mail receipt once you redeem your coins. You can use this code on the respective platform"
+    },
+    {
+      question: "Why isn't my contribution published on the website?",
+      answer: "While all contributions are rewarded with coins, publishing them on the website (Blog, News, or Updates sections) is at the discretion of the Saffair Team."
+    },
+    {
+      question: "Is it mandatory to provide social media profile links?",
+      answer: "No, providing social media profile links is optional. They are used for linking creditor details in the Knowledge Centre articles."
+    },
+    {
+      question: "Why doesn't my name appear as a contributor on my published article?",
+      answer: "If you chose not to publish your name during submission, the article will list the contributor as 'Unknown' or 'Saffair Team.' If multiple users submitted the same news, only the first person will be credited and rewarded."
+    },
+    {
+      question:"What is the Job Alert feature?",
+      answer:"The Job Alert toggle in your profile can be enabled to receive relevant job alerts based on your education, field of work, and work experience. You'll be prompted to add these details once the toggle is enabled"
+    },
+    {
+      question:"Do I need to pay for job alerts?",
+      answer:"No, job alerts are completely free as part of your membership in the Saffair Communi."
+    }
+
   ];
 
   return (
@@ -170,7 +218,7 @@ const ContactUs = () => {
               >
                 {loading ? (
                   <>
-                    <Spinner size="sm" />
+                    <Loadder/>
                     <span className="loading-text">Loading...</span>
                   </>
                 ) : (
@@ -259,7 +307,7 @@ const ContactUs = () => {
                 {faq.question}
                 <FontAwesomeIcon icon={faChevronDown} />
               </button>
-              <div className={`pannel ${activeIndex === index ? 'active' : ''}`} style={{ display: activeIndex === index ? 'block' : 'none' }}>
+              <div className={`pannel pt-6 ${activeIndex === index ? 'active' : ''}`} style={{ display: activeIndex === index ? 'block' : 'none' }}>
                 <p>{faq.answer}</p>
               </div>
             </div>

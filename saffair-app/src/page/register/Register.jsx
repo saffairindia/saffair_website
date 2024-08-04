@@ -2,6 +2,7 @@ import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import OAuth from "../../component/oauth/Oauth";
+import Loadder from "../../lottie/Loadder";
 
 export default function Register() {
   const [formData, setFormData] = useState({});
@@ -90,7 +91,7 @@ export default function Register() {
             >
               {loading ? (
                 <>
-                  <Spinner size="sm" />
+                  <Loadder/>
                   <span className="pl-3">Loading...</span>
                 </>
               ) : (

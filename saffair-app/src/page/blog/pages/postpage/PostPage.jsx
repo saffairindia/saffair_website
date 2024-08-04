@@ -15,6 +15,8 @@ import Qna from "./qna";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from "react-redux";
 import { faLink, faShareSquare } from '@fortawesome/free-solid-svg-icons';
+import Loadder from "../../../../lottie/Loadder";
+
 export default function PostPage() {
   const { currentUser } = useSelector((state) => state.user);
   const [postInfo, setPostInfo] = useState(null);
@@ -108,7 +110,7 @@ export default function PostPage() {
       
         {loading ? (
           <div className="spinnerr" style={{ height: "90vh" }}>
-            <Spinner size="xl" />
+            <Loadder/>
           </div>
         ) : (
           <div className="postMainPage">

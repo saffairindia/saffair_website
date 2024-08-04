@@ -132,6 +132,7 @@ router.post("/google", async (req, res, next) => {
   }
 });
 
+
 router.post("/recovery", async (req, res) => {
   const { email } = req.body;
 
@@ -141,10 +142,12 @@ router.post("/recovery", async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
     
-    const resetToken = globalThis.crypto.randomUUID();
+    const buffer = new Uint8Array(32);
+    crypto.getRandomValues(buffer);
+    const resetToken = Buffer.from(buffer).toString('hex');
 
     // Set expiration time (1 hour from now)
-    const resetTokenExpiration = Date.now() + 3600000
+    const resetTokenExpiration = Date.now() + 3600000;
 
     user.resetToken = resetToken;
     user.resetTokenExpiration = resetTokenExpiration;
@@ -168,9 +171,7 @@ router.post("/recovery", async (req, res) => {
       // },
     };
 
-   
-
-    res.status(200).json({actionCodeSettings});
+    res.status(200).json({ actionCodeSettings });
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ message: error.message });

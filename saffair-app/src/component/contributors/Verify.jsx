@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Loadder from "../../lottie/Loadder";
 
 import {
   updateStart,
@@ -353,7 +354,7 @@ export default function Verify() {
                 >
                   {loading ? (
                     <>
-                      <Spinner size="sm" />
+                      <Loadder/>
                       <span className="pl-1">Loading...</span>
                     </>
                   ) : (

@@ -6,6 +6,7 @@ import { WeatherImageContext } from "../../page/Home";
 import { SearchContext } from "../../page/Home";
 import { cityContext } from "../../page/Home";
 import { Button, Spinner } from "flowbite-react";
+import Loadder from "../../lottie/Loadder";
 
 export default function Weatherbox() {
   const [airData, setAirData] = useState({
@@ -161,7 +162,7 @@ export default function Weatherbox() {
       <div className="weather-container">
         {loading ? ( // Conditionally render loader while loading is true
           <div className="spinnerr">
-                        <Spinner size="s" />
+                       <Loadder/>
 
           </div>
         ) : (
