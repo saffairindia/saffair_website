@@ -87,7 +87,7 @@ export default function DashSidebar() {
 
           {currentUser.isAdmin && (
             <>
-              <Sidebar.Collapse icon={HiDocumentText} label="Readings">
+              <Sidebar.Collapse icon={HiDocumentText} label="Contributions">
                 <Link to="/createblog" onClick={scrollToTop}>
                   <Sidebar.Item icon={FaClipboardList}>
                     Let's Contribute
@@ -107,7 +107,7 @@ export default function DashSidebar() {
 
           {(currentUser.isContributor && !currentUser.isAdmin) && (
             <>
-              <Sidebar.Collapse icon={HiDocumentText} label="Readings">
+              <Sidebar.Collapse icon={HiDocumentText} label="Contributions">
                 <Link to="/createblog" onClick={scrollToTop}>
                   <Sidebar.Item icon={FaClipboardList}>
                   Let's Contribute
@@ -138,7 +138,7 @@ export default function DashSidebar() {
             </>
           )}
 
-          {(currentUser.isContributor && !currentUser.isAdmin) && (
+          {/* {(currentUser.isContributor && !currentUser.isAdmin) && (
             <Link to="/dashboard?tab=posts" onClick={scrollToTop}>
               <Sidebar.Item
                 active={tab === "posts"}
@@ -148,7 +148,7 @@ export default function DashSidebar() {
                 My Blogs
               </Sidebar.Item>
             </Link>
-          )}
+          )} */}
 
           {currentUser.isAdmin && (
             <>
