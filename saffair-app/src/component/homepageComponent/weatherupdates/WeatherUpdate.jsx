@@ -290,7 +290,7 @@ export default function WeatherUpdate() {
     } else if (aqi === 2) {
       newAqiValue = "100 - 200";
       newAirQuality = "Moderate";
-      imgValue = "./assets/aqiImg/Moderate.jpg";
+      imgValue = "./assets/aqiImg/Moderate.png";
     } else if (aqi === 3) {
       newAqiValue = "200 - 300";
       newAirQuality = "Unhealthy";
@@ -298,11 +298,11 @@ export default function WeatherUpdate() {
     } else if (aqi === 4) {
       newAqiValue = "400 - 500";
       newAirQuality = "Unhealthy";
-      imgValue = "./assets/aqiImg/Unhealthy.jpg";
+      imgValue = "./assets/aqiImg/Very unhealthy.jpg";
     } else if (aqi === 5) {
       newAqiValue = "500 - 600";
       newAirQuality = "Hazardous";
-      imgValue = "./assets/aqiImg/hazardous.png";
+      imgValue = "./assets/aqiImg/hazardous.jpg";
     }
 
     // Set the new values using setAirData

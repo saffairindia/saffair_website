@@ -110,7 +110,7 @@ export default function DashSidebar() {
               <Sidebar.Collapse icon={HiDocumentText} label="Readings">
                 <Link to="/createblog" onClick={scrollToTop}>
                   <Sidebar.Item icon={FaClipboardList}>
-                    Create Readings
+                  Let's Contribute
                   </Sidebar.Item>
                 </Link>
                 <Link to="/dashboard?tab=posts" onClick={scrollToTop}>
