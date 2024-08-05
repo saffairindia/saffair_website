@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { errorHandler } = require("./../utils/error");
 const rateLimit = require("express-rate-limit");
+const crypto = require("crypto")
 
 router.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
