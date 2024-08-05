@@ -444,7 +444,7 @@ export default function Navbar({ _id }) {
             ) : (
               // Render the link if user is not logged in
               <Link to="/login">
-                <a className="dropdown-item" href="/#" >
+                <a className="dropdown-item" href="/#"  onClick={toggleDropdown} >
                   Join Community
                 </a>
               </Link>

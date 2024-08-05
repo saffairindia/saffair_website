@@ -8,7 +8,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { app } from "../../../../firebase";
-import {  useState } from "react";
+import { useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useNavigate } from "react-router-dom";
@@ -71,15 +71,15 @@ export default function CreatePost() {
     setFormData(updatedFormData);
     console.log(updatedFormData);
   };
-  
-  
+
+
   /////////Form publiched API
   const [publishError, setPublishError] = useState(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     console.log(formData); // This will log the updated formData after setFormData runs
-    
+
     try {
       const res = await fetch(`${process.env.REACT_APP_BACKEND_API}/api/post`, {
         method: "POST",
@@ -90,12 +90,12 @@ export default function CreatePost() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      
+
       if (!res.ok) {
         setPublishError(data.message);
         return;
       }
-  
+
       // If response is OK
       setPublishError(null);
       navigate(`/blog`);
@@ -103,7 +103,7 @@ export default function CreatePost() {
       setPublishError("Something went wrong");
     }
   };
-  
+
 
 
   /////////Documents upload functions
@@ -350,11 +350,11 @@ export default function CreatePost() {
     }
   };
 
- 
+
   return (
     <div className="mb-6 p-3 max-w-3xl mx-auto mt-8 min-h-screen">
       <h1 className="text-center text-3xl my-7 font-semibold">
-      Let's Contribute 
+        Let's Contribute
       </h1>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         {currentUser.isAdmin && (
@@ -363,7 +363,7 @@ export default function CreatePost() {
               Select reading type
             </label>
             <Select
-                      required
+              required
 
               onChange={(e) =>
                 setFormData({ ...formData, readingType: e.target.value })
@@ -376,32 +376,32 @@ export default function CreatePost() {
           </>
         )}
         {
-          (currentUser.isAdmin) ?(<></>) :(
+          (currentUser.isAdmin) ? (<></>) : (
             <>
-            <label htmlFor="Select Contribution type" className="block text-sm font-medium text-gray-700">
-          Select Contribution type
-        </label>
-        <Select
+              <label htmlFor="Select Contribution type" className="block text-sm font-medium text-gray-700">
+                Select Contribution type
+              </label>
+              <Select
 
-          onChange={handleSelectChange}
+                onChange={handleSelectChange}
 
-          required
-        >
-          <option value="">select</option>
-          <option value="News / Update">News / Update</option>
-          <option value="Legal Updates">Legal Updates</option>
-          <option value="innovation">innovation</option>
-          <option value="get your voice bigger with community">get your voice bigger with community</option>
-          <option value="suggest a reforms">suggest a reforms</option>
-          <option value="join our campaigns">join our campaigns</option>
-          <option value="Donate / Sponser">Donate / Sponser</option>
-          <option value="Get outdoor Air Analyzer">Get outdoor Air Analyzer</option>
-          <option value="Need Community Support / Suggestions / Survey<">Need Community Support / Suggestions / Survey</option>
-        </Select>
+                required
+              >
+                <option value="">select</option>
+                <option value="News / Update">News / Update</option>
+                <option value="Legal Updates">Legal Updates</option>
+                <option value="innovation">innovation</option>
+                <option value="get your voice bigger with community">get your voice bigger with community</option>
+                <option value="suggest a reforms">suggest a reforms</option>
+                <option value="join our campaigns">join our campaigns</option>
+                <option value="Donate / Sponser">Donate / Sponser</option>
+                <option value="Get outdoor Air Analyzer">Get outdoor Air Analyzer</option>
+                <option value="Need Community Support / Suggestions / Survey<">Need Community Support / Suggestions / Survey</option>
+              </Select>
             </>
           )
         }
-        <div className="mb-4">
+        {currentUser.isAdmin && (<div className="mb-4">
           <label htmlFor="category" className="block text-sm font-medium text-gray-700">
             {formData.otherCategory ? formData.otherCategory : "Category"}
           </label>
@@ -491,7 +491,9 @@ export default function CreatePost() {
               </div>
             </div>
           )}
-        </div>
+        </div>)
+
+        }
         {formData.contributionType === "join our campaigns" ? (
           <div className="conditional-div gap-4">
             {/* Conditional div content for campaign */}
@@ -514,7 +516,7 @@ export default function CreatePost() {
                 ))}
               </select>
             </div>
-           
+
             <div className="flex  mt-4 flex-col gap-4 justify-between">
               <label htmlFor="Title" className="block text-sm font-medium text-gray-700">
                 Title
@@ -526,7 +528,7 @@ export default function CreatePost() {
                 id="title"
                 className="flex-1 my-2 "
                 value={formData.title}
-                onChange={(e)=>{
+                onChange={(e) => {
                   setFormData({ ...formData, title: e.target.value });
 
                 }}
@@ -843,54 +845,54 @@ export default function CreatePost() {
             </Button>
 
             {quizVisible && (
-               <div>
-               <Button onClick={() => setQuizVisible(!quizVisible)}>
-                 Toggle Quiz
-               </Button>
-               {quizVisible && (
-                 <div>
-                   <label htmlFor="Qna" className="block text-sm font-medium text-gray-700">
-                     QNA (select the right answer below the option)
-                   </label>
-                   <TextInput
-                     required
-                     type="text"
-                     placeholder="Quiz heading"
-                     value={quizData.question}
-                     onChange={(e) => setQuizData({ ...quizData, question: e.target.value })}
-                     className="mb-4 mt-2"
-                   />
-                   {quizData.options.map((option, index) => (
-                     <div key={index} className="gap-5">
-                       <TextInput
-                         required
-                         type="text"
-                         placeholder={`Option ${index + 1}`}
-                         value={option}
-                         onChange={(e) => handleOptionChange(index, e.target.value)}
-                         className="m-3"
-                       />
-                       <input
-                         type="radio"
-                         name="correctAnswer"
-                         checked={quizData.correctAnswerIndex === index}
-                         onChange={() => handleCorrectAnswerChange(index)}
-                       />
-                       <label className="m-3">Correct Answer</label>
-                     </div>
-                   ))}
-                   {errorMessage && (
-                     <div className="text-red-500 mt-2">{errorMessage}</div>
-                   )}
-                   <Button onClick={handleAddQuiz} className="my-4">
-                     Save Quiz
-                   </Button>
-                   {isQuizSaved && (
-                     <p>Quiz saved</p>
-                   )}
-                 </div>
-               )}
-             </div>
+              <div>
+                <Button onClick={() => setQuizVisible(!quizVisible)}>
+                  Toggle Quiz
+                </Button>
+                {quizVisible && (
+                  <div>
+                    <label htmlFor="Qna" className="block text-sm font-medium text-gray-700">
+                      QNA (select the right answer below the option)
+                    </label>
+                    <TextInput
+                      required
+                      type="text"
+                      placeholder="Quiz heading"
+                      value={quizData.question}
+                      onChange={(e) => setQuizData({ ...quizData, question: e.target.value })}
+                      className="mb-4 mt-2"
+                    />
+                    {quizData.options.map((option, index) => (
+                      <div key={index} className="gap-5">
+                        <TextInput
+                          required
+                          type="text"
+                          placeholder={`Option ${index + 1}`}
+                          value={option}
+                          onChange={(e) => handleOptionChange(index, e.target.value)}
+                          className="m-3"
+                        />
+                        <input
+                          type="radio"
+                          name="correctAnswer"
+                          checked={quizData.correctAnswerIndex === index}
+                          onChange={() => handleCorrectAnswerChange(index)}
+                        />
+                        <label className="m-3">Correct Answer</label>
+                      </div>
+                    ))}
+                    {errorMessage && (
+                      <div className="text-red-500 mt-2">{errorMessage}</div>
+                    )}
+                    <Button onClick={handleAddQuiz} className="my-4">
+                      Save Quiz
+                    </Button>
+                    {isQuizSaved && (
+                      <p>Quiz saved</p>
+                    )}
+                  </div>
+                )}
+              </div>
             )}
           </div>
         ) : (
